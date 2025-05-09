@@ -1,0 +1,79 @@
+[
+    {
+      "nome": "Conjunto Infantil - Algodão",
+      "preco": "R$ 27,00",
+      "precoCartao": "R$27,00",
+      "precoPix": "R$25,00",
+      "imagem": "produtos\conjunto-infantil-algodão.jpg",
+      "categoria": "infantil"
+    },
+
+    {
+        "nome": "Cueca Infantil - spiderman",
+        "preco": "R$ 5,00",
+        "precoCartao": "R$5,00",
+        "precoPix": "R$4,50",
+        "imagem": "produtos\cueca_infantil_spyderman.jpg",
+        "categoria": "infantil"
+    },
+    {
+        "nome": "Cueca Infantil - superman",
+        "preco": "R$ 5,00",
+        "precoCartao": "R$5,00",
+        "precoPix": "R$4,50",
+        "imagem": "produtos\cueca_infantil_superman.jpg",
+        "categoria": "infantil"
+    }
+    ,
+    {
+        "nome": "Calcinha Infantil - Algodão PMG ",
+        "preco": "R$ 5,00",
+        "precoCartao": "R$5,00",
+        "precoPix": "R$4,50",
+        "imagem": "produtos\calcinha_infantil_amarela.jpg",
+        "categoria": "infantil"
+    },
+    {
+        "nome": "Calcinha Infantil - Algodão PMG ",
+        "preco": "R$ 5,00",
+        "precoCartao": "R$5,00",
+        "precoPix": "R$4,50",
+        "imagem": "produtos\calcinha_infantil_laranja_algodao.jpg",
+        "categoria": "infantil"
+    },
+    {
+        "nome": "Calcinha Infantil - Algodão PMG/GG ",
+        "preco": "R$ 7,00",
+        "precoCartao": "R$7,00",
+        "precoPix": "R$6,50",
+        "imagem": "produtos\Calcinha_Infantil_Algodão_rosa.jpg",
+        "categoria": "infantil"
+    },
+    {
+        "nome": "Calcinha Infantil - Algodão PMG/GG ",
+        "preco": "R$ 7,00",
+        "precoCartao": "R$7,00",
+        "precoPix": "R$6,50",
+        "imagem": "produtos\Calcinha Infantil - Algodão_amarela.jpg",
+        "categoria": "infantil"
+    },
+    {
+        "nome": "Vestido Infantil rosa",
+        "preco": "R$ 27,00",
+        "precoCartao": "R$27,00",
+        "precoPix": "R$25,00",
+        "imagem": "produtos\vestido_infantil_estampado.jpg",
+        "categoria": "infantil",
+        "TAM": "PMG"
+    },
+    {
+        "nome": "Vestido Infantil ",
+        "preco": "R$ 27,00",
+        "precoCartao": "R$27,00",
+        "precoPix": "R$25,00",
+        "imagem": "produtos\vestido_infantil_estampado_rosa.jpg",
+        "categoria": "infantil",
+        "TAM": "PMG"
+    }
+
+]

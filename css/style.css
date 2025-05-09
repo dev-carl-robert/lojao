@@ -143,11 +143,18 @@ transform: scale(1.05);
 
 #moda-infantil .container .produtos {
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     gap: 3rem;
     width: 100%;
+}
+.agrupar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 80%;
+    gap: 3rem;
 }
 #moda-infantil .container h2 {
     font-size: 8rem;
