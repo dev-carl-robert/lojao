@@ -79,6 +79,10 @@ nav .menu a:hover {
     z-index: 1000;
     display: flex;
     gap: .9rem;  
+    backdrop-filter: blur(10px);
+    background-color: rgba(255, 255, 255, 0.7);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
 }
 .botoes-laterais button {
 font-family: 'montserrat', sans-serif;
@@ -103,6 +107,10 @@ transform: scale(1.05);
     display: flex;
     gap: 1rem;  
     overflow: hidden;
+    backdrop-filter: blur(10px);
+    background-color: rgba(255, 255, 255, 0.6);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
 }
 
 .redes-sociais a {
@@ -117,7 +125,18 @@ transform: scale(1.05);
     padding: 20px;
 }
 .redes-sociais a:hover {
-    transform: scale(1.05);
+    transform: scale(1.5);
+    /* color: #e0258b; */
+}
+#insta:hover {
+    background-color: rgba(224, 37, 139, 0.6);
+
+}
+#tik:hover {
+    background-color: #00f1eb;
+}
+#whats:hover {
+    background-color: #25d366;
 }
 
 .banner {
@@ -177,8 +196,11 @@ transform: scale(1.05);
     text-align: center;
     border: 1px solid #ddd;
     padding: 10px;
-    background-color: #fff;
     height: auto; /* Ajusta a altura para se ajustar ao conteúdo */
+    backdrop-filter: blur(10px);
+    background-color: rgba(255, 255, 255, 0.3);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
 }
 
 /* Imagem do produto */
@@ -215,6 +237,10 @@ transform: scale(1.05);
     width: 20rem;
     border-radius: 5rem;
     text-align: center;
+    cursor: pointer;
+}
+.preco:hover {
+    opacity: 0.8;   
 }
 
 /* Descrição do produto (ocultada) */
@@ -222,23 +248,8 @@ transform: scale(1.05);
     display: none;
 }
 
-/* Responsividade - 4 colunas para telas grandes */
-@media (max-width: 1024px) {
-    .produtos {
-        grid-template-columns: repeat(3, 1fr); /* 3 colunas para telas menores */
-    }
-}
-
-/* Responsividade - 3 colunas para telas menores */
-@media (max-width: 768px) {
-    .produtos {
-        grid-template-columns: repeat(2, 1fr); /* 2 colunas para telas ainda menores */
-    }
-}
-
-/* Responsividade - 1 coluna para telas muito pequenas */
-@media (max-width: 480px) {
-    .produtos {
-        grid-template-columns: 1fr; /* 1 coluna para telas muito pequenas */
-    }
-}
+/* .seccao_especifica {
+    background-color: azure;
+    height: 80vh;
+    width: 50vw;
+} */
