@@ -79,6 +79,10 @@ nav .menu a:hover {
     z-index: 1000;
     display: flex;
     gap: .9rem;  
+    backdrop-filter: blur(10px);
+    background-color: rgba(255, 255, 255, 0.7);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
 }
 .botoes-laterais button {
 font-family: 'montserrat', sans-serif;
@@ -103,6 +107,10 @@ transform: scale(1.05);
     display: flex;
     gap: 1rem;  
     overflow: hidden;
+    backdrop-filter: blur(10px);
+    background-color: rgba(255, 255, 255, 0.6);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
 }
 
 .redes-sociais a {
@@ -117,7 +125,18 @@ transform: scale(1.05);
     padding: 20px;
 }
 .redes-sociais a:hover {
-    transform: scale(1.05);
+    transform: scale(1.5);
+    /* color: #e0258b; */
+}
+#insta:hover {
+    background-color: rgba(224, 37, 139, 0.6);
+
+}
+#tik:hover {
+    background-color: #00f1eb;
+}
+#whats:hover {
+    background-color: #25d366;
 }
 
 .banner {
@@ -132,66 +151,193 @@ transform: scale(1.05);
     height: 100%;
     object-fit: cover;
 }
-
+ 
 #moda-infantil {
-    margin-top: 4rem;
+    margin-top: 20rem;
     display: flex;
-    width: 100vw;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+}
+
+#moda-infantil .container {
+    width: 100%; /* Certifique-se de que a largura do container ocupe toda a tela */
+    display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
+}
+.seccao  {
+    font-size: 5rem;
+    color: #575456;
+    font-weight: 600;
+    text-align: center;
+    margin-bottom: 2rem; /* Adiciona um espaço abaixo do título */
+    font-family: "Imperial Script";
+}
+.seccao span {
+    color: #e0258b;
+
 }
 
 #moda-infantil .container .produtos {
+    display: grid; /* Usando grid para organizar os produtos */
+    grid-template-columns: repeat(4, 1fr); /* 4 colunas de largura igual */
+    gap: 20px;
+    padding: 20px;
+}
+
+/* Produto individual */
+.produto {
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 3rem;
-    width: 100%;
-}
-#moda-infantil .container h2 {
-    font-size: 8rem;
     text-align: center;
-    color: #575456;
-    font-weight: 600;
-    font-family: "Imperial Script";
-    margin-bottom: 2rem;
-}
-#moda-infantil .container span {
-    color: #e0258b;
-    position: relative;
+    border: 1px solid #ddd;
+    padding: 10px;
+    height: auto; /* Ajusta a altura para se ajustar ao conteúdo */
+    backdrop-filter: blur(10px);
+    background-color: rgba(255, 255, 255, 0.3);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
 }
 
-#moda-infantil .container .produtos .produto img{
-    margin-top: 5rem;
+/* Imagem do produto */
+.imagem {
+    margin-top: 2rem;
     position: relative;
     padding: 1rem;
-    min-width: 20rem;
-    max-width: 25rem;
-    min-height: 30rem;
-    max-height: 25rem;
-}       
+    width: 100%; /* Faz a imagem ocupar toda a largura do elemento pai */
+    height: auto; /* Ajusta a altura proporcional à largura */
+    max-width: 100%; /* Ajusta o tamanho da imagem para o máximo possível sem distorção */
+    max-height: 20rem; /* Limita a altura máxima da imagem */
+    object-fit: cover; /* Garante que a imagem se ajuste corretamente ao espaço disponível */
+}
 
-.container .produtos .produto h3{
-    font-size: 2.5rem;
+/* Nome do produto */
+.nome_produto {
+    font-size: 1.5rem;
     color: #575456;
     font-weight: 600;
-    text-align: center;
     margin-top: 1rem;
-}
-.container .produtos .produto p{
-    font-size: 2rem;
-    color: #f8f8f8;
-    background-color: #e0258b;
-    padding: 1rem 1.5rem;
+    background-color: #f8f8f8;
+    padding: 1rem 2rem;
     border-radius: 5rem;
+}
+
+/* Preço do produto */
+.preco {
+    font-size: 1.5rem;
+    color: #f8f8f8;
     font-weight: 600;
-    text-align: center;
     margin-top: 1rem;
+    background-color: #e0258b;
+    padding: 1rem;
+    width: 20rem;
+    border-radius: 5rem;
+    text-align: center;
     cursor: pointer;
 }
-.container .produtos .produto p:hover {
-    background-color: rgba(224, 37, 139, .8);
-    color: #f8f8f8;
-    transition: 0.3s;
+.preco:hover {
+    opacity: 0.8;   
 }
+
+/* Descrição do produto (ocultada) */
+.descricao {
+    display: none;
+}
+
+.seccao_especifica {
+    display: none;
+    padding: 40px 100px;
+    box-sizing: border-box;
+    background-color: #fff;
+    min-height: 40rem; /* Garante que a seção cubra a tela */
+    position: relative;
+  }
+  
+  .detalhes-produto {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .detalhes-produto h3{
+    font-size: 3rem;
+    color: #575456;
+    font-weight: 600;
+    margin-bottom: 3rem; /* Adiciona um espaço abaixo do título */
+  } 
+  .detalhes {
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .galeria {
+    display: flex;
+    gap: 10px;
+    justify-content: left;
+    align-items: center;
+    width: 100%;
+  }
+  .galeria img {
+    width: 80px;
+    margin-top: 2rem;
+    max-height: 80px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: transform 0.2s ease;
+  }
+  
+  .galeria img:hover {
+    transform: scale(1.05);
+  }
+  
+  .principal {
+    width: 300px; /* Tamanho fixo para a imagem principal */
+    height: 350px;
+    min-width: 300px; /* Tamanho fixo para a imagem principal */
+    min-height: 350px;
+
+    margin-right: 20px; /* Espaçamento entre imagem principal e galeria */
+    border-radius: 10px;
+  }
+  
+  .informacoes {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    text-align: left;
+  }
+  
+  .informacoes p {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    color: #333;
+  }
+  
+  button.adicionar-carrinho {
+    background-color: #e0258b;
+    color: #fff;
+    font-size: 1.5rem;
+    padding: 10px 20px;
+    margin-top: 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  button.fechar-detalhes {
+    position: absolute;
+    top: 40px;
+    right: 120px;
+    background-color: transparent;
+    color: #e0258b;
+    font-size: 24px;
+    border: none;
+    cursor: pointer;
+  }
