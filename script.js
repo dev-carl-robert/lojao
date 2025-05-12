@@ -241,7 +241,7 @@ const modaInfantil = [
         imagem4: "produtos\\infantil\\infantil 23,4.jpg",
         imagem5: "produtos\\infantil\\infantil 23,5.jpg",
         imagem6: "produtos\\infantil\\infantil 23,6.jpg",
-        imagem7: "produtos\\infantil\\infantil 23,7.jpg", 
+        imagem7: "produtos\\infantil\\infantil 23,7.jpg",
         imagem8: "produtos\\infantil\\infantil 23,8.jpg",
         nome: "Baby Doll Infantil",
         preco: "16.50",
@@ -330,7 +330,7 @@ const modaCalcinha = [
         nome: "Calcinha Variadas",
         preco: "6.00",
         preco_cartao: "6.50",
-        descricao: "Valor Promocional PMG", 
+        descricao: "Valor Promocional PMG",
         identificador: "MC004",
         categoria: "Calcinha",
     },
@@ -401,76 +401,101 @@ const modaCalcinha = [
         identificador: "MC011",
         categoria: "Calcinha",
     },
-  ]
+]
 const seccaoDetalhes = document.querySelector(".seccao_especifica");
 
 function renderizarProdutos(categoriaId, produtos) {
-  const secao = document.querySelector(`#${categoriaId}`);
-  const container = secao.querySelector(".produtos");
-  const containerGeral = secao.querySelector(".container");
+    const secao = document.querySelector(`#${categoriaId}`);
+    const container = secao.querySelector(".produtos");
+    container.innerHTML = ""; // Limpa antes de adicionar novos
 
-  produtos.forEach(prod => {
-    const divProduto = document.createElement("div");
-    divProduto.classList.add("produto");
 
-    divProduto.innerHTML = `
-      <img class="imagem" src="${prod.imagem}" alt="${prod.nome}" style="width: 150px;">
-      <h3 class="nome_produto">${prod.nome}</h3>
-      <button class="preco">R$${prod.preco}</button>
-      <p class="descricao">${prod.descricao}</p>
-    `;
+    if (container.children.length > 0) return; // Evita duplicação
 
-    divProduto.addEventListener("click", () => {
-      containerGeral.style.display = "none";
+    const containerGeral = secao.querySelector(".container");
 
-      const imagensExtras = [prod.imagem];
-      for (let i = 1; i <= 8; i++) {
-        const key = "imagem" + i;
-        if (prod[key]) imagensExtras.push(prod[key]);
-      }
+    produtos.forEach(prod => {
+        const divProduto = document.createElement("div");
+        divProduto.classList.add("produto");
 
-      seccaoDetalhes.innerHTML = `
-        <div class="detalhes-produto">
-          <button class="fechar-detalhes"><i class="bi bi-x-circle"></i></button>
-          <h3>${prod.nome}</h3>
-          <div class="detalhes">
-            <img class="principal" src="${prod.imagem}" alt="${prod.nome}">
-            <div class="informacoes">
-              <p><strong>Preço à vista:</strong> R$${prod.preco}</p>
-              <p><strong>Preço no cartão:</strong> R$${prod.preco_cartao}</p>
-              <p><strong>descrição: </strong>${prod.descricao}</p>
-              <button class="adicionar-carrinho">Adicionar ao Carrinho</button>
-            </div>
-          </div>
-          <div class="galeria">
-            ${imagensExtras.map(src => `<img src="${src}">`).join("")}
-          </div>
-        </div>
-      `;
-      seccaoDetalhes.style.display = "block";
+        divProduto.innerHTML = `
+            <img class="imagem" src="${prod.imagem}" alt="${prod.nome}" style="width: 150px;">
+            <h3 class="nome_produto">${prod.nome}</h3>
+            <button class="preco">R$${prod.preco}</button>
+            <p class="descricao">${prod.descricao}</p>
+        `;
 
-      const imgPrincipal = seccaoDetalhes.querySelector(".principal");
-      seccaoDetalhes.querySelectorAll(".galeria img").forEach(mini => {
-        mini.addEventListener("click", () => {
-          imgPrincipal.src = mini.src;
+        divProduto.addEventListener("click", () => {
+            document.querySelectorAll("section").forEach(section => {
+                section.style.display = "none";
+            });
+
+            containerGeral.style.display = "none";
+            seccaoDetalhes.style.display = "block";
+
+            const imagensExtras = [prod.imagem];
+            for (let i = 1; i <= 8; i++) {
+                const key = "imagem" + i;
+                if (prod[key]) imagensExtras.push(prod[key]);
+            }
+
+            seccaoDetalhes.innerHTML = `
+                <div class="detalhes-produto">
+                    <button class="fechar-detalhes"><i class="bi bi-x-circle"></i></button>
+                    <h3>${prod.nome}</h3>
+                    <div class="detalhes">
+                        <img class="principal" src="${prod.imagem}" alt="${prod.nome}">
+                        <div class="informacoes">
+                            <p><strong>Preço à vista:</strong> R$${prod.preco}</p>
+                            <p><strong>Preço no cartão:</strong> R$${prod.preco_cartao}</p>
+                            <p><strong>Descrição: </strong>${prod.descricao}</p>
+                            <button class="adicionar-carrinho">Adicionar ao Carrinho</button>
+                        </div>
+                    </div>
+                    <div class="galeria">
+                        ${imagensExtras.map(src => `<img src="${src}" alt="${prod.nome}">`).join("")}
+                    </div>
+                </div>
+            `;
+
+            const imgPrincipal = seccaoDetalhes.querySelector(".principal");
+            seccaoDetalhes.querySelectorAll(".galeria img").forEach(mini => {
+                mini.addEventListener("click", () => {
+                    imgPrincipal.src = mini.src;
+                });
+            });
+
+            seccaoDetalhes.querySelector(".fechar-detalhes").addEventListener("click", () => {
+                seccaoDetalhes.style.display = "none";
+                containerGeral.style.display = "block";
+
+                document.querySelectorAll("section").forEach(section => {
+                    section.style.display = "block";
+                });
+
+                resetarLayoutProdutos();
+            });
+
+            seccaoDetalhes.querySelector(".adicionar-carrinho").addEventListener("click", () => {
+                alert(`Produto "${prod.nome}" adicionado ao carrinho!`);
+            });
         });
-      });
 
-      seccaoDetalhes.querySelector(".fechar-detalhes").addEventListener("click", () => {
-        seccaoDetalhes.style.display = "none";
-        containerGeral.style.display = "block";
+        container.appendChild(divProduto);
+    });
+}
 
-        seccaoDetalhes.innerHTML = "";
-      });
 
-      seccaoDetalhes.querySelector(".adicionar-carrinho").addEventListener("click", () => {
-        alert(`Produto "${prod.nome}" adicionado ao carrinho!`);
-      });
+function resetarLayoutProdutos() {
+    document.querySelectorAll("section .produtos").forEach(container => {
+        container.style.display = "grid"; // ou "flex"
+        container.style.transition = "all 0.3s ease";
     });
 
-    container.appendChild(divProduto);
-  });
+    document.querySelectorAll("section").forEach(secao => {
+        secao.style.display = "block";
+    });
 }
 renderizarProdutos("moda-infantil", modaInfantil);
 renderizarProdutos("moda-calcinha", modaCalcinha);
-
+resetarLayoutProdutos();

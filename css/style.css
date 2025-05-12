@@ -1,5 +1,5 @@
 :root {
-    font-size: 62.5%;
+    font-size: 62.5%; /* Ajusta a base de 1rem = 10px */
 }
 
 body {
@@ -74,7 +74,6 @@ nav .menu a:hover {
     text-decoration: underline;
     text-underline-offset: 5px;
     transition: 0.3s;
-
 }
 
 .botoes-laterais {
@@ -134,12 +133,10 @@ nav .menu a:hover {
 
 .redes-sociais a:hover {
     transform: scale(1.5);
-    /* color: #e0258b; */
 }
 
 #insta:hover {
     background-color: rgba(224, 37, 139, 0.6);
-
 }
 
 #tik:hover {
@@ -163,7 +160,6 @@ nav .menu a:hover {
     object-fit: cover;
 }
 
-/* Estilização geral para todas as seções com layout uniforme */
 section {
     margin-top: 20rem;
     display: flex;
@@ -185,6 +181,17 @@ section .produtos {
     grid-template-columns: repeat(4, 1fr);
     gap: 20px;
     padding: 20px;
+}
+
+.oculto {
+    display: none;
+}
+
+/* Classe para mostrar a seção como grid */
+.visivel {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* quatro colunas */
+    gap: 1rem;
 }
 
 /* Título das seções */
@@ -216,7 +223,6 @@ section .produtos {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
     border-radius: 10px;
     min-height: 38rem;
-    /* ou o valor que mais se ajustar visualmente */
     max-height: 38rem;
     overflow: hidden;
 }
