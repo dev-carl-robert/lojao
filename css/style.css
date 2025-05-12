@@ -225,6 +225,7 @@ section .produtos {
     min-height: 38rem;
     max-height: 38rem;
     overflow: hidden;
+    max-width: 25rem;
 }
 
 .produto:hover {

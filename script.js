@@ -419,7 +419,7 @@ function renderizarProdutos(categoriaId, produtos) {
         divProduto.classList.add("produto");
 
         divProduto.innerHTML = `
-            <img class="imagem" src="${prod.imagem}" alt="${prod.nome}" style="width: 150px;">
+            <img class="imagem" src="${prod.imagem}" alt="${prod.nome}" ">
             <h3 class="nome_produto">${prod.nome}</h3>
             <button class="preco">R$${prod.preco}</button>
             <p class="descricao">${prod.descricao}</p>
@@ -431,7 +431,7 @@ function renderizarProdutos(categoriaId, produtos) {
             });
 
             containerGeral.style.display = "none";
-            seccaoDetalhes.style.display = "block";
+            seccaoDetalhes.style.display = "grid";
 
             const imagensExtras = [prod.imagem];
             for (let i = 1; i <= 8; i++) {
@@ -467,10 +467,10 @@ function renderizarProdutos(categoriaId, produtos) {
 
             seccaoDetalhes.querySelector(".fechar-detalhes").addEventListener("click", () => {
                 seccaoDetalhes.style.display = "none";
-                containerGeral.style.display = "block";
+                containerGeral.style.display = "grid";
 
                 document.querySelectorAll("section").forEach(section => {
-                    section.style.display = "block";
+                    section.style.display = "grid";
                 });
 
                 resetarLayoutProdutos();
@@ -488,14 +488,15 @@ function renderizarProdutos(categoriaId, produtos) {
 
 function resetarLayoutProdutos() {
     document.querySelectorAll("section .produtos").forEach(container => {
-        container.style.display = "grid"; // ou "flex"
+        container.style.removeProperty("display")
         container.style.transition = "all 0.3s ease";
     });
 
     document.querySelectorAll("section").forEach(secao => {
-        secao.style.display = "block";
+        secao.style.display = "";
     });
 }
 renderizarProdutos("moda-infantil", modaInfantil);
 renderizarProdutos("moda-calcinha", modaCalcinha);
 resetarLayoutProdutos();
+
