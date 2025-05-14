@@ -43,15 +43,16 @@
 
   <div class="botoes-laterais">
     <button id="login" onsubmit="" class="bi bi-person"><span> Login</span></button>
-    <button id="carrinho" onsubmit="" class="bi bi-cart-plus-fill"><span> Carrinho</span></button>
+    <button id="carrinho" class="bi bi-cart-plus-fill"><span> Carrinho</span></button>
   </div>
+
 
   <div class="redes-sociais">
     <a id="insta" href="https://www.instagram.com/"><i class="bi bi-instagram"></i></a>
     <a id="tik" href="https://www.tiktok.com/"><i class="bi bi-tiktok"></i></a>
     <a id="whats" href="https://www.whatsapp.com/"><i class="bi bi-whatsapp"></i></a>
   </div>
-  <div class="banner">
+  <div class="banner tela-inicial">
     <img src="./src/banner.png" alt="Banner da loja" class="banner-img">
   </div>
 
@@ -59,24 +60,32 @@
     <a id="inicio" href="#"><i class="bi bi-arrow-up-circle-fill"></i></a>
   </div>
 
-<section id="moda-infantil">
-  <div class="container">
-    <h2 class="seccao">Moda<span> Infantil</span></h2>
-    <div class="produtos"></div>
+  <section id="moda-infantil">
+    <div class="container">
+      <h2 class="seccao">Moda<span> Infantil</span></h2>
+      <div class="produtos"></div>
+    </div>
+  </section>
+
+  <section id="moda-calcinha">
+    <div class="container">
+      <h2 class="seccao">Moda<span> Calcinha</span></h2>
+      <div class="produtos"></div>
+    </div>
+  </section>
+
+  <div class="seccao_especifica oculto">
+    <div class="detalhes-produto-container"></div>
   </div>
-</section>
 
-<section id="moda-calcinha">
-  <div class="container">
-    <h2 class="seccao">Moda<span> Calcinha</span></h2>
-    <div class="produtos"></div>
+ <section id="sessao-carrinho" style="display: none;">
+  <div id="conteudo-carrinho">
+    <h2></h2>
+    <div id="lista-carrinho"></div>
+    <p id="total-carrinho"></p>
   </div>
+  <button onclick="fecharCarrinho()" class="fecharCarrinho"><i class="bi bi-x-circle"></i></button>
 </section>
-
-<div class="seccao_especifica oculto">
-  <div class="detalhes-produto-container"></div>
-</div>
-
 
 </body>
 <script src="./script.js"></script>

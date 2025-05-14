@@ -407,8 +407,7 @@ const seccaoDetalhes = document.querySelector(".seccao_especifica");
 function renderizarProdutos(categoriaId, produtos) {
     const secao = document.querySelector(`#${categoriaId}`);
     const container = secao.querySelector(".produtos");
-    container.innerHTML = ""; // Limpa antes de adicionar novos
-
+    container.innerHTML = ""; // Limpa antes de adicionar novos produtos
 
     if (container.children.length > 0) return; // Evita duplicação
 
@@ -419,9 +418,9 @@ function renderizarProdutos(categoriaId, produtos) {
         divProduto.classList.add("produto");
 
         divProduto.innerHTML = `
-            <img class="imagem" src="${prod.imagem}" alt="${prod.nome}" ">
+            <img class="imagem" src="${prod.imagem}" alt="${prod.nome}">
             <h3 class="nome_produto">${prod.nome}</h3>
-            <button class="preco">R$${prod.preco}</button>
+            <button class="preco">R$ ${prod.preco}</button>
             <p class="descricao">${prod.descricao}</p>
         `;
 
@@ -446,8 +445,8 @@ function renderizarProdutos(categoriaId, produtos) {
                     <div class="detalhes">
                         <img class="principal" src="${prod.imagem}" alt="${prod.nome}">
                         <div class="informacoes">
-                            <p><strong>Preço à vista:</strong> R$${prod.preco}</p>
-                            <p><strong>Preço no cartão:</strong> R$${prod.preco_cartao}</p>
+                            <p><strong>Preço à vista:</strong> R$ ${prod.preco}</p>
+                            <p><strong>Preço no cartão:</strong> R$ ${prod.preco_cartao}</p>
                             <p><strong>Descrição: </strong>${prod.descricao}</p>
                             <button class="adicionar-carrinho">Adicionar ao Carrinho</button>
                         </div>
@@ -476,8 +475,30 @@ function renderizarProdutos(categoriaId, produtos) {
                 resetarLayoutProdutos();
             });
 
+            // Lógica de adicionar ao carrinho
             seccaoDetalhes.querySelector(".adicionar-carrinho").addEventListener("click", () => {
-                alert(`Produto "${prod.nome}" adicionado ao carrinho!`);
+                const carrinho = JSON.parse(localStorage.getItem("carrinho")) || [];
+                const produtoCarrinho = {
+                    identificador: prod.identificador,
+                    nome: prod.nome,
+                    preco: prod.preco,
+                    preco_cartao: prod.preco_cartao,
+                    imagem: prod.imagem,
+                    descricao: prod.descricao,
+                    categoria: prod.categoria,
+                    quantidade: 1
+                };
+
+
+                const index = carrinho.findIndex(item => item.identificador === produtoCarrinho.identificador);
+                if (index !== -1) {
+                    carrinho[index].quantidade += 1;
+                } else {
+                    carrinho.push(produtoCarrinho);
+                }
+
+                localStorage.setItem("carrinho", JSON.stringify(carrinho));
+                alert(`${prod.nome} foi adicionado ao carrinho!`);
             });
         });
 
@@ -485,10 +506,9 @@ function renderizarProdutos(categoriaId, produtos) {
     });
 }
 
-
 function resetarLayoutProdutos() {
     document.querySelectorAll("section .produtos").forEach(container => {
-        container.style.removeProperty("display")
+        container.style.removeProperty("display");
         container.style.transition = "all 0.3s ease";
     });
 
@@ -496,6 +516,79 @@ function resetarLayoutProdutos() {
         secao.style.display = "";
     });
 }
+const botaoCarrinho = document.getElementById("carrinho");
+const sessaoCarrinho = document.getElementById("sessao-carrinho");
+
+botaoCarrinho.addEventListener("click", () => {
+    sessaoCarrinho.style.display = "block";
+    carregarCarrinho();
+});
+
+function fecharCarrinho() {
+    sessaoCarrinho.style.display = "none";
+}
+
+function carregarCarrinho() {
+    const container = document.getElementById("lista-carrinho");
+    const totalContainer = document.getElementById("total-carrinho");
+    container.innerHTML = "";
+
+    let carrinho = JSON.parse(localStorage.getItem("carrinho")) || [];
+    let total = 0;
+
+    carrinho.forEach((prod, index) => {
+        const subtotal = parseFloat(prod.preco) * prod.quantidade;
+        total += subtotal;
+
+        const item = document.createElement("div");
+        item.classList.add("item-carrinho");
+
+
+        item.innerHTML = `
+            <div class="item-carrinho">
+                <img src="${prod.imagem}" alt="${prod.nome}" class="imagem-carrinho">
+
+            <div>
+                <p><strong>Descrição:</strong> ${prod.descricao}</p>
+                <p><strong>Categoria:</strong> ${prod.categoria}</p>
+                <p><strong>Preço à vista:</strong> R$ ${prod.preco}</p>
+                <p><strong>Preço no cartão:</strong> R$ ${prod.preco_cartao}</p>
+                <p><strong>Subtotal:</strong> R$ ${subtotal.toFixed(2)}</p>
+            </div>
+
+            <div class="controle-quantidade">
+                <button class="btn-menos">-</button>
+                <span class="quantidade">${prod.quantidade}</span>
+                <button class="btn-mais">+</button>
+            </div>
+            </div>
+            `;
+
+        // Botão -
+        item.querySelector(".btn-menos").addEventListener("click", () => {
+            if (prod.quantidade > 1) {
+                carrinho[index].quantidade--;
+            } else {
+                carrinho.splice(index, 1); // Remove se for 1
+            }
+            localStorage.setItem("carrinho", JSON.stringify(carrinho));
+            carregarCarrinho();
+        });
+
+        // Botão +
+        item.querySelector(".btn-mais").addEventListener("click", () => {
+            carrinho[index].quantidade++;
+            localStorage.setItem("carrinho", JSON.stringify(carrinho));
+            carregarCarrinho();
+        });
+
+        container.appendChild(item);
+    });
+
+    totalContainer.innerText = `Total: R$ ${total.toFixed(2)}`;
+}
+
+
 renderizarProdutos("moda-infantil", modaInfantil);
 renderizarProdutos("moda-calcinha", modaCalcinha);
 resetarLayoutProdutos();
