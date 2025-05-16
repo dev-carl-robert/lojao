@@ -78,14 +78,23 @@
     <div class="detalhes-produto-container"></div>
   </div>
 
- <section id="sessao-carrinho" style="display: none;">
-  <div id="conteudo-carrinho">
-    <h2></h2>
-    <div id="lista-carrinho"></div>
-    <p id="total-carrinho"></p>
+  <section id="sessao-carrinho" style="display: none;">
+    <div>
+      <div id="conteudo-carrinho " class="coluna-produtos">
+        <h2></h2>
+        <div id="lista-carrinho"></div>
+        <p id="total-carrinho"></p>
+        <button onclick="fecharCarrinho()" class="fecharCarrinho">
+          <i class="bi bi-x-circle"></i>
+        </button>
+
+      </div>
+    </div>
+  </section>
+
+  <div id="alerta-customizado" class="alerta-customizado">
+    <p id="mensagem-alerta">Produto adicionado ao carrinho!</p>
   </div>
-  <button onclick="fecharCarrinho()" class="fecharCarrinho"><i class="bi bi-x-circle"></i></button>
-</section>
 
 </body>
 <script src="./script.js"></script>

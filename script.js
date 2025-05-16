@@ -498,7 +498,7 @@ function renderizarProdutos(categoriaId, produtos) {
                 }
 
                 localStorage.setItem("carrinho", JSON.stringify(carrinho));
-                alert(`${prod.nome} foi adicionado ao carrinho!`);
+                mostrarAlertaCustomizado("Produto adicionado ao carrinho!");
             });
         });
 
@@ -545,24 +545,24 @@ function carregarCarrinho() {
 
 
         item.innerHTML = `
-            <div class="item-carrinho">
-                <img src="${prod.imagem}" alt="${prod.nome}" class="imagem-carrinho">
+        <h1>Seu Carrinho</h3>
+            <img src="${prod.imagem}" alt="${prod.nome}" class="imagem-carrinho">
 
             <div>
-                <p><strong>Descrição:</strong> ${prod.descricao}</p>
-                <p><strong>Categoria:</strong> ${prod.categoria}</p>
+                <h3>${prod.nome}</h3>
                 <p><strong>Preço à vista:</strong> R$ ${prod.preco}</p>
-                <p><strong>Preço no cartão:</strong> R$ ${prod.preco_cartao}</p>
                 <p><strong>Subtotal:</strong> R$ ${subtotal.toFixed(2)}</p>
             </div>
+            <div>
 
+            </div>
             <div class="controle-quantidade">
                 <button class="btn-menos">-</button>
                 <span class="quantidade">${prod.quantidade}</span>
                 <button class="btn-mais">+</button>
             </div>
-            </div>
-            `;
+    `;
+
 
         // Botão -
         item.querySelector(".btn-menos").addEventListener("click", () => {
@@ -585,11 +585,81 @@ function carregarCarrinho() {
         container.appendChild(item);
     });
 
-    totalContainer.innerText = `Total: R$ ${total.toFixed(2)}`;
+    atualizarResumoCompra(carrinho);
+
+}
+function criarResumoCompra() {
+    let resumo = document.getElementById("resumo-compra");
+
+    if (!resumo) {
+        resumo = document.createElement("div");
+        resumo.id = "resumo-compra";
+        resumo.innerHTML = `
+      <h2>Resumo da compra</h2>
+
+      <div class="linha linhaProdutos">
+        <span class="titulo">Produtos (0):</span>
+        <span class="valor" id="total-produtos">0 00</span>
+      </div>
+
+      <div class="linha fretes">
+        <span class="titulo">Frete:</span>
+        <span class="valor" id="valor-frete">Grátis</span>
+      </div>
+
+      <div class="linha total">
+        <span class="titulo">Total:</span>
+        <span class="valor" id="valor-total">0 00</span>
+      </div>
+      
+      <button id="btn-continuar">Continuar a compra</button>
+      <img class="carrinhoimg" src="./src/logo.jpeg" alt="">
+    `;
+        document.getElementById("sessao-carrinho").appendChild(resumo);
+    }
+
+    return resumo;
+}
+function atualizarResumoCompra(carrinho) {
+    const resumo = criarResumoCompra();
+
+    const quantidadeProdutos = carrinho.reduce((acc, prod) => acc + prod.quantidade, 0);
+    const totalProdutos = carrinho.reduce((acc, prod) => acc + parseFloat(prod.preco) * prod.quantidade, 0);
+
+    const frete = totalProdutos >= 30 ? 0 : 5; // exemplo: grátis acima de R$30
+    const totalGeral = totalProdutos + frete;
+
+    const formatarValor = (valor) => valor.toFixed(2).replace(".", ",");
+
+    resumo.querySelector(".linhaProdutos .titulo").textContent = `Produtos: (${quantidadeProdutos}):`;
+    resumo.querySelector("#total-produtos").textContent = `R$ ${formatarValor(totalProdutos)}`;
+
+    resumo.querySelector(".fretes .valor").textContent = frete === 0 ? "Grátis" : `R$ ${formatarValor(frete)}`;
+
+    resumo.querySelector(".total .valor").textContent = `R$ ${formatarValor(totalGeral)}`;
+}
+function mostrarAlertaCustomizado(texto) {
+    const alerta = document.getElementById("alerta-customizado");
+    const mensagem = document.getElementById("mensagem-alerta");
+
+    mensagem.textContent = texto || "Produto adicionado ao carrinho!";
+    alerta.classList.add("mostrar");
+
+    setTimeout(() => {
+        alerta.classList.remove("mostrar");
+    }, 3000); // desaparece após 3 segundos
 }
 
+// ⬇️ Esta parte deve ficar fora das funções, no carregamento da página
+window.addEventListener("DOMContentLoaded", () => {
+    const btnCarrinho = document.getElementById("carrinho");
+    btnCarrinho.addEventListener("click", () => {
+        document.getElementById("sessao-carrinho").style.display = "flex";
+        carregarCarrinho();
+    });
 
-renderizarProdutos("moda-infantil", modaInfantil);
-renderizarProdutos("moda-calcinha", modaCalcinha);
-resetarLayoutProdutos();
-
+    // Carregar os produtos nas seções quando a página for carregada
+    renderizarProdutos("moda-infantil", modaInfantil);
+    renderizarProdutos("moda-calcinha", modaCalcinha);
+    resetarLayoutProdutos();
+});
