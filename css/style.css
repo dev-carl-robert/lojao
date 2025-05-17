@@ -543,3 +543,22 @@ button.fechar-detalhes {
   transform: translateY(0);
 }
 
+.tamanho-select {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+}
+.tamanho-select label {
+    font-size: 1.5rem;
+    color: #333;
+    font-weight: 600;
+}
+.tamanho-select select {
+    font-size: 1.3rem;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    background-color: #f8f8f8;
+    color: #575456;
+}

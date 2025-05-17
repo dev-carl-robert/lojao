@@ -401,7 +401,89 @@ const modaCalcinha = [
         identificador: "MC011",
         categoria: "Calcinha",
     },
-]
+    {
+        imagem: "produtos/Calcinha/calcinha 11.jpg",
+        nome: "Kit Calcinha Diamante",
+        preco: "130.00",
+        preco_cartao: "137.00",
+        descricao: "kit com 5 peças PMG/G",
+        identificador: "MC012",
+        categoria: "Calcinha",
+    },
+    {
+        imagem: "produtos/Calcinha/calcinha 12.jpg",
+        imagem1: "produtos/Calcinha/calcinha 12,1.jpg",
+        nome: "Kit Calcinha Diamante",
+        preco: "132.00",  
+        preco_cartao: "140.00",
+        descricao: "Kit com 4 peças PMG/G",
+        identificador: "MC013",
+        categoria: "Calcinha",
+    },
+    {
+        imagem: "produtos/Calcinha/calcinha 13.jpg",
+        nome: "Calcinha Fio Duplo",
+        preco: "11.00",
+        preco_cartao: "12.50",
+        descricao: "PMG/GG",
+        identificador: "MC014",
+        categoria: "Calcinha",
+    },
+    {
+        imagem: "produtos/Calcinha/calcinha 14.jpg",
+        nome: "Calcinha Tailandesa",
+        preco: "11.00",
+        preco_cartao: "12.50",
+        descricao: "Tamanho unico",
+        identificador: "MC015",
+        categoria: "Calcinha",
+    },
+    {
+        imagem: "produtos/Calcinha/calcinha 15.jpg",
+        nome: "Calcinha Variada",
+        preco: "6.00",
+        preco_cartao: "6.50",
+        descricao: "",
+        identificador: "MC016",
+        categoria: "Calcinha",
+    },
+    {
+        imagem: "produtos/Calcinha/calcinha 16.jpg",
+        nome: "Calcinha com Nome",
+        preco: "20.00",
+        preco_cartao: "22.50",
+        descricao: "Tamanho Unico",
+        identificador: "MC017",
+        categoria: "Calcinha",
+    },
+    {
+        imagem: "produtos/Calcinha/calcinha 17.jpg",
+        nome: "Calcinha com frases",
+        preco: "8.50",
+        preco_cartao: "9.00",
+        descricao: "",
+        identificador: "MC018",
+        categoria: "Calcinha",
+    },
+    {
+        imagem: "produtos/Calcinha/calcinha 18.jpg",
+        nome: "Calcinha Corpo Colado",
+        preco: "17.50",
+        preco_cartao: "19.50",
+        descricao: "Algodão com Cós",
+        identificador: "MC019",
+        categoria: "Calcinha",
+    },
+    {
+        imagem: "produtos/Calcinha/calcinha 19.jpg",
+        nome: "Kit Calcinha Diamante",
+        preco: "118.00",
+        preco_cartao: "127.00",
+        descricao: "tamanho PMG algodão",
+        identificador: "MC020",
+        categoria: "Calcinha",
+    },
+    ]
 const seccaoDetalhes = document.querySelector(".seccao_especifica");
 
 function renderizarProdutos(categoriaId, produtos) {
@@ -450,15 +532,16 @@ function renderizarProdutos(categoriaId, produtos) {
                             <p><strong>Preço à vista:</strong> R$ ${prod.preco}</p>
                             <p><strong>Preço no cartão:</strong> R$ ${prod.preco_cartao}</p>
                             <p><strong>Descrição: </strong>${prod.descricao}</p>
-
-                            <label for="tamanho"><strong>Tamanho:</strong></label>
-                            <select id="tamanho" class="selecionar-tamanho">
+                            <div class="tamanho-select">
+                                <label for="tamanho"><strong>Tamanho:</strong></label>
+                                <select id="tamanho" class="selecionar-tamanho">
                                 <option value="">Selecione</option>
                                 <option value="P">P</option>
                                 <option value="M">M</option>
                                 <option value="G">G</option>
                                 <option value="GG">GG</option>
-                            </select>
+                                </select>
+                            </div>
 
                             <button class="adicionar-carrinho">Adicionar ao Carrinho</button>
                         </div>
@@ -488,38 +571,38 @@ function renderizarProdutos(categoriaId, produtos) {
             });
 
             // Lógica de adicionar ao carrinho
-seccaoDetalhes.querySelector(".adicionar-carrinho").addEventListener("click", () => {
-    const carrinho = JSON.parse(localStorage.getItem("carrinho")) || [];
+            seccaoDetalhes.querySelector(".adicionar-carrinho").addEventListener("click", () => {
+                const carrinho = JSON.parse(localStorage.getItem("carrinho")) || [];
 
-    const tamanhoSelecionado = seccaoDetalhes.querySelector(".selecionar-tamanho").value;
+                const tamanhoSelecionado = seccaoDetalhes.querySelector(".selecionar-tamanho").value;
 
-    if (!tamanhoSelecionado) {
-        mostrarAlertaCustomizado("Por favor, selecione um tamanho!");
-        return;
-    }
+                if (!tamanhoSelecionado) {
+                    mostrarAlertaCustomizado("Por favor, selecione um tamanho!");
+                    return;
+                }
 
-    const produtoCarrinho = {
-        identificador: prod.identificador + "_" + tamanhoSelecionado, // inclui tamanho na chave
-        nome: prod.nome,
-        preco: prod.preco,
-        preco_cartao: prod.preco_cartao,
-        imagem: prod.imagem,
-        descricao: prod.descricao,
-        categoria: prod.categoria,
-        tamanho: tamanhoSelecionado,
-        quantidade: 1
-    };
+                const produtoCarrinho = {
+                    identificador: prod.identificador + "_" + tamanhoSelecionado, // inclui tamanho na chave
+                    nome: prod.nome,
+                    preco: prod.preco,
+                    preco_cartao: prod.preco_cartao,
+                    imagem: prod.imagem,
+                    descricao: prod.descricao,
+                    categoria: prod.categoria,
+                    tamanho: tamanhoSelecionado,
+                    quantidade: 1
+                };
 
-    const index = carrinho.findIndex(item => item.identificador === produtoCarrinho.identificador);
-    if (index !== -1) {
-        carrinho[index].quantidade += 1;
-    } else {
-        carrinho.push(produtoCarrinho);
-    }
+                const index = carrinho.findIndex(item => item.identificador === produtoCarrinho.identificador);
+                if (index !== -1) {
+                    carrinho[index].quantidade += 1;
+                } else {
+                    carrinho.push(produtoCarrinho);
+                }
 
-    localStorage.setItem("carrinho", JSON.stringify(carrinho));
-    mostrarAlertaCustomizado("Produto adicionado ao carrinho!");
-});
+                localStorage.setItem("carrinho", JSON.stringify(carrinho));
+                mostrarAlertaCustomizado("Produto adicionado ao carrinho!");
+            });
         });
 
         container.appendChild(divProduto);
@@ -568,14 +651,13 @@ function carregarCarrinho() {
 
         item.innerHTML = `
         
-            <img src="${prod.imagem}" alt="${prod.nome}" class="imagem-carrinho">
+            <img src="${prod.imagem}" alt="${prod.nome}" class="imagem-carrinho">  
 
             <div>
                 <h3>${prod.nome}</h3>
                 <p><strong>Preço à vista:</strong> R$ ${prod.preco}</p>
                 <p><strong>Subtotal:</strong> R$ ${subtotal.toFixed(2)}</p>
                 <p><strong>Tamanho:</strong> ${prod.tamanho}</p>
-
             </div>
             <div>
 
