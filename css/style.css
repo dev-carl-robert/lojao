@@ -21,6 +21,7 @@ header {
     display: flex;
     justify-content: center;
     align-items: center;
+    position: relative;
 }
 
 header .container {
@@ -392,27 +393,27 @@ button.fechar-detalhes {
 }
 
 #sessao-carrinho {
-    display: none;
-    position: fixed;
-    flex-wrap: nowrap;
-    bottom: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background: #f8f8f8;
-    z-index: 9999;
-    padding: 0;
-    margin: 0;
+  display: none;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100vw;
+  height: 70vh; /* 70% da altura da viewport */
+  background: #f5f5f5;
+  z-index: 9999;
+  overflow: hidden; /* sem scroll geral */
+  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.2);
 }
 
+
+
 #conteudo-carrinho {
-    margin-top: 5rem;
-    margin-left: 5rem;
-    display: flex;
-    width: 100%;
-    margin: 0;
-    padding: 20px;
-    box-sizing: border-box;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 30px;
+  box-sizing: border-box;
+  overflow: hidden;
 }
 
 #sessao-carrinho button {
@@ -425,32 +426,32 @@ button.fechar-detalhes {
 }
 
 .fecharCarrinho {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    background-color: transparent;
-    color: #e0258b;
-    font-size: 24px;
-    border: none;
-    cursor: pointer;
-
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background-color: transparent;
+  color: #e0258b;
+  font-size: 24px;
+  border: none;
+  cursor: pointer;
 }
-
+#lista-carrinho {
+  flex: 1;
+  overflow-y: auto;
+}
 .item-carrinho {
-    height: 15rem;
-    width: 60rem;
-    margin-bottom: 10px;
-    display: flex;
-    gap: 2rem;
-    justify-content: space-around;
-    align-items: center;
-    padding: 20px;
-    border-radius: 5px;
-    backdrop-filter: blur(10px);
-    background-color: rgba(255, 255, 255, 0.6);
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  min-height: 10rem;
+  width: 100%;
+  margin-bottom: 10px;
+  display: flex;
+  gap: 2rem;
+  justify-content: space-around;
+  align-items: center;
+  padding: 20px;
+  border-radius: 5px;
+  background-color: #f8f8f8;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
-
 .item-carrinho img {
     width: 72px;
     height: 72px;
@@ -541,3 +542,4 @@ button.fechar-detalhes {
   opacity: 1;
   transform: translateY(0);
 }
+

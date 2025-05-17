@@ -407,9 +407,11 @@ const seccaoDetalhes = document.querySelector(".seccao_especifica");
 function renderizarProdutos(categoriaId, produtos) {
     const secao = document.querySelector(`#${categoriaId}`);
     const container = secao.querySelector(".produtos");
-    container.innerHTML = ""; // Limpa antes de adicionar novos produtos
 
-    if (container.children.length > 0) return; // Evita duplicação
+    // ✅ Verifica antes de limpar
+    if (container.children.length > 0) return;
+
+    container.innerHTML = ""; // Limpa antes de adicionar novos produtos
 
     const containerGeral = secao.querySelector(".container");
 
@@ -448,6 +450,16 @@ function renderizarProdutos(categoriaId, produtos) {
                             <p><strong>Preço à vista:</strong> R$ ${prod.preco}</p>
                             <p><strong>Preço no cartão:</strong> R$ ${prod.preco_cartao}</p>
                             <p><strong>Descrição: </strong>${prod.descricao}</p>
+
+                            <label for="tamanho"><strong>Tamanho:</strong></label>
+                            <select id="tamanho" class="selecionar-tamanho">
+                                <option value="">Selecione</option>
+                                <option value="P">P</option>
+                                <option value="M">M</option>
+                                <option value="G">G</option>
+                                <option value="GG">GG</option>
+                            </select>
+
                             <button class="adicionar-carrinho">Adicionar ao Carrinho</button>
                         </div>
                     </div>
@@ -476,30 +488,38 @@ function renderizarProdutos(categoriaId, produtos) {
             });
 
             // Lógica de adicionar ao carrinho
-            seccaoDetalhes.querySelector(".adicionar-carrinho").addEventListener("click", () => {
-                const carrinho = JSON.parse(localStorage.getItem("carrinho")) || [];
-                const produtoCarrinho = {
-                    identificador: prod.identificador,
-                    nome: prod.nome,
-                    preco: prod.preco,
-                    preco_cartao: prod.preco_cartao,
-                    imagem: prod.imagem,
-                    descricao: prod.descricao,
-                    categoria: prod.categoria,
-                    quantidade: 1
-                };
+seccaoDetalhes.querySelector(".adicionar-carrinho").addEventListener("click", () => {
+    const carrinho = JSON.parse(localStorage.getItem("carrinho")) || [];
 
+    const tamanhoSelecionado = seccaoDetalhes.querySelector(".selecionar-tamanho").value;
 
-                const index = carrinho.findIndex(item => item.identificador === produtoCarrinho.identificador);
-                if (index !== -1) {
-                    carrinho[index].quantidade += 1;
-                } else {
-                    carrinho.push(produtoCarrinho);
-                }
+    if (!tamanhoSelecionado) {
+        mostrarAlertaCustomizado("Por favor, selecione um tamanho!");
+        return;
+    }
 
-                localStorage.setItem("carrinho", JSON.stringify(carrinho));
-                mostrarAlertaCustomizado("Produto adicionado ao carrinho!");
-            });
+    const produtoCarrinho = {
+        identificador: prod.identificador + "_" + tamanhoSelecionado, // inclui tamanho na chave
+        nome: prod.nome,
+        preco: prod.preco,
+        preco_cartao: prod.preco_cartao,
+        imagem: prod.imagem,
+        descricao: prod.descricao,
+        categoria: prod.categoria,
+        tamanho: tamanhoSelecionado,
+        quantidade: 1
+    };
+
+    const index = carrinho.findIndex(item => item.identificador === produtoCarrinho.identificador);
+    if (index !== -1) {
+        carrinho[index].quantidade += 1;
+    } else {
+        carrinho.push(produtoCarrinho);
+    }
+
+    localStorage.setItem("carrinho", JSON.stringify(carrinho));
+    mostrarAlertaCustomizado("Produto adicionado ao carrinho!");
+});
         });
 
         container.appendChild(divProduto);
@@ -525,9 +545,11 @@ botaoCarrinho.addEventListener("click", () => {
 });
 
 function fecharCarrinho() {
-    sessaoCarrinho.style.display = "none";
+    document.getElementById("sessao-carrinho").style.display = "none";
+    document.getElementById("moda-infantil").style.display = "block";
+    document.getElementById("moda-calcinha").style.display = "block";
+    document.querySelector(".seccao_especifica").style.display = "block";
 }
-
 function carregarCarrinho() {
     const container = document.getElementById("lista-carrinho");
     const totalContainer = document.getElementById("total-carrinho");
@@ -545,13 +567,15 @@ function carregarCarrinho() {
 
 
         item.innerHTML = `
-        <h1>Seu Carrinho</h3>
+        
             <img src="${prod.imagem}" alt="${prod.nome}" class="imagem-carrinho">
 
             <div>
                 <h3>${prod.nome}</h3>
                 <p><strong>Preço à vista:</strong> R$ ${prod.preco}</p>
                 <p><strong>Subtotal:</strong> R$ ${subtotal.toFixed(2)}</p>
+                <p><strong>Tamanho:</strong> ${prod.tamanho}</p>
+
             </div>
             <div>
 
@@ -655,6 +679,9 @@ window.addEventListener("DOMContentLoaded", () => {
     const btnCarrinho = document.getElementById("carrinho");
     btnCarrinho.addEventListener("click", () => {
         document.getElementById("sessao-carrinho").style.display = "flex";
+        document.getElementById("moda-infantil").style.display = "none";
+        document.getElementById("moda-calcinha").style.display = "none";
+        document.querySelector(".seccao_especifica").style.display = "none";
         carregarCarrinho();
     });
 
