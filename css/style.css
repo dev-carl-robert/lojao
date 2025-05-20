@@ -468,7 +468,7 @@ section .produtos {
     transform: translateX(-50%);
     flex-direction: column;
     gap: 1rem;
-    height: 70%;
+    margin-top: -15rem;  
     width: 70%;
     background: #fff;
     padding: 2rem;
