@@ -1,6 +1,6 @@
 const modaInfantil = [
     {
-        imagem: "produtos\\infantil\\infantil0.jpg",
+        imagem: "produtos/infantil/infantil0.jpg",
         nome: "Conjunto Infantil",
         preco: "25.00",
         preco_cartao: "27.00",
@@ -10,8 +10,8 @@ const modaInfantil = [
         categoria: "Infantil"
     },
     {
-        imagem: "produtos\\infantil\\infantil1.jpg",
-        imagem1: "produtos\\infantil\\infantil1,1.jpg",
+        imagem: "produtos/infantil/infantil1.jpg",
+        imagem1: "produtos/infantil/infantil1,1.jpg",
         nome: "Cueca Infantil",
         preco: "4.50",
         preco_cartao: "5.00",
@@ -21,8 +21,8 @@ const modaInfantil = [
         categoria: "Infantil"
     },
     {
-        imagem: "produtos\\infantil\\infantil2.jpg",
-        imagem1: "produtos\\infantil\\infantil2,1.jpg",
+        imagem: "produtos/infantil/infantil2.jpg",
+        imagem1: "produtos/infantil/infantil2,1.jpg",
         nome: "calcinha Infantil",
         preco: "4.50",
         preco_cartao: "5.00",
@@ -32,8 +32,8 @@ const modaInfantil = [
         categoria: "Infantil"
     },
     {
-        imagem: "produtos\\infantil\\infantil3.jpg",
-        imagem1: "produtos\\infantil\\infantil3,1.jpg",
+        imagem: "produtos/infantil/infantil3.jpg",
+        imagem1: "produtos/infantil/infantil3,1.jpg",
         nome: "Calcinha Infantil",
         preco: "6.50",
         preco_cartao: "7.00",
@@ -43,7 +43,7 @@ const modaInfantil = [
         categoria: "Infantil"
     },
     {
-        imagem: "produtos\\infantil\\infantil4.jpg",
+        imagem: "produtos/infantil/infantil4.jpg",
         nome: "Vestido Infantil ",
         preco: "25.00",
         preco_cartao: "27.00",
@@ -53,7 +53,7 @@ const modaInfantil = [
         categoria: "Infantil"
     },
     {
-        imagem: "produtos\\infantil\\infantil5.jpg",
+        imagem: "produtos/infantil/infantil5.jpg",
         nome: "Vestido Infantil",
         preco: "25.00",
         preco_cartao: "27.00",
@@ -63,8 +63,8 @@ const modaInfantil = [
         categoria: "Infantil"
     },
     {
-        imagem: "produtos\\infantil\\infantil6.jpg",
-        imagem1: "produtos\\infantil\\infantil6,1.jpg",
+        imagem: "produtos/infantil/infantil6.jpg",
+        imagem1: "produtos/infantil/infantil6,1.jpg",
         nome: "top infantil",
         preco: "8.50",
         preco_cartao: "9.00",
@@ -74,7 +74,7 @@ const modaInfantil = [
         categoria: "Infantil"
     },
     {
-        imagem: "produtos\\infantil\\infantil7.jpg",
+        imagem: "produtos/infantil/infantil7.jpg",
         nome: "Cueca Infantil",
         preco: "10.00",
         preco_cartao: "11.00",
@@ -84,7 +84,7 @@ const modaInfantil = [
         categoria: "Infantil"
     },
     {
-        imagem: "produtos\\infantil\\infantil8.jpg",
+        imagem: "produtos/infantil/infantil8.jpg",
         nome: "Kit Meia Infantil",
         preco: "8.00",
         preco_cartao: "9.00",
@@ -94,8 +94,8 @@ const modaInfantil = [
         categoria: "Infantil"
     },
     {
-        imagem: "produtos\\infantil\\infantil9.jpg",
-        imagem1: "produtos\\infantil\\infantil9,1.jpg",
+        imagem: "produtos/infantil/infantil9.jpg",
+        imagem1: "produtos/infantil/infantil9,1.jpg",
         nome: "Kit Meia Infantil",
         preco: "16.50",
         preco_cartao: "18.00",
@@ -105,7 +105,7 @@ const modaInfantil = [
         categoria: "Infantil"
     },
     {
-        imagem: "produtos\\infantil\\infantil10.jpg",
+        imagem: "produtos/infantil/infantil10.jpg",
         nome: "SHort Infantil",
         preco: "16.00",
         preco_cartao: "17.00",
@@ -115,16 +115,16 @@ const modaInfantil = [
         categoria: "Infantil"
     },
     {
-        imagem: "produtos\\infantil\\infantil11.jpg",
-        imagem1: "produtos\\infantil\\infantil11,1.jpg",
-        imagem2: "produtos\\infantil\\infantil11,2.jpg",
-        imagem3: "produtos\\infantil\\infantil11,3.jpg",
-        imagem4: "produtos\\infantil\\infantil11,4.jpg",
-        imagem5: "produtos\\infantil\\infantil11,5.jpg",
-        imagem6: "produtos\\infantil\\infantil11,6.jpg",
-        imagem7: "produtos\\infantil\\infantil11,7.jpg",
-        imagem8: "produtos\\infantil\\infantil11,8.jpg",
-        imagem9: "produtos\\infantil\\infantil11,9.jpg",
+        imagem: "produtos/infantil/infantil11.jpg",
+        imagem1: "produtos/infantil/infantil11,1.jpg",
+        imagem2: "produtos/infantil/infantil11,2.jpg",
+        imagem3: "produtos/infantil/infantil11,3.jpg",
+        imagem4: "produtos/infantil/infantil11,4.jpg",
+        imagem5: "produtos/infantil/infantil11,5.jpg",
+        imagem6: "produtos/infantil/infantil11,6.jpg",
+        imagem7: "produtos/infantil/infantil11,7.jpg",
+        imagem8: "produtos/infantil/infantil11,8.jpg",
+        imagem9: "produtos/infantil/infantil11,9.jpg",
         nome: "Vestido Infantil",
         preco: "25.00",
         preco_cartao: "27.00",
@@ -134,7 +134,7 @@ const modaInfantil = [
         categoria: "Infantil"
     },
     {
-        imagem: "produtos\\infantil\\infantil12.jpg",
+        imagem: "produtos/infantil/infantil12.jpg",
         nome: "Bermuda Infantil",
         preco: "40.00",
         preco_cartao: "42.00",
@@ -144,9 +144,9 @@ const modaInfantil = [
         categoria: "Infantil"
     },
     {
-        imagem: "produtos\\infantil\\infantil13.jpg",
-        imagem1: "produtos\\infantil\\infantil13,1.jpg",
-        imagem2: "produtos\\infantil\\infantil13,2.jpg",
+        imagem: "produtos/infantil/infantil13.jpg",
+        imagem1: "produtos/infantil/infantil13,1.jpg",
+        imagem2: "produtos/infantil/infantil13,2.jpg",
         nome: "Kit Calcinha Diamante (Infantil) ",
         preco: "130.00",
         preco_cartao: "120",
@@ -156,12 +156,12 @@ const modaInfantil = [
         categoria: "Infantil"
     },
     {
-        imagem: "produtos\\infantil\\infantil14.jpg",
-        imagem1: "produtos\\infantil\\infantil14,1.jpg",
-        imagem2: "produtos\\infantil\\infantil14,2.jpg",
-        imagem3: "produtos\\infantil\\infantil14,3.jpg",
-        imagem4: "produtos\\infantil\\infantil14,4.jpg",
-        imagem5: "produtos\\infantil\\infantil14,5.jpg",
+        imagem: "produtos/infantil/infantil14.jpg",
+        imagem1: "produtos/infantil/infantil14,1.jpg",
+        imagem2: "produtos/infantil/infantil14,2.jpg",
+        imagem3: "produtos/infantil/infantil14,3.jpg",
+        imagem4: "produtos/infantil/infantil14,4.jpg",
+        imagem5: "produtos/infantil/infantil14,5.jpg",
         nome: "Baby Doll Infantil",
         preco: "25.00",
         preco_cartao: "27.00",
@@ -171,8 +171,8 @@ const modaInfantil = [
         categoria: "Infantil"
     },
     {
-        imagem: "produtos\\infantil\\infantil15.jpg",
-        imagem1: "produtos\\infantil\\infantil15,1.jpg",
+        imagem: "produtos/infantil/infantil15.jpg",
+        imagem1: "produtos/infantil/infantil15,1.jpg",
         nome: "Conjunto Juvenil",
         preco: "16.00",
         preco_cartao: "17.00",
@@ -182,12 +182,12 @@ const modaInfantil = [
         categoria: "Infantil"
     },
     {
-        imagem: "produtos\\infantil\\infantil16.jpg",
-        imagem1: "produtos\\infantil\\infantil16,1.jpg",
-        imagem2: "produtos\\infantil\\infantil16,2.jpg",
-        imagem3: "produtos\\infantil\\infantil16,3.jpg",
-        imagem4: "produtos\\infantil\\infantil16,4.jpg",
-        imagem5: "produtos\\infantil\\infantil16,5.jpg",
+        imagem: "produtos/infantil/infantil16.jpg",
+        imagem1: "produtos/infantil/infantil16,1.jpg",
+        imagem2: "produtos/infantil/infantil16,2.jpg",
+        imagem3: "produtos/infantil/infantil16,3.jpg",
+        imagem4: "produtos/infantil/infantil16,4.jpg",
+        imagem5: "produtos/infantil/infantil16,5.jpg",
         nome: "Kit Cueca Diamante",
         preco: "164.00",
         preco_cartao: "176.00",
@@ -197,7 +197,7 @@ const modaInfantil = [
         categoria: "Infantil"
     },
     {
-        imagem: "produtos\\infantil\\infantil17.jpg",
+        imagem: "produtos/infantil/infantil17.jpg",
         nome: "Cueca Infantil",
         preco: "10.00",
         preco_cartao: "11.00",
@@ -207,7 +207,7 @@ const modaInfantil = [
         categoria: "Infantil"
     },
     {
-        imagem: "produtos\\infantil\\infantil18.jpg",
+        imagem: "produtos/infantil/infantil18.jpg",
         nome: "Camisa Infantil",
         preco: "20.00",
         preco_cartao: "24.00",
@@ -217,7 +217,7 @@ const modaInfantil = [
         categoria: "Infantil"
     },
     {
-        imagem: "produtos\\infantil\\infantil19.jpg",
+        imagem: "produtos/infantil/infantil19.jpg",
         nome: "Toalha Infantil",
         preco: "26.00",
         preco_cartao: "28.00",
@@ -227,7 +227,7 @@ const modaInfantil = [
         categoria: "Infantil"
     },
     {
-        imagem: "produtos\\infantil\\infantil20.jpg",
+        imagem: "produtos/infantil/infantil20.jpg",
         nome: "Calcinha Infantil",
         preco: "6.50",
         preco_cartao: "7.50",
@@ -237,7 +237,7 @@ const modaInfantil = [
         categoria: "Infantil"
     },
     {
-        imagem: "produtos\\infantil\\infantil21.jpg",
+        imagem: "produtos/infantil/infantil21.jpg",
         nome: "Cueca Lupo Infantil",
         preco: "23.00",
         preco_cartao: "25.00",
@@ -247,7 +247,7 @@ const modaInfantil = [
         categoria: "Infantil"
     },
     {
-        imagem: "produtos\\infantil\\infantil22.jpg",
+        imagem: "produtos/infantil/infantil22.jpg",
         nome: "Calcinha Box Infantil",
         preco: "5.50",
         preco_cartao: "6.00",
@@ -257,15 +257,15 @@ const modaInfantil = [
         categoria: "Infantil"
     },
     {
-        imagem: "produtos\\infantil\\infantil23.jpg",
-        imagem1: "produtos\\infantil\\infantil23,1.jpg",
-        imagem2: "produtos\\infantil\\infantil23,2.jpg",
-        imagem3: "produtos\\infantil\\infantil23,3.jpg",
-        imagem4: "produtos\\infantil\\infantil23,4.jpg",
-        imagem5: "produtos\\infantil\\infantil23,5.jpg",
-        imagem6: "produtos\\infantil\\infantil23,6.jpg",
-        imagem7: "produtos\\infantil\\infantil23,7.jpg",
-        imagem8: "produtos\\infantil\\infantil23,8.jpg",
+        imagem: "produtos/infantil/infantil23.jpg",
+        imagem1: "produtos/infantil/infantil23,1.jpg",
+        imagem2: "produtos/infantil/infantil23,2.jpg",
+        imagem3: "produtos/infantil/infantil23,3.jpg",
+        imagem4: "produtos/infantil/infantil23,4.jpg",
+        imagem5: "produtos/infantil/infantil23,5.jpg",
+        imagem6: "produtos/infantil/infantil23,6.jpg",
+        imagem7: "produtos/infantil/infantil23,7.jpg",
+        imagem8: "produtos/infantil/infantil23,8.jpg",
         nome: "Baby Doll Infantil",
         preco: "16.50",
         preco_cartao: "19.00",
@@ -275,7 +275,7 @@ const modaInfantil = [
         categoria: "Infantil"
     },
     {
-        imagem: "produtos\\infantil\\infantil24.jpg",
+        imagem: "produtos/infantil/infantil24.jpg",
         nome: "Calcinha Infantil",
         preco: "6.50",
         preco_cartao: "7.00",
@@ -285,7 +285,7 @@ const modaInfantil = [
         categoria: "Infantil"
     },
     {
-        imagem: "produtos\\infantil\\infantil25.jpg",
+        imagem: "produtos/infantil/infantil25.jpg",
         nome: "Calcinha Infantil",
         preco: "7.50",
         preco_cartao: "8.00",
@@ -295,7 +295,7 @@ const modaInfantil = [
         categoria: "Infantil"
     },
     {
-        imagem: "produtos\\infantil\\infantil26.jpg",
+        imagem: "produtos/infantil/infantil26.jpg",
         nome: "Kit Calcinha Diamante",
         preco: "164.00",
         preco_cartao: "176.00",
@@ -305,7 +305,7 @@ const modaInfantil = [
         categoria: "Infantil"
     },
     {
-        imagem: "produtos\\infantil\\infantil27.jpg",
+        imagem: "produtos/infantil/infantil27.jpg",
         nome: "Rede berço",
         preco: "130.00",
         preco_cartao: "160.00",
@@ -315,8 +315,8 @@ const modaInfantil = [
         categoria: "Infantil"
     },
     {
-        imagem: "produtos\\infantil\\infantil28.jpg",
-        imagem1: "produtos\\infantil\\infantil28,1.jpg",
+        imagem: "produtos/infantil/infantil28.jpg",
+        imagem1: "produtos/infantil/infantil28,1.jpg",
         nome: "Kit Cueca Diamante",
         preco: "164.00",
         preco_cartao: "176.00",
@@ -536,6 +536,7 @@ const modaCalcinha = [
     },
 ]
 
+
 const seccaoDetalhes = document.querySelector(".seccao_especifica");
 
 function renderizarProdutos(categoriaId, produtos) {
@@ -713,6 +714,7 @@ document.getElementById("carrinho").addEventListener("click", () => {
     document.querySelector("header").style.display = "flex";
 
     const esconder = [
+        "header",
         "nav",
         ".botoes-laterais",
         ".redes-sociais",
@@ -728,6 +730,7 @@ document.getElementById("carrinho").addEventListener("click", () => {
 
 function fecharCarrinho() {
     const resetar = [
+        {selector: "header", display: "flex"},
         { selector: "nav", display: "flex" },
         { selector: ".botoes-laterais", display: "flex" },
         { selector: ".redes-sociais", display: "flex" },
@@ -900,8 +903,10 @@ function criarResumoCompra() {
             `;
         containerResumo.appendChild(sessaoFrete);
         const botaoFechar = sessaoFrete.querySelector(".fechar-frete");
+        
         botaoFechar.addEventListener("click", () => {
             sessaoFrete.style.display = "none";
+            document.body.style.overflow = "";
 
             // Mostrar novamente o conteúdo do carrinho e o resumo
             const conteudoCarrinho = document.getElementById("conteudo-carrinho");
@@ -1037,10 +1042,11 @@ function mostrarsessaofrete() {
     const carrinho = document.getElementById("conteudo-carrinho");
     const resumo = document.getElementById("resumo-compra");
 
-    if (sessaoFrete && carrinho && resumo) {
+    if (sessaoFrete && carrinho && resumo) {    
         sessaoFrete.style.display = "block";
         carrinho.style.display = "none";
         resumo.style.display = "none";
+        document.body.style.overflow = "hidden";
     }
 }
 function mostrarAlertaCustomizado(texto) {
