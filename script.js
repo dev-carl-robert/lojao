@@ -730,7 +730,7 @@ document.getElementById("carrinho").addEventListener("click", () => {
 
 function fecharCarrinho() {
     const resetar = [
-        {selector: "header", display: "flex"},
+        { selector: "header", display: "flex" },
         { selector: "nav", display: "flex" },
         { selector: ".botoes-laterais", display: "flex" },
         { selector: ".redes-sociais", display: "flex" },
@@ -760,61 +760,22 @@ function carregarCarrinho() {
     atualizarResumoCompra(carrinho);
 }
 function calcularFretePorBairro(bairro) {
-    const bairrosFrete10 = [
-        "Alemanha", "Alto do Angelim", "Alto do Calhau", "Alto do Pinho", "Alto Turú", "Anil",
-        "Angelim", "Apeadouro", "Aroeiras", "Areinha", "Aurora", "Bairro de Fátima", "Barramar",
-        "Barreto", "Belira", "Bequimão", "Calhau", "Camboa", "Cantinho do Céu", "Caratatiua",
-        "Centro", "Chácara Brasil", "Codozinho", "Cohab", "Cohafuma", "Cohajap", "Cohama",
-        "Cohapam", "Cohaserma", "Cohatrac", "Coheb", "Coreia de Baixo", "Coreia de Cima",
-        "Coroado", "Cruzeiro do Anil", "Cutim Anil", "Diamante", "Divinéia", "Fabril", "Fé em Deus",
-        "Filipinho", "Forquilha", "Grand Park", "Ilhinha", "Ipase de Baixo", "Ipase de Cima",
-        "Ipem Turú", "Itapiracó", "Ivar Saldanha", "Jaracaty", "Jardim Alvorada", "Jardim das Margaridas",
-        "Jardim Eldorado", "Jardim Turu", "João de Deus", "João Paulo", "Jordoa", "Liberdade",
-        "Lira", "Macaúba", "Madre Deus", "Maiobinha", "Maranhão Novo", "Monte Castelo", "Novo Angelim",
-        "Olho d'Água", "Outeiro da Cruz", "Pão de Açúcar", "Parque Amazonas", "Parque Athenas",
-        "Parque Atlântico", "Parque dos Sabiás", "Parque Shalom", "Parque Universitário", "Parque Vitória",
-        "Península", "Pirapora", "Planalto Anil", "Planalto Pingão", "Ponta d'Areia", "Ponta do Farol",
-        "Quintas do Calhau", "Quitandinha", "Recanto Fialho", "Recanto Turú", "Recanto Vinhais",
-        "Redenção", "Renascença", "Residencial Araras", "Residencial São Domingos", "Rio Anil",
-        "Sacavém", "Salina do Sacavém", "Santa Cruz", "Santa Rosa", "Santo Antônio", "São Bernardo",
-        "São Cristóvão", "São Francisco", "Saramanta", "Solar dos Lusitanos", "Sol e Mar",
-        "Terra Livre", "Tirirical", "Túnel do Sacavém", "Vera Cruz", "Vila 7 de Setembro",
-        "Vila Bessa", "Vila Brasil", "Vila Conceição (Alto do Calhau)", "Vila Cruzado",
-        "Vila Isabel Cafeteira (Cohab)", "Vila Lobão", "Vila Luizão", "Vila Palmeira", "Vila Passos",
-        "Vila Vicente Fialho", "Vinhais"
-    ];
-    const bairrosFrete12 = [
-        "Alemanha", "Alto do Angelim", "Alto do Calhau", "Alto do Pinho", "Angelim", "Anil",
-        "Apeadouro", "Areinha", "Aurora", "Bairro de Fátima", "Barramar", "Barreto", "Belira",
-        "Bequimão", "Calhau", "Camboa", "Cantinho do Céu", "Caratatiua", "Centro", "Chácara Brasil",
-        "Codozinho", "Cohab", "Cohafuma", "Cohajap", "Cohama", "Cohapam", "Cohaserma", "Cohatrac",
-        "Coreia de Baixo", "Coreia de Cima", "Coroado", "Coheb", "Cruzeiro do Anil", "Cutim Anil",
-        "Diamante", "Fé em Deus", "Fabril", "Filipinho", "Forquilha", "Grand Park", "Ilhinha",
-        "Ipase de Baixo", "Ipase de Cima", "Ipem Turú", "Itapiracó", "Ivar Saldanha", "Jaracaty",
-        "Jardim Alvorada", "Jardim das Margaridas", "Jardim Eldorado", "João de Deus", "João Paulo",
-        "Jordoa", "Liberdade", "Lira", "Macaúba", "Madre Deus", "Maranhão Novo", "Matões Turú",
-        "Monte Castelo", "Novo Angelim", "Olho d'Água", "Outeiro da Cruz", "Pão de Açúcar",
-        "Parque Amazonas", "Parque Athenas", "Parque Atlântico", "Parque dos Sabiás", "Parque Shalom",
-        "Parque Universitário", "Península", "Planalto Anil", "Planalto Pingão", "Ponta d'Areia",
-        "Ponta do Farol", "Quintas do Calhau", "Quitandinha", "Recanto dos Nobres", "Recanto Fialho",
-        "Recanto Vinhais", "Redenção", "Renascença", "Residencial Araras", "Residencial São Domingos",
-        "Rio Anil", "São Cristóvão", "São Francisco", "Saramanta", "Sacavém", "Salina do Sacavém",
-        "Santa Cruz", "Santo Antônio", "São Bernardo", "Solar dos Lusitanos", "Túnel do Sacavém",
-        "Tirirical", "Vera Cruz", "Vila 7 de Setembro", "Vila Bessa", "Vila Brasil", "Vila Cruzado",
-        "Vila Conceição (Alto do Calhau)", "Vila Isabel Cafeteira (Cohab)", "Vila Lobão", "Vila Passos",
-        "Vila Palmeira", "Vila Vicente Fialho", "Vinhais"
-    ];
+    const bairrosFrete10 = ["Alemanha", "Alto do Angelim", "Alto do Calhau", "Alto do Pinho", "Alto Turú", "Anil", "Angelim", "Apeadouro", "Aroeiras", "Areinha", "Aurora", "Bairro de Fátima", "Barramar", "Barreto", "Belira", "Bequimão", "Calhau", "Camboa", "Cantinho do Céu", "Caratatiua", "Centro", "Chácara Brasil", "Codozinho", "Cohab", "Cohafuma", "Cohajap", "Cohama", "Cohapam", "Cohaserma", "Cohatrac", "Coheb", "Coreia de Baixo", "Coreia de Cima", "Coroado", "Cruzeiro do Anil", "Cutim Anil", "Diamante", "Divinéia", "Fabril", "Fé em Deus", "Filipinho", "Forquilha", "Grand Park", "Ilhinha", "Ipase de Baixo", "Ipase de Cima", "Ipem Turú", "Itapiracó", "Ivar Saldanha", "Jaracaty", "Jardim Alvorada", "Jardim das Margaridas", "Jardim Eldorado", "Jardim Turu", "João de Deus", "João Paulo", "Jordoa", "Liberdade", "Lira", "Macaúba", "Madre Deus", "Maiobinha", "Maranhão Novo", "Monte Castelo", "Novo Angelim", "Olho d'Água", "Outeiro da Cruz", "Pão de Açúcar", "Parque Amazonas", "Parque Athenas", "Parque Atlântico", "Parque dos Sabiás", "Parque shalom", "Parque Universitário", "Parque Vitória", "Península", "Pirapora", "Planalto Anil", "Planalto Pingão", "Ponta d'Areia", "Ponta do Farol", "Quintas do Calhau", "Quitandinha", "Recanto Fialho", "Recanto Turú", "Recanto Vinhais", "Redenção", "Renascença", "Residencial Araras", "Residencial São Domingos", "Rio Anil", "Sacavém", "Salina do Sacavém", "Santa Cruz", "Santa Rosa", "Santo Antônio", "São Bernardo", "São Cristóvão", "São Francisco", "Saramanta", "Solar dos Lusitanos", "Sol e Mar", "Terra Livre", "Tirirical", "Túnel do Sacavém", "Vera Cruz", "Vila 7 de Setembro", "Vila Bessa", "Vila Brasil", "Vila Conceição (Alto do Calhau)", "Vila Cruzado", "Vila Isabel Cafeteira (Cohab)", "Vila Lobão", "Vila Luizão", "Vila Palmeira", "Vila Passos", "Vila Vicente Fialho", "Vinhais"];
 
-    if (!bairro || bairro.trim() === "") return 0; // frete grátis se não tiver bairro
+    const bairrosFrete15 = ["Santa Efigenia", "Jardim América", "Cidade Operária", "Coroadinho", "Recanto dos Nobres", "Parque dos nobres", "Parque timbiras", "Parque Pindorama", "Nice Lobão", "Bom Jesus"];
+
+    const bairrosFrete20 = ["Alonso Costa", "Alphaville", "Alto da Esperança", "Alto do Farol", "Alto Jaguarema", "Amendoeira", "Anjo da Guarda", "Apaco", "Araçagy", "Alto Itapiraco", "Bacanga", "Bom Jardim", "Cidade Olímpica", "Distrito Industrial", "Fumacê", "Gancharia", "Gapara", "Geniparana", "Janaina", "Jardim Tropical", "Lima Verde", "Labelle Park", "Magril", "Maiobão", "Maracanã", "Mauro Fecury", "Miritiua", "Paranã", "Parque Jair", "Piancó", "Pontal da Ilha", "Residencial Paraíso", "Residencial Tiradentes", "Ribeira", "Riod", "Sá Viana", "Santa Barbara", "Santa Clara", "São Raimundo", "Tibiri", "Vila Ariri", "Vila Cascavel", "Vila Embratel", "Vila Esperança", "Vila Funil", "Vila Isabel", "Vila Itamar", "Vila Nova", "Vila Nova República", "Vila Sarney", "Vila São Luís", "Vila Vitória"];
 
     bairro = bairro.trim();
 
     if (bairrosFrete10.includes(bairro)) {
         return 10;
-    } else if (bairrosFrete12.includes(bairro)) {
-        return 12;
+    } else if (bairrosFrete15.includes(bairro)) {
+        return 15;
+    } else if (bairrosFrete20.includes(bairro)) {
+        return 20;
     } else {
-        return 15; // frete  para bairros que não estão nas listas
+        return 25; // valor padrão para bairros não listados
     }
 }
 
@@ -858,7 +819,7 @@ function criarItemCarrinho(prod, index, carrinho) {
     });
 
     return item;
-}   
+}
 
 function criarResumoCompra() {
     let containerResumo = document.getElementById("container-resumo");
@@ -903,7 +864,7 @@ function criarResumoCompra() {
             `;
         containerResumo.appendChild(sessaoFrete);
         const botaoFechar = sessaoFrete.querySelector(".fechar-frete");
-        
+
         botaoFechar.addEventListener("click", () => {
             sessaoFrete.style.display = "none";
             document.body.style.overflow = "";
@@ -1042,7 +1003,7 @@ function mostrarsessaofrete() {
     const carrinho = document.getElementById("conteudo-carrinho");
     const resumo = document.getElementById("resumo-compra");
 
-    if (sessaoFrete && carrinho && resumo) {    
+    if (sessaoFrete && carrinho && resumo) {
         sessaoFrete.style.display = "block";
         carrinho.style.display = "none";
         resumo.style.display = "none";
