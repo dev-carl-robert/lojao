@@ -722,6 +722,66 @@ const modaCalcinha = [
     },
 ];
 
+const modaSutia = [
+    
+    {
+        imagem: "produtos/Sutia/sutia0.jpg",
+        nome: "Sutia Casca de Ovo",
+        preco: "39.00",
+        preco_cartao: "42.00",
+        descricao: "",
+        identificador: "MS001",
+        tamanho: "P/M/G/GG",
+        categoria: "sutia"
+    },
+    
+    {
+        imagem: "produtos/Sutia/sutia1,1.jpg",
+        imagem1: "produtos/Sutia/sutia1.jpg",
+        nome: "Sutiã",
+        preco: "25.00",
+        preco_cartao: "27.00",
+        descricao: "",
+        identificador: "MS002",
+        tamanho: "P/M/G/GG",
+        categoria: "sutia"
+    },
+    
+    {
+        imagem: "produtos/Sutia/sutia2.jpg",
+        imagem1: "produtos/Sutia/sutia2,1.jpg",
+        nome: "Sutiã",
+        preco: "29.00",
+        preco_cartao: "27.00",
+        descricao: "",
+        identificador: "MS003",
+        tamanho: "P/M/G/GG",    
+        categoria: "sutia"
+    },
+    
+    {
+        imagem: "",
+        nome: "",
+        preco: "",
+        preco_cartao: "",
+        descricao: "",
+        identificador: "MS004",
+        tamanho: "",
+        categoria: "sutia"
+    },
+    
+    {
+        imagem: "",
+        nome: "",
+        preco: "",
+        preco_cartao: "",
+        descricao: "",
+        identificador: "MS005",
+        tamanho: "",
+        categoria: "sutia"
+    },
+] 
+
 
 const seccaoDetalhes = document.querySelector(".seccao_especifica");
 
@@ -912,7 +972,6 @@ document.getElementById("carrinho").addEventListener("click", () => {
         document.querySelectorAll(sel).forEach(el => el.style.display = "none");
     });
 });
-
 
 function fecharCarrinho() {
     const resetar = [
@@ -1211,5 +1270,7 @@ function mostrarAlertaCustomizado(texto) {
 window.addEventListener("DOMContentLoaded", () => {
     renderizarProdutos("moda-infantil", modaInfantil);
     renderizarProdutos("moda-calcinha", modaCalcinha);
+    renderizarProdutos("moda-sutia", modaSutia);
+
     resetarLayoutProdutos();
 });
