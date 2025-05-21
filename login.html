@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Login com Google e Formulário</title>
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            max-width: 400px;
+            margin: auto;
+        }
+
+        label {
+            display: block;
+            margin-top: 10px;
+        }
+
+        input {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            min-width: 20rem;
+            margin-bottom: 20px;
+        }
+
+        button {
+            margin-top: 15px;
+            padding: 10px;
+            width: 100%;
+        }
+
+        #user-info {
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            display: none;
+        }
+
+        #google-signin {
+            margin-bottom: 20px;
+            border: 1px solid #767676;
+            width: 420px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h2>Login / Cadastro</h2>
+
+
+    <form id="form-login">
+        <label for="nome">Nome:</label>
+        <input type="text" id="nome" required />
+
+        <label for="sobrenome">Sobrenome:</label>
+        <input type="text" id="sobrenome" required />
+
+        <label for="data_nascimento">Data de Nascimento:</label>
+        <input type="date" id="data_nascimento" required />
+
+        <div id="google-signin"></div>
+
+        <label for="senha">Senha:</label>
+        <input type="password" id="senha" required />
+
+        <button type="submit">Cadastrar / Login</button>
+    </form>
+
+    <div id="user-info">
+        <h3>Usuário logado</h3>
+        <p><strong>Nome:</strong> <span id="user-nome"></span></p>
+        <p><strong>Sobrenome:</strong> <span id="user-sobrenome"></span></p>
+        <p><strong>Data de Nascimento:</strong> <span id="user-nascimento"></span></p>
+        <p><strong>Email:</strong> <span id="user-email"></span></p>
+        <button id="logout">Sair</button>
+    </div>
+
+    <script>
+        // Função para mostrar dados do usuário na tela
+        function mostrarUsuario(user) {
+            document.getElementById('user-nome').textContent = user.nome || user.name || '';
+            document.getElementById('user-sobrenome').textContent = user.sobrenome || '';
+            document.getElementById('user-nascimento').textContent = user.data_nascimento || '';
+            document.getElementById('user-email').textContent = user.email || user.email;
+            document.getElementById('user-info').style.display = 'block';
+            document.getElementById('form-login').style.display = 'none';
+            document.getElementById('google-signin').style.display = 'none';
+        }
+
+        // Função para limpar o login
+        function logout() {
+            localStorage.removeItem('user');
+            document.getElementById('user-info').style.display = 'none';
+            document.getElementById('form-login').style.display = 'block';
+            document.getElementById('google-signin').style.display = 'block';
+        }
+
+        // Checar se usuário já está salvo no localStorage
+        const userSalvo = localStorage.getItem('user');
+        if (userSalvo) {
+            mostrarUsuario(JSON.parse(userSalvo));
+        }
+
+        // Google Login
+        function handleCredentialResponse(response) {
+            const jwt = response.credential;
+            const base64Url = jwt.split('.')[1];
+            const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+            const jsonPayload = decodeURIComponent(atob(base64).split('').map(c => {
+                return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+            }).join(''));
+            const userObject = JSON.parse(jsonPayload);
+
+            // Criar objeto user para salvar (adaptado do Google)
+            const userGoogle = {
+                nome: userObject.given_name || userObject.name || '',
+                sobrenome: userObject.family_name || '',
+                email: userObject.email,
+                data_nascimento: '',  // Google não passa essa info
+                senha: ''             // senha não é salva com Google login
+            };
+
+            localStorage.setItem('user', JSON.stringify(userGoogle));
+            mostrarUsuario(userGoogle);
+        }
+
+        window.onload = function () {
+            google.accounts.id.initialize({
+                client_id: '880791004660-naimhaiumr5dasov4gcdap6jdqgf2h7c.apps.googleusercontent.com',
+                callback: handleCredentialResponse
+            });
+            google.accounts.id.renderButton(
+                document.getElementById('google-signin'),
+                { theme: "outline", size: "large" }
+            );
+        };
+
+        // Formulário clássico
+        document.getElementById('form-login').addEventListener('submit', function (e) {
+            e.preventDefault();
+            const nome = document.getElementById('nome').value.trim();
+            const sobrenome = document.getElementById('sobrenome').value.trim();
+            const data_nascimento = document.getElementById('data_nascimento').value;
+            const email = document.getElementById('email').value.trim();
+            const senha = document.getElementById('senha').value;
+
+            // Simples validação
+            if (!nome || !sobrenome || !data_nascimento || !email || !senha) {
+                alert("Por favor, preencha todos os campos.");
+                return;
+            }
+
+            // Salvar no localStorage
+            const user = { nome, sobrenome, data_nascimento, email, senha };
+            localStorage.setItem('user', JSON.stringify(user));
+
+            alert('Cadastro/Login realizado com sucesso!');
+            mostrarUsuario(user);
+        });
+
+        // Botão logout
+        document.getElementById('logout').addEventListener('click', function () {
+            logout();
+        });
+    </script>
+
+</body>
+
+</html>
