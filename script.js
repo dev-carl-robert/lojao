@@ -106,7 +106,7 @@ const modaInfantil = [
     },
     {
         imagem: "produtos/Infantil/infantil10.jpg",
-        nome: "SHort Infantil",
+        nome: "Short Infantil",
         preco: "16.00",
         preco_cartao: "17.00",
         descricao: "1 a 8 anos",
@@ -148,8 +148,8 @@ const modaInfantil = [
         imagem1: "produtos/Infantil/infantil13,1.jpg",
         imagem2: "produtos/Infantil/infantil13,2.jpg",
         nome: "Kit Calcinha Diamante (Infantil) ",
-        preco: "130.00",
-        preco_cartao: "120",
+        preco: "120.00",
+        preco_cartao: "130.00",
         descricao: "kit com 7 peças",
         identificador: "MI014",
         tamanho: "P/M/G/GG",
@@ -243,7 +243,7 @@ const modaInfantil = [
         preco_cartao: "25.00",
         descricao: "",
         identificador: "MI022",
-        tamanho: "PP/PunicoM/G/GG",
+        tamanho: "PP/P/M/G/GG",
         categoria: "Infantil"
     },
     {
@@ -713,17 +713,17 @@ const modaCalcinha = [
     {
         imagem: "produtos/Calcinha/calcinha37.jpg",
         nome: "Calcinha",
-        preco: "16.00", 
+        preco: "16.00",
         preco_cartao: "18.00",
         descricao: "",
         identificador: "MC038",
-        tamanho: "P/M/G/GG",    
+        tamanho: "P/M/G/GG",
         categoria: "Calcinha"
     },
 ];
 
 const modaSutia = [
-    
+
     {
         imagem: "produtos/Sutia/sutia0.jpg",
         nome: "Sutia Casca de Ovo",
@@ -734,7 +734,7 @@ const modaSutia = [
         tamanho: "P/M/G/GG",
         categoria: "sutia"
     },
-    
+
     {
         imagem: "produtos/Sutia/sutia1,1.jpg",
         imagem1: "produtos/Sutia/sutia1.jpg",
@@ -746,7 +746,7 @@ const modaSutia = [
         tamanho: "P/M/G/GG",
         categoria: "sutia"
     },
-    
+
     {
         imagem: "produtos/Sutia/sutia2.jpg",
         imagem1: "produtos/Sutia/sutia2,1.jpg",
@@ -755,33 +755,297 @@ const modaSutia = [
         preco_cartao: "27.00",
         descricao: "",
         identificador: "MS003",
-        tamanho: "P/M/G/GG",    
+        tamanho: "P/M/G/GG",
         categoria: "sutia"
     },
-    
-    {
-        imagem: "",
-        nome: "",
-        preco: "",
-        preco_cartao: "",
-        descricao: "",
-        identificador: "MS004",
-        tamanho: "",
-        categoria: "sutia"
-    },
-    
-    {
-        imagem: "",
-        nome: "",
-        preco: "",
-        preco_cartao: "",
-        descricao: "",
-        identificador: "MS005",
-        tamanho: "",
-        categoria: "sutia"
-    },
-] 
+]
 
+const modaCueca = [
+    {
+        imagem: "produtos/cueca/cueca0.jpg",
+        nome: "Bermuda Térmica LUPO",
+        preco: "82.00",
+        preco_cartao: "90.00",
+        descricao: "",
+        identificador: "MCU01",
+        tamanho: "P/M/G/GG",
+        categoria: "cueca"
+    },
+    {
+        imagem: "produtos/cueca/cueca1.jpg",
+        imagem1: "produtos/cueca/cueca1,1.jpg",
+        imagem2: "produtos/cueca/cueca1,2.jpg",
+        imagem3: "produtos/cueca/cueca1,3.jpg",
+        nome: "Kit de Cueca",
+        preco: "125.00",
+        preco_cartao: "137.00",
+        descricao: "Kit com 3 peças",
+        identificador: "MCU02",
+        tamanho: "P/M/G/GG",
+        categoria: "cueca"
+    },
+    {
+        imagem: "produtos/cueca/cueca2.jpg",
+        nome: "Cueca Lupo",
+        preco: "32.00",
+        preco_cartao: "34.00",
+        descricao: "",
+        identificador: "MCU03",
+        tamanho: "P/M/G/GG/EG",
+        categoria: "cueca"
+    },
+    {
+        imagem: "produtos/cueca/cueca3.jpg",
+        nome: "Short Lupo",
+        preco: "72.00",
+        preco_cartao: "75.00",
+        descricao: "",
+        identificador: "MCU04",
+        tamanho: "P/M/G/GG",
+        categoria: "cueca"
+    },
+    {
+        imagem: "produtos/cueca/cueca4.jpg",
+        nome: "Cueca Lupo",
+        preco: "31.00",
+        preco_cartao: "35.00",
+        descricao: "",
+        identificador: "MCU05",
+        tamanho: "Tamanho P/M/G/GG",
+        categoria: "cueca"
+    },
+    {
+        imagem: "produtos/cueca/cueca5.jpg",
+        nome: "Cueca Normal",
+        preco: "7.00",
+        preco_cartao: "7.50",
+        descricao: "",
+        identificador: "MCU06",
+        tamanho: "P/M/G/GG",
+        categoria: "cueca"
+    },
+    {
+        imagem: "produtos/cueca/cueca6.jpg",
+        nome: "Cueca Naromo",
+        preco: "15.00",
+        preco_cartao: "16.70",
+        descricao: "Algodão",
+        identificador: "MS007",
+        tamanho: "P/M/G/GG",
+        categoria: "cueca"
+    },
+    {
+        imagem: "produtos/cueca/cueca7.jpg",
+        nome: "Bermuda Térmica Lupo",
+        preco: "81.00",
+        preco_cartao: "86.00",
+        descricao: "",
+        identificador: "MS08",
+        tamanho: "",
+        categoria: "cueca"
+    },
+    {
+        imagem: "produtos/cueca/cueca8.jpg",
+        nome: "Short Masculino",
+        preco: "93.00",
+        preco_cartao: "103.00",
+        descricao: "Azul, preto e Cinza",
+        identificador: "MS009",
+        tamanho: "P/M/G/GG",
+        categoria: "cueca"
+    },
+    {
+        imagem: "produtos/cueca/cueca9.jpg",
+        nome: "Cueca Selene",
+        preco: "22.00",
+        preco_cartao: "24.00",
+        descricao: "",
+        identificador: "MS010",
+        tamanho: "P/M/G/GG/EG",
+        categoria: "cueca"
+    },
+    {
+        imagem: "produtos/cueca/cueca10.jpg",
+        nome: "Cueca Infantil",
+        preco: "10.50",
+        preco_cartao: "11.00",
+        descricao: "",
+        identificador: "MS011",
+        tamanho: "P/M/G",
+        categoria: "cueca"
+    },
+    {
+        imagem: "produtos/cueca/cueca11.jpg",
+        nome: "Cueca Infantil",
+        preco: "4.00",
+        preco_cartao: "4.50",
+        descricao: "",
+        identificador: "MS012",
+        tamanho: "P/M/G",
+        categoria: "cueca"
+    },
+    {
+        imagem: "produtos/cueca/cueca12.jpg",
+        nome: "Cueca Altomax",
+        preco: "7.00",
+        preco_cartao: "8.00",
+        descricao: "",
+        identificador: "MS013",
+        tamanho: "P/M/G/GG",
+    },
+    {
+        imagem: "produtos/cueca/cueca13.jpg",
+        nome: "Cueca Adulto",
+        preco: "16.00",
+        preco_cartao: "18.00",
+        descricao: "",
+        identificador: "MS014",
+        tamanho: "P/M/G/GG",
+    },
+    {
+        imagem: "produtos/cueca/cueca14.jpg",
+        imagem1: "produtos/cueca/cueca14,1.jpg",
+        nome: "Samba Canção",
+        preco: "15.00",
+        preco_cartao: "17.00",
+        descricao: "",
+        identificador: "MS015",
+        tamanho: "P/M/G/GG/EXG",
+    },
+    {
+        imagem: "produtos/cueca/cueca15.jpg",
+        nome: "Cueca Normal",
+        preco: "5.00",
+        preco_cartao: "5.50",
+        descricao: "",
+        identificador: "MS016",
+        tamanho: "P/M/G/GG",
+    },
+    {
+        imagem: "produtos/cueca/cueca16.jpg",
+        nome: "Samba Canção",
+        preco: "15.00",
+        preco_cartao: "17.00",
+        descricao: "",
+        identificador: "MS017",
+        tamanho: "P/M/G/GG/EXG",
+    },
+
+]
+
+const modaDiamante = [
+    {
+        imagem: "produtos/Calcinha/calcinha6.jpg",
+        nome: "Kit Calcinha Diamante",
+        preco: "110.00",
+        preco_cartao: "120.00",
+        descricao: "algodão",
+        identificador: "MC007",
+        tamanho: "P/M/G",
+        categoria: "Calcinha",
+    },
+    {
+        imagem: "produtos/Calcinha/calcinha7.jpg",
+        imagem1: "produtos/Calcinha/calcinha7,1.jpg",
+        nome: "Kit calcinha diamante",
+        preco: "130.00",
+        preco_cartao: "139.00",
+        descricao: " kit com 3 Calcinhas Tamanho",
+        identificador: "MC008",
+        tamanho: "P/M/G",
+        categoria: "Calcinha",
+    },
+    {
+        imagem: "produtos/Calcinha/calcinha10.jpg",
+        imagem1: "produtos/Calcinha/calcinha10,1.jpg",
+        nome: "Kit de Calcinha Diamantes",
+        preco: "105.00",
+        preco_cartao: "112.00",
+        descricao: "kit com 3 Calcinhas",
+        identificador: "MC011",
+        tamanho: "P/M/G",
+        categoria: "Calcinha",
+    },
+    {
+        imagem: "produtos/Calcinha/calcinha11.jpg",
+        nome: "Kit Calcinha Diamante",
+        preco: "130.00",
+        preco_cartao: "137.00",
+        descricao: "kit com 5 peças",
+        identificador: "MC012",
+        tamanho: "P/M/G",
+        categoria: "Calcinha",
+    },
+    {
+        imagem: "produtos/Calcinha/calcinha12.jpg",
+        imagem1: "produtos/Calcinha/calcinha12,1.jpg",
+        nome: "Kit Calcinha Diamante",
+        preco: "132.00",
+        preco_cartao: "140.00",
+        descricao: "Kit com 4 peças",
+        identificador: "MC013",
+        tamanho: "P/M/G",
+        categoria: "Calcinha",
+    },
+    {
+        imagem: "produtos/Calcinha/calcinha19.jpg",
+        nome: "Kit Calcinha Diamante",
+        preco: "118.00",
+        preco_cartao: "127.00",
+        descricao: "algodão",
+        identificador: "MC020",
+        tamanho: "P/M/G",
+        categoria: "Calcinha",
+    },
+    {
+        imagem: "produtos/Infantil/infantil13.jpg",
+        imagem1: "produtos/Infantil/infantil13,1.jpg",
+        imagem2: "produtos/Infantil/infantil13,2.jpg",
+        nome: "Kit Calcinha Diamante (Infantil)",
+        preco: "130.00",
+        preco_cartao: "120",
+        descricao: "kit com 7 peças",
+        identificador: "MI014",
+        tamanho: "P/M/G/GG",
+        categoria: "Infantil"
+    },
+    {
+        imagem: "produtos/Infantil/infantil16.jpg",
+        imagem1: "produtos/Infantil/infantil16,1.jpg",
+        imagem2: "produtos/Infantil/infantil16,2.jpg",
+        imagem3: "produtos/Infantil/infantil16,3.jpg",
+        imagem4: "produtos/Infantil/infantil16,4.jpg",
+        imagem5: "produtos/Infantil/infantil16,5.jpg",
+        nome: "Kit Cueca Diamante",
+        preco: "164.00",
+        preco_cartao: "176.00",
+        descricao: "Kit com 4 peças personalizadas Infantil",
+        identificador: "MI017",
+        tamanho: "P/M/G/GG",
+        categoria: "Infantil"
+    },
+    {
+        imagem: "produtos/Infantil/infantil26.jpg",
+        nome: "Kit Calcinha Diamante",
+        preco: "164.00",
+        preco_cartao: "176.00",
+        descricao: "Kit com 7",
+        identificador: "MI027",
+        tamanho: "unico",
+        categoria: "Infantil"
+    },
+    {
+        imagem: "produtos/Infantil/infantil28.jpg",
+        imagem1: "produtos/Infantil/infantil28,1.jpg",
+        nome: "Kit Cueca Diamante",
+        preco: "164.00",
+        preco_cartao: "176.00",
+        descricao: "Tecido algodão; kit com 4 peças personalizadas infantil",
+        identificador: "MI029",
+        tamanho: "unico",
+        categoria: "Infantil"
+    },
+]
 
 const seccaoDetalhes = document.querySelector(".seccao_especifica");
 
@@ -967,6 +1231,8 @@ document.getElementById("carrinho").addEventListener("click", () => {
         ".banner",
         "#moda-infantil",
         "#moda-calcinha",
+        "#moda-sutia",
+        "#moda-cueca",
     ];
     esconder.forEach(sel => {
         document.querySelectorAll(sel).forEach(el => el.style.display = "none");
@@ -983,6 +1249,8 @@ function fecharCarrinho() {
         { selector: "#sessao-frete", display: "block" },
         { selector: "#moda-infantil", display: "grid" },
         { selector: "#moda-calcinha", display: "grid" },
+        { selector: "#moda-sutia", display: "grid" },
+        { selector: "#moda-cueca", display: "grid" },
     ];
 
     resetar.forEach(item => {
@@ -1267,10 +1535,23 @@ function mostrarAlertaCustomizado(texto) {
     }, 3000);
 }
 
+const usuario = JSON.parse(localStorage.getItem('usuarioLogado'));
+
+if (usuario) {
+    const primeiroNome = usuario.nome.split(' ')[0]; // Pega só o primeiro nome
+    document.getElementById('login').innerHTML = `<span>${primeiroNome}</span>`;
+    document.getElementById('login').href = 'perfil.html'; // Leva para página de perfil
+} else {
+    document.getElementById('login').innerHTML = `<span>Login</span>`;
+    document.getElementById('login').href = 'login.html';
+}
 window.addEventListener("DOMContentLoaded", () => {
     renderizarProdutos("moda-infantil", modaInfantil);
     renderizarProdutos("moda-calcinha", modaCalcinha);
     renderizarProdutos("moda-sutia", modaSutia);
+    renderizarProdutos("moda-cueca", modaCueca);
+    renderizarProdutos("moda-diamante", modaDiamante);
+
 
     resetarLayoutProdutos();
 });
