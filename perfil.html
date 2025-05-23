@@ -8,9 +8,14 @@
         body {
             font-family: Arial, sans-serif;
             background-color: #f5f5f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
         }
         .container {
-            max-width: 500px;
+            max-width: 700px;
             background-color: white;
             margin: 50px auto;
             padding: 20px;
@@ -19,6 +24,7 @@
         }
         h2 {
             text-align: center;
+            color: #e0258b;
         }
         .info {
             margin: 15px 0;
@@ -31,7 +37,7 @@
         button {
             width: 100%;
             padding: 10px;
-            background: #dc3545;
+            background: #e0258b;
             color: white;
             border: none;
             border-radius: 8px;
@@ -39,7 +45,7 @@
             cursor: pointer;
         }
         button:hover {
-            background: #c82333;
+            opacity: 0.8;
         }
     </style>
 </head>
@@ -51,7 +57,7 @@
     <div class="info"><strong>Nome:</strong> <span id="nome"></span></div>
     <div class="info"><strong>Sobrenome:</strong> <span id="sobrenome"></span></div>
     <div class="info"><strong>Telefone:</strong> <span id="telefone"></span></div>
-    <div class="info"><strong>Data Nasc.:</strong> <span id="nascimento"></span></div>
+    <div class="info"><strong>Data de Nascimento:</strong> <span id="nascimento"></span></div>
     <div class="info"><strong>Email:</strong> <span id="email"></span></div>
 
     <button onclick="logout()">Sair</button>
@@ -67,14 +73,18 @@
         document.getElementById('nome').innerText = user.nome;
         document.getElementById('sobrenome').innerText = user.sobrenome;
         document.getElementById('telefone').innerText = user.telefone;
-        document.getElementById('nascimento').innerText = user.nascimento;
+
+        // ✅ Convertendo data para formato brasileiro
+        const dataBR = user.nascimento.split('-').reverse().join('/');
+        document.getElementById('nascimento').innerText = dataBR;
+
         document.getElementById('email').innerText = user.email;
     }
 
     function logout() {
         localStorage.removeItem('usuarioLogado');
         window.location.href = 'index.html';
-    }
+    }   
 </script>
 
 </body>

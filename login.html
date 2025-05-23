@@ -7,8 +7,24 @@
     <title>Login e Cadastro</title>
     <style>
         body {
+            height: 100vh;
+            overflow: hidden;
             font-family: Arial;
             background: #f5f5f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .login {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 80%;
+            width: 50%;
+            border: 5px solid #e0258b;
+            border-radius: 10px;
         }
 
         .container {
@@ -22,20 +38,35 @@
 
         h2 {
             text-align: center;
+            color: #e0258b;
+            font-family: "Imperial Script";
+            font-size: 60px;
         }
 
-        input {
-            width: 100%;
+        input[type="text"],
+        input[type="email"],
+        input[type="password"],
+        input[type="date"],
+        input[type="tel"] {
+            width: 500px;
             padding: 10px;
-            margin: 8px 0;
+            margin: 8px;
             border: 1px solid #ccc;
             border-radius: 5px;
         }
 
+        ::placeholder {
+            color: #ccc;
+        }
+
+        ::-webkit-input-placeholder {
+            color: #e0258b;
+        }
+
         button {
-            width: 100%;
+            width: 500px;
             padding: 10px;
-            background: #007bff;
+            background: #e0258b;
             color: white;
             border: none;
             border-radius: 5px;
@@ -43,38 +74,61 @@
         }
 
         button:hover {
-            background: #0056b3;
+            opacity: 0.8;
         }
 
         .toggle {
+
             text-align: center;
             margin-top: 10px;
             cursor: pointer;
-            color: #007bff;
+            color: #e0258b;
+        }
+
+        .checkbox {
+            cursor: pointer;
+            display: flex;
+            color: #e0258b;
+            margin: 10px 0;
+        }
+
+        input[type="checkbox"] {
+            border: 1px solid #e0258b;
+            width: 20px;
         }
     </style>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Funnel+Display:wght@300..800&family=Imperial+Script&display=swap"
+        rel="stylesheet">
+
 </head>
 
 <body>
 
-  <h2 id="form-title">Login</h2>
+    <section class="login">
+        <h2 id="form-title">Login</h2>
 
-<input type="text" id="nome" placeholder="Nome" style="display:none;" required>
-<input type="text" id="sobrenome" placeholder="Sobrenome" style="display:none;" required>
-<input type="date" id="nascimento" placeholder="Nascimento" style="display:none;" required>
-<input type="tel" id="telefone" placeholder="Telefone" style="display:none;" required>
+        <input type="text" id="nome" placeholder="Nome" style="display:none;" required>
+        <input type="text" id="sobrenome" placeholder="Sobrenome" style="display:none;" required>
+        <input type="date" id="nascimento" placeholder="Nascimento" style="display:none;" required>
+        <input type="tel" id="telefone" placeholder="Telefone" style="display:none;" required>
 
-<input type="email" id="email" placeholder="Email" required>
-<input type="password" id="senha" placeholder="Senha" required>
+        <input type="email" id="email" placeholder="Email" required>
+        <input type="password" id="senha" placeholder="Senha" required>
 
-<label>
-    <input type="checkbox" onclick="mostrarSenha()"> Mostrar senha
-</label>
+        <label class="checkbox">
+            <input type="checkbox" onclick="mostrarSenha()"> Mostrar senha
+        </label>
 
-<button onclick="handleSubmit()">Entrar</button>
+        <button onclick="handleSubmit()">Entrar</button>
 
-<p class="toggle" onclick="toggleForm()">Não tem conta? Cadastre-se</p>
+        <p class="toggle" onclick="toggleForm()">Não tem conta? Cadastre-se</p>
         <script src="./login.js"></script>
+    </section>
+
 
 </body>
 

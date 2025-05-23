@@ -1557,3 +1557,48 @@ window.addEventListener("DOMContentLoaded", () => {
 
     resetarLayoutProdutos();
 });
+document.getElementById("botao-continuar-compra").addEventListener("click", () => {
+    const carrinho = JSON.parse(localStorage.getItem("carrinho")) || [];
+    if (carrinho.length === 0) {
+        alert("Seu carrinho está vazio!");
+        return;
+    }
+
+    // Dados do endereço (se preenchidos)
+    const rua = document.getElementById("rua")?.value || "";
+    const bairro = document.getElementById("bairro")?.value || "";
+    const numero = document.getElementById("numero")?.value || "";
+    const complemento = document.getElementById("complemento")?.value || "";
+
+    // Monta mensagem dos produtos
+    let mensagemProdutos = carrinho.map((prod, i) => 
+        `${i+1}. ${prod.nome} - Tamanho: ${prod.tamanho} - Quantidade: ${prod.quantidade} - R$ ${(prod.preco * prod.quantidade).toFixed(2)}`
+    ).join("\n");
+
+    // Calcula total
+    const totalProdutos = carrinho.reduce((acc, p) => acc + (p.preco * p.quantidade), 0);
+    // Pega o frete calculado
+    const frete = calcularFretePorBairro(bairro);
+    const totalGeral = totalProdutos + frete;
+
+    // Monta mensagem final
+    let mensagem = `Olá, gostaria de fazer um pedido:\n\n` +
+        `${mensagemProdutos}\n\n` +
+        `Subtotal: R$ ${totalProdutos.toFixed(2)}\n` +
+        `Frete: R$ ${frete.toFixed(2)}\n` +
+        `Total: R$ ${totalGeral.toFixed(2)}\n\n` +
+        `Endereço para entrega:\nRua: ${rua}\nBairro: ${bairro}\nNúmero: ${numero}\nComplemento: ${complemento}\n\n` +
+        `Obrigado!`;
+
+    // Codifica para URL
+    const mensagemEncoded = encodeURIComponent(mensagem);
+
+    // Número do delivery com DDI e DDD (exemplo)
+    const numeroDelivery = "5598987871123";
+
+    // URL para abrir WhatsApp Web ou App
+    const urlWhatsApp = `https://wa.me/${numeroDelivery}?text=${mensagemEncoded}`;
+
+    // Abre em nova aba/janela
+    window.open(urlWhatsApp, "_blank");
+});
