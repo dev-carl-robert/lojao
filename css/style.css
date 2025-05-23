@@ -98,6 +98,15 @@ a {
     border-radius: 5rem;
     letter-spacing: 2px;
 }
+.login span{
+   text-decoration: none;
+    color: #575456;
+    font-size: 1.6rem;
+    font-weight: 600;
+    padding: 1rem 2rem;
+    border-radius: 5rem;
+    letter-spacing: 2px;
+}
 
 .botoes-laterais button:hover {
     transform: scale(1.05);
@@ -166,7 +175,10 @@ section {
 }
 
 #moda-infantil,
-#moda-calcinha {
+#moda-calcinha,
+#moda-sutia,
+#moda-cueca,
+#moda-diamante {
     margin-top: 20rem;
 }
 

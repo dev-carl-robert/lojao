@@ -608,7 +608,7 @@ const modaCalcinha = [
         categoria: "Calcinha",
     },
     {
-        imagem: "Calcinha/calcinha27.jpg",
+        imagem: "produtos/Calcinha/calcinha27.jpg",
         nome: "Calcinha Reforçada",
         preco: "23.00",
         preco_cartao: "26.00",
@@ -725,7 +725,7 @@ const modaCalcinha = [
 const modaSutia = [
 
     {
-        imagem: "produtos/Sutia/sutia0.jpg",
+        imagem: "produtos/sutia/sutia0.jpg",
         nome: "Sutia Casca de Ovo",
         preco: "39.00",
         preco_cartao: "42.00",
@@ -736,8 +736,8 @@ const modaSutia = [
     },
 
     {
-        imagem: "produtos/Sutia/sutia1,1.jpg",
-        imagem1: "produtos/Sutia/sutia1.jpg",
+        imagem: "produtos/sutia/sutia1,1.jpg",
+        imagem1: "produtos/sutia/sutia1.jpg",
         nome: "Sutiã",
         preco: "25.00",
         preco_cartao: "27.00",
@@ -748,8 +748,8 @@ const modaSutia = [
     },
 
     {
-        imagem: "produtos/Sutia/sutia2.jpg",
-        imagem1: "produtos/Sutia/sutia2,1.jpg",
+        imagem: "produtos/sutia/sutia2.jpg",
+        imagem1: "produtos/sutia/sutia2,1.jpg",
         nome: "Sutiã",
         preco: "29.00",
         preco_cartao: "27.00",
@@ -1545,6 +1545,53 @@ if (usuario) {
     document.getElementById('login').innerHTML = `<span>Login</span>`;
     document.getElementById('login').href = 'login.html';
 }
+    const mp = new MercadoPago('APP_USR-989643be-894f-48ef-9a07-fd0d703aa5fd', {
+        locale: 'pt-BR'
+    });
+
+    document.getElementById('botao-pagar').addEventListener('click', criarPreferenciaPagamento);
+
+    function criarPreferenciaPagamento() {
+        const carrinho = JSON.parse(localStorage.getItem("carrinho")) || [];
+
+        if (carrinho.length === 0) {
+            alert("Seu carrinho está vazio!");
+            return;
+        }
+
+        const items = carrinho.map(item => ({
+            title: item.nome,
+            quantity: item.quantidade,
+            currency_id: "BRL",
+            unit_price: parseFloat(item.preco)
+        }));
+
+        fetch("https://api.mercadopago.com/checkout/preferences", {
+            method: "POST",
+            headers: {
+                Authorization: "APP_USR-8109665431428084-052119-9edc5d4d2d18f4a03873b338b1d68d97-274837030",
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                items,
+                back_urls: {
+                    success: "https://dev-carl-robert.github.io/lojao/sucess.html",
+                    failure: "https://dev-carl-robert.github.io/lojao/failed.html",
+                    pending: "https://dev-carl-robert.github.io/lojao//pendence.html"
+                },
+                auto_return: "approved"
+            })
+        })
+        .then(response => response.json())
+        .then(preference => {
+            window.location.href = preference.init_point;
+        })
+        .catch(error => {
+            console.error("Erro ao criar preferência:", error);
+            alert("Erro ao iniciar pagamento. Tente novamente.");
+        });
+    }
+
 window.addEventListener("DOMContentLoaded", () => {
     renderizarProdutos("moda-infantil", modaInfantil);
     renderizarProdutos("moda-calcinha", modaCalcinha);
