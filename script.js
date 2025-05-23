@@ -1232,6 +1232,7 @@ document.getElementById("carrinho").addEventListener("click", () => {
         "#moda-calcinha",
         "#moda-sutia",
         "#moda-cueca",
+        "#moda-diamante"
     ];
     esconder.forEach(sel => {
         document.querySelectorAll(sel).forEach(el => el.style.display = "none");
@@ -1250,6 +1251,7 @@ function fecharCarrinho() {
         { selector: "#moda-calcinha", display: "grid" },
         { selector: "#moda-sutia", display: "grid" },
         { selector: "#moda-cueca", display: "grid" },
+        { selector: "#moda-diamante", display: "grid" },
     ];
 
     resetar.forEach(item => {
