@@ -1276,7 +1276,7 @@ function carregarCarrinho() {
 function calcularFretePorBairro(bairro) {
     const bairrosFrete10 = ["Alemanha", "Alto do Angelim", "Alto do Calhau", "Alto do Pinho", "Alto Turú", "Anil", "Angelim", "Apeadouro", "Aroeiras", "Areinha", "Aurora", "Bairro de Fátima", "Barramar", "Barreto", "Belira", "Bequimão", "Calhau", "Camboa", "Cantinho do Céu", "Caratatiua", "Centro", "Chácara Brasil", "Codozinho", "Cohab", "Cohafuma", "Cohajap", "Cohama", "Cohapam", "Cohaserma", "Cohatrac", "Coheb", "Coreia de Baixo", "Coreia de Cima", "Coroado", "Cruzeiro do Anil", "Cutim Anil", "Diamante", "Divinéia", "Fabril", "Fé em Deus", "Filipinho", "Forquilha", "Grand Park", "Ilhinha", "Ipase de Baixo", "Ipase de Cima", "Ipem Turú", "Itapiracó", "Ivar Saldanha", "Jaracaty", "Jardim Alvorada", "Jardim das Margaridas", "Jardim Eldorado", "Jardim Turu", "João de Deus", "João Paulo", "Jordoa", "Liberdade", "Lira", "Macaúba", "Madre Deus", "Maiobinha", "Maranhão Novo", "Monte Castelo", "Novo Angelim", "Olho d'Água", "Outeiro da Cruz", "Pão de Açúcar", "Parque Amazonas", "Parque Athenas", "Parque Atlântico", "Parque dos Sabiás", "Parque shalom", "Parque Universitário", "Parque Vitória", "Península", "Pirapora", "Planalto Anil", "Planalto Pingão", "Ponta d'Areia", "Ponta do Farol", "Quintas do Calhau", "Quitandinha", "Recanto Fialho", "Recanto Turú", "Recanto Vinhais", "Redenção", "Renascença", "Residencial Araras", "Residencial São Domingos", "Rio Anil", "Sacavém", "Salina do Sacavém", "Santa Cruz", "Santa Rosa", "Santo Antônio", "São Bernardo", "São Cristóvão", "São Francisco", "Saramanta", "Solar dos Lusitanos", "Sol e Mar", "Terra Livre", "Tirirical", "Túnel do Sacavém", "Vera Cruz", "Vila 7 de Setembro", "Vila Bessa", "Vila Brasil", "Vila Conceição (Alto do Calhau)", "Vila Cruzado", "Vila Isabel Cafeteira (Cohab)", "Vila Lobão", "Vila Luizão", "Vila Palmeira", "Vila Passos", "Vila Vicente Fialho", "Vinhais"];
 
-    const bairrosFrete15 = ["Santa Efigenia", "Jardim América", "Cidade Operária", "Coroadinho", "Recanto dos Nobres", "Parque dos nobres", "Parque timbiras", "Parque Pindorama", "Nice Lobão", "Bom Jesus"];
+    const bairrosFrete15 = ["Santa Efigênia", "Jardim América", "Cidade Operária", "Coroadinho", "Recanto dos Nobres", "Parque dos nobres", "Parque timbiras", "Parque Pindorama", "Nice Lobão", "Bom Jesus"];
 
     const bairrosFrete20 = ["Alonso Costa", "Alphaville", "Alto da Esperança", "Alto do Farol", "Alto Jaguarema", "Amendoeira", "Anjo da Guarda", "Apaco", "Araçagy", "Alto Itapiraco", "Bacanga", "Bom Jardim", "Cidade Olímpica", "Distrito Industrial", "Fumacê", "Gancharia", "Gapara", "Geniparana", "Janaina", "Jardim Tropical", "Lima Verde", "Labelle Park", "Magril", "Maiobão", "Maracanã", "Mauro Fecury", "Miritiua", "Paranã", "Parque Jair", "Piancó", "Pontal da Ilha", "Residencial Paraíso", "Residencial Tiradentes", "Ribeira", "Riod", "Sá Viana", "Santa Barbara", "Santa Clara", "São Raimundo", "Tibiri", "Vila Ariri", "Vila Cascavel", "Vila Embratel", "Vila Esperança", "Vila Funil", "Vila Isabel", "Vila Itamar", "Vila Nova", "Vila Nova República", "Vila Sarney", "Vila São Luís", "Vila Vitória"];
 
@@ -1289,7 +1289,7 @@ function calcularFretePorBairro(bairro) {
     } else if (bairrosFrete20.includes(bairro)) {
         return 20;
     } else {
-        return 25; // valor padrão para bairros não listados
+        return 0; // valor padrão para bairros não listados
     }
 }
 
@@ -1443,12 +1443,12 @@ function criarResumoCompra() {
             </div>
             <div class="linha fretes">
                 <span class="titulo">Frete:</span>
-                <span class="valor" id="valor-frete">Grátis</span>
+                <span class="valor" id="valor-frete">R$ 0,00</span>
                 <button id="botao-escolher-endereco">escolha seu endereço</button>
             </div>
             <div class="linha total">
                 <span class="titulo">Total:</span>
-                <span class="valor" id="valor-total">0,00</span>
+                <span class="valor" id="valor-total">a decidir</span>
             </div>
             <button id="botao-continuar-compra">Continuar a compra</button>
         `;
@@ -1456,6 +1456,8 @@ function criarResumoCompra() {
     }
 
     const botaoMostrarFrete = document.getElementById("botao-escolher-endereco");
+    const conteudoCarrinho = document.getElementById("conteudo-carrinho");
+
     if (botaoMostrarFrete) {
         botaoMostrarFrete.addEventListener("click", () => {
             if (sessaoFrete) {
@@ -1469,8 +1471,165 @@ function criarResumoCompra() {
             }
         });
     }
+    const token = '7900323987:AAFpptfwg0xFZSOdjRIxT_Y0rjCC7xHzMgU'; // substitua pelo token do seu bot
+    const chatIdGrupo = -1002539224248;
+    const botaoContinuarCompra = document.getElementById("botao-continuar-compra");
 
-    return resumo;
+
+    if (botaoContinuarCompra) {
+        botaoContinuarCompra.addEventListener('click', () => {
+            console.log('Botão continuar clicado');
+
+            const carrinho = JSON.parse(localStorage.getItem("carrinho")) || [];
+            if (carrinho.length === 0) {
+                alert("Seu carrinho está vazio!");
+                return;
+            }
+
+            // Dados do endereço (se preenchidos)
+            const rua = document.getElementById("rua")?.value || "";
+            const bairro = document.getElementById("bairro")?.value || "";
+            const numero = document.getElementById("numero")?.value || "";
+            const complemento = document.getElementById("complemento")?.value || "";
+
+            // Dados do usuário logado
+            const usuario = JSON.parse(localStorage.getItem('usuarioLogado'));
+            const primeiroNome = usuario ? usuario.nome.split(' ')[0] : 'Cliente';
+            const telefone = usuario?.telefone || 'Não informado';
+
+            // Monta mensagem dos produtos
+            let mensagemProdutos = carrinho.map((prod, i) =>
+                `${i + 1}. ${prod.nome} - Tamanho: ${prod.tamanho} - Quantidade: ${prod.quantidade} - R$ ${(prod.preco * prod.quantidade).toFixed(2)}`
+            ).join("\n");
+
+            // Calcula total
+            const totalProdutos = carrinho.reduce((acc, p) => acc + (p.preco * p.quantidade), 0);
+
+            // Função de frete — implemente conforme sua lógica
+            function calcularFretePorBairro(bairro) {
+                const bairrosFrete10 = ["Alemanha", "Alto do Angelim", "Alto do Calhau", "Alto do Pinho", "Alto Turú", "Anil", "Angelim", "Apeadouro", "Aroeiras", "Areinha", "Aurora", "Bairro de Fátima", "Barramar", "Barreto", "Belira", "Bequimão", "Calhau", "Camboa", "Cantinho do Céu", "Caratatiua", "Centro", "Chácara Brasil", "Codozinho", "Cohab", "Cohafuma", "Cohajap", "Cohama", "Cohapam", "Cohaserma", "Cohatrac", "Coheb", "Coreia de Baixo", "Coreia de Cima", "Coroado", "Cruzeiro do Anil", "Cutim Anil", "Diamante", "Divinéia", "Fabril", "Fé em Deus", "Filipinho", "Forquilha", "Grand Park", "Ilhinha", "Ipase de Baixo", "Ipase de Cima", "Ipem Turú", "Itapiracó", "Ivar Saldanha", "Jaracaty", "Jardim Alvorada", "Jardim das Margaridas", "Jardim Eldorado", "Jardim Turu", "João de Deus", "João Paulo", "Jordoa", "Liberdade", "Lira", "Macaúba", "Madre Deus", "Maiobinha", "Maranhão Novo", "Monte Castelo", "Novo Angelim", "Olho d'Água", "Outeiro da Cruz", "Pão de Açúcar", "Parque Amazonas", "Parque Athenas", "Parque Atlântico", "Parque dos Sabiás", "Parque shalom", "Parque Universitário", "Parque Vitória", "Península", "Pirapora", "Planalto Anil", "Planalto Pingão", "Ponta d'Areia", "Ponta do Farol", "Quintas do Calhau", "Quitandinha", "Recanto Fialho", "Recanto Turú", "Recanto Vinhais", "Redenção", "Renascença", "Residencial Araras", "Residencial São Domingos", "Rio Anil", "Sacavém", "Salina do Sacavém", "Santa Cruz", "Santa Rosa", "Santo Antônio", "São Bernardo", "São Cristóvão", "São Francisco", "Saramanta", "Solar dos Lusitanos", "Sol e Mar", "Terra Livre", "Tirirical", "Túnel do Sacavém", "Vera Cruz", "Vila 7 de Setembro", "Vila Bessa", "Vila Brasil", "Vila Conceição (Alto do Calhau)", "Vila Cruzado", "Vila Isabel Cafeteira (Cohab)", "Vila Lobão", "Vila Luizão", "Vila Palmeira", "Vila Passos", "Vila Vicente Fialho", "Vinhais"];
+
+                const bairrosFrete15 = ["Santa Efigênia", "Jardim América", "Cidade Operária", "Coroadinho", "Recanto dos Nobres", "Parque dos nobres", "Parque timbiras", "Parque Pindorama", "Nice Lobão", "Bom Jesus"];
+
+                const bairrosFrete20 = ["Alonso Costa", "Alphaville", "Alto da Esperança", "Alto do Farol", "Alto Jaguarema", "Amendoeira", "Anjo da Guarda", "Apaco", "Araçagy", "Alto Itapiraco", "Bacanga", "Bom Jardim", "Cidade Olímpica", "Distrito Industrial", "Fumacê", "Gancharia", "Gapara", "Geniparana", "Janaina", "Jardim Tropical", "Lima Verde", "Labelle Park", "Magril", "Maiobão", "Maracanã", "Mauro Fecury", "Miritiua", "Paranã", "Parque Jair", "Piancó", "Pontal da Ilha", "Residencial Paraíso", "Residencial Tiradentes", "Ribeira", "Riod", "Sá Viana", "Santa Barbara", "Santa Clara", "São Raimundo", "Tibiri", "Vila Ariri", "Vila Cascavel", "Vila Embratel", "Vila Esperança", "Vila Funil", "Vila Isabel", "Vila Itamar", "Vila Nova", "Vila Nova República", "Vila Sarney", "Vila São Luís", "Vila Vitória"];
+
+                bairro = bairro.trim();
+
+                if (bairrosFrete10.includes(bairro)) {
+                    return 10;
+                } else if (bairrosFrete15.includes(bairro)) {
+                    return 15;
+                } else if (bairrosFrete20.includes(bairro)) {
+                    return 20;
+                } else {
+                    return 25; // valor padrão para bairros não listados
+                }
+            }
+
+            const frete = calcularFretePorBairro(bairro);
+            const totalGeral = totalProdutos + frete;
+
+            // Monta mensagem final para o Telegram
+            // Monta mensagem final para o Telegram
+            let mensagem = `Pedido de ${primeiroNome}:\n` +
+                `Telefone: ${telefone}\n\n` +
+                `${mensagemProdutos}\n\n` +
+                `Subtotal: R$ ${totalProdutos.toFixed(2)}\n` +
+                `Frete: R$ ${frete.toFixed(2)}\n` +
+                `Total: R$ ${totalGeral.toFixed(2)}\n\n` +
+                `Endereço para entrega:\nRua: ${rua}\nBairro: ${bairro}\nNúmero: ${numero}\nComplemento: ${complemento}\n\n` +
+                `Obrigado!`;
+
+            // Adicionando logs para verificar os dados
+            console.log("Dados do Pedido:");
+            console.log("Nome:", primeiroNome);
+            console.log("Telefone:", telefone);
+            console.log("Produtos:", mensagemProdutos);
+            console.log("Subtotal:", totalProdutos);
+            console.log("Frete:", frete);
+            console.log("Total:", totalGeral);
+            console.log("Endereço:", {
+                rua: rua,
+                bairro: bairro,
+                numero: numero,
+                complemento: complemento
+            });
+
+            function pagarConta() {
+                const dadosPedido = {
+                    nome: primeiroNome,
+                    telefone: telefone,
+                    produtos: mensagemProdutos,
+                    subtotal: totalProdutos,
+                    frete: frete,
+                    total: totalGeral,
+                    endereco: {
+                        rua: rua,
+                        bairro: bairro,
+                        numero: numero,
+                        complemento: complemento
+                    }
+                };
+
+                // Logando os dados que serão enviados
+                console.log("Dados do Pedido para o Backend:", dadosPedido);
+
+                fetch('http://127.0.0.1:5000/pagar', {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify(dadosPedido)
+                })
+                    .then(res => {
+                        console.log("Resposta do servidor:", res);
+                        return res.json();
+                    })
+                    .then(data => {
+                        console.log("Dados retornados do servidor:", data);
+                        window.location.href = data.init_point;  // Redireciona para o checkout do Mercado Pago
+                    })
+                    .catch(error => {
+                        console.error("Erro ao enviar a requisição:", error);
+                    });
+            
+
+        }
+            // Função para enviar mensagem para Telegram
+            function enviarMensagemTelegram(chatId, texto) {
+                fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        chat_id: chatId,
+                        text: texto
+                    })
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        if (data.ok) {
+                            console.log(`Mensagem enviada com sucesso para chatId ${chatId}`);
+                            alert("Pedido enviado com sucesso! Em breve entraremos em contato.");
+                        } else {
+                            console.error(`Erro ao enviar mensagem para chatId ${chatId}:`, data);
+                            alert("Erro ao enviar o pedido, tente novamente mais tarde.");
+                        }
+                    })
+                    .catch(err => {
+                        console.error("Erro na requisição:", err);
+                        alert("Erro ao enviar o pedido, tente novamente mais tarde.");
+                    });
+
+            }
+
+            // Envia para o grupo da loja
+            // enviarMensagemTelegram(chatIdGrupo, mensagem);
+            pagarConta();
+    });
+
+}
+return resumo;
+
 }
 
 function atualizarResumoCompra(carrinho) {
@@ -1489,7 +1648,7 @@ function atualizarResumoCompra(carrinho) {
 
     resumo.querySelector(".linhaProdutos .titulo").textContent = `Produtos: (${quantidadeProdutos})`;
     resumo.querySelector("#total-produtos").textContent = `R$ ${formatarValor(totalProdutos)}`;
-    resumo.querySelector(".fretes .valor").textContent = frete === 0 ? "Grátis" : `R$ ${formatarValor(frete)}`;
+    resumo.querySelector(".fretes .valor").textContent = frete === 0 ? "a decidir" : `R$ ${formatarValor(frete)}`;
     resumo.querySelector(".total .valor").textContent = `R$ ${formatarValor(totalGeral)}`;
 }
 
@@ -1556,49 +1715,4 @@ window.addEventListener("DOMContentLoaded", () => {
 
 
     resetarLayoutProdutos();
-});
-document.getElementById("botao-continuar-compra").addEventListener("click", () => {
-    const carrinho = JSON.parse(localStorage.getItem("carrinho")) || [];
-    if (carrinho.length === 0) {
-        alert("Seu carrinho está vazio!");
-        return;
-    }
-
-    // Dados do endereço (se preenchidos)
-    const rua = document.getElementById("rua")?.value || "";
-    const bairro = document.getElementById("bairro")?.value || "";
-    const numero = document.getElementById("numero")?.value || "";
-    const complemento = document.getElementById("complemento")?.value || "";
-
-    // Monta mensagem dos produtos
-    let mensagemProdutos = carrinho.map((prod, i) => 
-        `${i+1}. ${prod.nome} - Tamanho: ${prod.tamanho} - Quantidade: ${prod.quantidade} - R$ ${(prod.preco * prod.quantidade).toFixed(2)}`
-    ).join("\n");
-
-    // Calcula total
-    const totalProdutos = carrinho.reduce((acc, p) => acc + (p.preco * p.quantidade), 0);
-    // Pega o frete calculado
-    const frete = calcularFretePorBairro(bairro);
-    const totalGeral = totalProdutos + frete;
-
-    // Monta mensagem final
-    let mensagem = `Olá, gostaria de fazer um pedido:\n\n` +
-        `${mensagemProdutos}\n\n` +
-        `Subtotal: R$ ${totalProdutos.toFixed(2)}\n` +
-        `Frete: R$ ${frete.toFixed(2)}\n` +
-        `Total: R$ ${totalGeral.toFixed(2)}\n\n` +
-        `Endereço para entrega:\nRua: ${rua}\nBairro: ${bairro}\nNúmero: ${numero}\nComplemento: ${complemento}\n\n` +
-        `Obrigado!`;
-
-    // Codifica para URL
-    const mensagemEncoded = encodeURIComponent(mensagem);
-
-    // Número do delivery com DDI e DDD (exemplo)
-    const numeroDelivery = "5598987871123";
-
-    // URL para abrir WhatsApp Web ou App
-    const urlWhatsApp = `https://wa.me/${numeroDelivery}?text=${mensagemEncoded}`;
-
-    // Abre em nova aba/janela
-    window.open(urlWhatsApp, "_blank");
 });
