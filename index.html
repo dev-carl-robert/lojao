@@ -26,8 +26,8 @@
 <body>
   <header id="header">
     <div class="container">
-      <img src="./src/logo.jpeg" alt="">
-      <h2>Lojão das Calcinhas.</h2>
+      <img class="logo" src="./src/logo.jpeg" alt="">
+      <h2>Lojão das Calcinhas</h2>
     </div>
   </header>
 
@@ -47,6 +47,18 @@
       <span>Login</span>
     </a>
     <button id="carrinho" class="bi bi-cart-plus-fill"><span> Carrinho</span></button>
+    
+    <button onclick="toggleCategorias()" id="btn-categorias"><i class="bi bi-list"></i>Categorias</button>
+    <div id="categorias">
+      <ul>
+        <li><a href="#">Inicio</a></li>
+        <li><a href="#moda-infantil">Moda Infantil</a></li>
+        <li><a href="#moda-calcinha">Calcinha</a></li>
+        <li><a href="#moda-sutia">Sutiãs</a></li>
+        <li><a href="#moda-cueca">Cuecas</a></li>
+        <li><a href="#moda-diamante">Diamantes</a></li>
+      </ul>
+    </div>
   </div>
 
 
@@ -56,7 +68,7 @@
     <a id="whats" href="https://www.whatsapp.com/"><i class="bi bi-whatsapp"></i></a>
   </div>
   <div class="banner tela-inicial">
-    <img src="./src/banner.png" alt="Banner da loja" class="banner-img">
+    <!-- <img src="./src/banner.png" alt="Banner da loja" class="banner-img"> -->
   </div>
 
   <div class="inicio">
@@ -110,7 +122,7 @@
         <p id="total-carrinho"></p>
         <button onclick="fecharCarrinho()" class="fecharCarrinho">
           <i class="bi bi-x-circle"></i>
-          
+
         </button>
 
       </div>

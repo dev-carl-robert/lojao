@@ -1046,6 +1046,15 @@ const modaDiamante = [
     },
 ]
 
+function toggleCategorias() {
+    const categorias = document.getElementById('categorias');
+    if (categorias.style.display === 'none' || categorias.style.display === '') {
+        categorias.style.display = 'block';
+    } else {
+        categorias.style.display = 'none';
+    }
+}
+
 const seccaoDetalhes = document.querySelector(".seccao_especifica");
 
 function renderizarProdutos(categoriaId, produtos) {
@@ -1080,8 +1089,27 @@ function criarElementoProduto(prod) {
 }
 
 function exibirDetalhesProduto(prod, containerGeral) {
-    document.querySelectorAll("section").forEach(section => section.style.display = "none");
-    containerGeral.style.display = "none";
+    const elementos = [
+        "header",
+        "nav",
+        ".botoes-laterais",
+        ".redes-sociais",
+        ".banner",
+        "#moda-infantil",
+        "#moda-calcinha",
+        "#moda-sutia",
+        "#moda-cueca",
+        "#moda-diamante"
+        
+    ];
+
+    // 🔻 Esconder
+    elementos.forEach(sel => {
+        document.querySelectorAll(sel).forEach(el => {
+            el.dataset.display = el.style.display; // Salva o estado atual
+            el.style.display = "none";
+        });
+    });
     seccaoDetalhes.style.display = "grid";
 
     const imagensExtras = [prod.imagem];
@@ -1109,10 +1137,17 @@ function gerarHTMLDetalhes(prod, imagens) {
     }
     return `
         <div class="detalhes-produto">
-            <button class="fechar-detalhes"><i class="bi bi-x-circle"></i></button>
-            <h3>${prod.nome}</h3>
-            <div class="detalhes">
+            <div class="titulo-detalhe">
+                <h3>${prod.nome}</h3>
+                <button class="fechar-detalhes"><i class="bi bi-x-circle"></i></button>
+            </div>
+             <div class="detalhes">
+            <div class="alinhar">
                 <img class="principal" src="${prod.imagem}" alt="${prod.nome}">
+                <div class="galeria">
+                    ${imagens.map(src => `<img src="${src}" alt="${prod.nome}">`).join("")}
+                </div>
+            </div>    
                 <div class="informacoes">
                     <p><strong>Preço à vista:</strong> R$ ${prod.preco}</p>
                     <p><strong>Preço no cartão:</strong> R$ ${prod.preco_cartao}</p>
@@ -1125,9 +1160,6 @@ function gerarHTMLDetalhes(prod, imagens) {
                     </div>
                     <button class="adicionar-carrinho">Adicionar ao Carrinho</button>
                 </div>
-            </div>
-            <div class="galeria">
-                ${imagens.map(src => `<img src="${src}" alt="${prod.nome}">`).join("")}
             </div>
         </div>
     `;
@@ -1148,6 +1180,9 @@ function configurarEventosDetalhes(prod, containerGeral) {
     seccaoDetalhes.querySelector(".fechar-detalhes").addEventListener("click", () => {
         seccaoDetalhes.style.display = "none";
         containerGeral.style.display = "grid";
+        document.querySelector("header").style.display = "block";
+        document.querySelector("nav").style.display = "block";
+        document.querySelector(".banner").style.display = "block";
 
         document.querySelectorAll("section").forEach(section => {
             section.style.display = "grid";
@@ -1592,9 +1627,9 @@ function criarResumoCompra() {
                     .catch(error => {
                         console.error("Erro ao enviar a requisição:", error);
                     });
-            
 
-        }
+
+            }
             // Função para enviar mensagem para Telegram
             function enviarMensagemTelegram(chatId, texto) {
                 fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
@@ -1625,10 +1660,10 @@ function criarResumoCompra() {
             // Envia para o grupo da loja
             // enviarMensagemTelegram(chatIdGrupo, mensagem);
             pagarConta();
-    });
+        });
 
-}
-return resumo;
+    }
+    return resumo;
 
 }
 
