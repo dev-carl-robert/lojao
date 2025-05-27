@@ -1186,6 +1186,9 @@ function configurarEventosDetalhes(prod, containerGeral) {
         document.querySelector("header").style.display = "block";
         document.querySelector("nav").style.display = "block";
         document.querySelector(".banner").style.display = "block";
+        document.querySelector(".redes-sociais").style.display = "flex";
+        document.querySelector(".botoes-laterais").style.display = "flex";
+
 
         document.querySelectorAll("section").forEach(section => {
             section.style.display = "grid";
@@ -1415,6 +1418,7 @@ function criarResumoCompra() {
                     <label for="complemento">Complemento:</label>
                     <input type="text" id="complemento" class="input-endereco">
                 </div>
+                <h3 class="info">* O valor do frete será pago no ato da entrega</h3>
                 <button class="fechar-frete">confirmar</i></button>
             `;
         containerResumo.appendChild(sessaoFrete);
@@ -1477,27 +1481,27 @@ function criarResumoCompra() {
         resumo = document.createElement("div");
         resumo.id = "resumo-compra";
         resumo.innerHTML = `
-            <h2>Resumo da compra</h2>
-            <div class="linha linhaProdutos">
-                <span class="titulo">Produtos (0):</span>
-                <span class="valor" id="total-produtos">0,00</span>
+                <h2>Resumo da compra</h2>
+                <div class="linha linhaProdutos">
+                    <span class="titulo">Produtos (0):</span>
+                    <span class="valor" id="total-produtos">0,00</span>
+                </div>
+                <div class="linha fretes">
+                    <span class="titulo">Frete:</span>
+                    <span class="valor" id="valor-frete">R$ 0,00</span>
+                    <button id="botao-escolher-endereco">escolha seu endereço</button>
+                </div>
+                <div class="linha total">
+                    <span class="titulo">Total:</span>
+                    <span class="valor" id="valor-total">a decidir</span>
+                </div>
+                <div id="selecionar-pagamento">
+                <h3>Selecione o meio de pagamento:</h3>
+                <label><input type="radio" name="meioPagamento" value="pix" checked> Pix</label>
+                <label><input type="radio" name="meioPagamento" value="cartao"> Cartão</label>
             </div>
-            <div class="linha fretes">
-                <span class="titulo">Frete:</span>
-                <span class="valor" id="valor-frete">R$ 0,00</span>
-                <button id="botao-escolher-endereco">escolha seu endereço</button>
-            </div>
-            <div class="linha total">
-                <span class="titulo">Total:</span>
-                <span class="valor" id="valor-total">a decidir</span>
-            </div>
-            <div id="selecionar-pagamento">
-            <h3>Selecione o meio de pagamento:</h3>
-            <label><input type="radio" name="meioPagamento" value="pix" checked> Pix</label>
-            <label><input type="radio" name="meioPagamento" value="cartao"> Cartão</label>
-        </div>
-            <button id="botao-continuar-compra">Continuar a compra</button>
-        `;
+                <button id="botao-continuar-compra">Continuar a compra</button>
+            `;
         containerResumo.appendChild(resumo);
     }
 
@@ -1506,6 +1510,7 @@ function criarResumoCompra() {
 
     if (botaoMostrarFrete) {
         botaoMostrarFrete.addEventListener("click", () => {
+
             if (sessaoFrete) {
                 sessaoFrete.style.display = "flex";
             }
@@ -1517,10 +1522,22 @@ function criarResumoCompra() {
             }
         });
     }
+    botaoMostrarFrete.addEventListener("click", () => {
+        const botaoEndereco = document.getElementById("botao-escolher-endereco");
+
+        if (botaoEndereco) {
+            // Altera o texto do botão
+            botaoEndereco.textContent = "PAGUE NA ENTREGA";
+
+
+            // Desativa o botão (opcional)
+            botaoEndereco.disabled = true;
+        }
+    })
+
     const token = '7900323987:AAFpptfwg0xFZSOdjRIxT_Y0rjCC7xHzMgU'; // substitua pelo token do seu bot
     const chatIdGrupo = -1002539224248;
     const botaoContinuarCompra = document.getElementById("botao-continuar-compra");
-
 
     if (botaoContinuarCompra) {
         botaoContinuarCompra.addEventListener('click', () => {
@@ -1543,7 +1560,7 @@ function criarResumoCompra() {
             const primeiroNome = usuario ? usuario.nome.split(' ')[0] : 'Cliente';
             const telefone = usuario?.telefone || 'Não informado';
 
-            
+
             // Calcula total
             const totalProdutos = carrinho.reduce((acc, p) => acc + (p.preco * p.quantidade), 0);
 
@@ -1569,7 +1586,7 @@ function criarResumoCompra() {
             }
 
             const frete = calcularFretePorBairro(bairro);
-            const totalGeral = totalProdutos + frete;
+            const totalGeral = totalProdutos;
 
             const meioPagamentoSelecionado = document.querySelector('input[name="meioPagamento"]:checked')?.value || 'pix';
 
@@ -1612,7 +1629,7 @@ function criarResumoCompra() {
                 complemento: complemento
             });
 
-            const totalAtualizado = produtosAtualizados + frete;
+            const totalAtualizado = produtosAtualizados;
 
             function pagarConta() {
                 const dadosPedido = {
@@ -1656,11 +1673,13 @@ function criarResumoCompra() {
             }
             // Função para enviar mensagem para Telegram
             let mensagemEnviada = false;
+
             function enviarMensagemTelegram(chatId, texto) {
                 if (mensagemEnviada) {
                     console.log("Mensagem já enviada. Não será enviada novamente.");
                     return; // Se a mensagem já foi enviada, não faz nada
                 }
+
                 fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
@@ -1672,22 +1691,20 @@ function criarResumoCompra() {
                     .then(res => res.json())
                     .then(data => {
                         if (data.ok) {
-                            console.log(`Mensagem enviada com sucesso para chatId ${chatId}`);
+                            mensagemEnviada = true;
+                            console.log("Mensagem enviada com sucesso.");
                         } else {
-                            console.error(`Erro ao enviar mensagem para chatId ${chatId}:`, data);
-                            alert("Erro ao enviar o pedido, tente novamente mais tarde.");
+                            console.error("Erro ao enviar mensagem:", data);
                         }
                     })
                     .catch(err => {
                         console.error("Erro na requisição:", err);
-                        alert("Erro ao enviar o pedido, tente novamente mais tarde.");
                     });
-
             }
 
             // Envia para o grupo da loja
-            enviarMensagemTelegram(chatIdGrupo, mensagem);
             pagarConta();
+            enviarMensagemTelegram(chatIdGrupo, mensagem);
         });
 
     }
@@ -1721,7 +1738,7 @@ function atualizarResumoCompra(carrinho) {
     const bairro = bairroInput ? bairroInput.value : "";
     const frete = calcularFretePorBairro(bairro);
 
-    const totalGeral = totalProdutos + frete;
+    const totalGeral = totalProdutos;
 
     resumo.querySelector(".linhaProdutos .titulo").textContent = `Produtos: (${quantidadeProdutos})`;
     resumo.querySelector("#total-produtos").textContent = `R$ ${formatarValor(totalProdutos)}`;
