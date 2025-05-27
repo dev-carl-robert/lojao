@@ -1057,6 +1057,7 @@ function toggleCategorias() {
 
 const seccaoDetalhes = document.querySelector(".seccao_especifica");
 
+// Produtos
 function renderizarProdutos(categoriaId, produtos) {
     const secao = document.querySelector(`#${categoriaId}`);
     const container = secao.querySelector(".produtos");
@@ -1100,7 +1101,7 @@ function exibirDetalhesProduto(prod, containerGeral) {
         "#moda-sutia",
         "#moda-cueca",
         "#moda-diamante"
-        
+
     ];
 
     // 🔻 Esconder
@@ -1164,7 +1165,9 @@ function gerarHTMLDetalhes(prod, imagens) {
         </div>
     `;
 }
+// Fim produtos
 
+// sessao especifica
 function configurarEventosDetalhes(prod, containerGeral) {
     const imgPrincipal = seccaoDetalhes.querySelector(".principal");
     const selectTamanho = seccaoDetalhes.querySelector(".selecionar-tamanho");
@@ -1246,6 +1249,8 @@ function resetarLayoutProdutos() {
         secao.style.display = "";
     });
 }
+
+// Fim Sessao especifica
 
 // Carrinho
 document.getElementById("carrinho").addEventListener("click", () => {
@@ -1333,14 +1338,15 @@ function criarItemCarrinho(prod, index, carrinho) {
     item.classList.add("item-carrinho");
 
     const precoUnitario = parseFloat(prod.preco); // Use prod.preco aqui
+    const precocartao = parseFloat(prod.preco_cartao);
     const subtotal = precoUnitario * prod.quantidade;
 
     item.innerHTML = `
     <img src="${prod.imagem}" alt="${prod.nome}" class="imagem-carrinho">  
     <div>
         <h3>${prod.nome}</h3>
-        <p><strong>Preço unitário:</strong> R$ ${precoUnitario.toFixed(2)}</p>
-        <p><strong>Subtotal:</strong> R$ ${subtotal.toFixed(2)}</p>
+        <p><strong>Preço no pix:</strong> R$ ${precoUnitario.toFixed(2)}</p>
+        <p><strong>Preço no cartão:</strong> R$ ${precocartao.toFixed(2)}</p>
         <p><strong>Tamanho:</strong> ${prod.tamanho}</p>
     </div>
     <div class="controle-quantidade">
@@ -1485,6 +1491,11 @@ function criarResumoCompra() {
                 <span class="titulo">Total:</span>
                 <span class="valor" id="valor-total">a decidir</span>
             </div>
+            <div id="selecionar-pagamento">
+            <h3>Selecione o meio de pagamento:</h3>
+            <label><input type="radio" name="meioPagamento" value="pix" checked> Pix</label>
+            <label><input type="radio" name="meioPagamento" value="cartao"> Cartão</label>
+        </div>
             <button id="botao-continuar-compra">Continuar a compra</button>
         `;
         containerResumo.appendChild(resumo);
@@ -1532,11 +1543,7 @@ function criarResumoCompra() {
             const primeiroNome = usuario ? usuario.nome.split(' ')[0] : 'Cliente';
             const telefone = usuario?.telefone || 'Não informado';
 
-            // Monta mensagem dos produtos
-            let mensagemProdutos = carrinho.map((prod, i) =>
-                `${i + 1}. ${prod.nome} - Tamanho: ${prod.tamanho} - Quantidade: ${prod.quantidade} - R$ ${(prod.preco * prod.quantidade).toFixed(2)}`
-            ).join("\n");
-
+            
             // Calcula total
             const totalProdutos = carrinho.reduce((acc, p) => acc + (p.preco * p.quantidade), 0);
 
@@ -1564,12 +1571,27 @@ function criarResumoCompra() {
             const frete = calcularFretePorBairro(bairro);
             const totalGeral = totalProdutos + frete;
 
-            // Monta mensagem final para o Telegram
+            const meioPagamentoSelecionado = document.querySelector('input[name="meioPagamento"]:checked')?.value || 'pix';
+
+            // Calcula quantidade de produtos
+            const quantidadeProdutos = carrinho.reduce((acc, prod) => acc + prod.quantidade, 0);
+
+            // Calcula total dos produtos com base no meio de pagamento
+            const produtosAtualizados = carrinho.reduce((acc, prod) => {
+                const preco = meioPagamentoSelecionado === "cartao" ? parseFloat(prod.preco_cartao) : parseFloat(prod.preco);
+                return acc + (preco * prod.quantidade);
+            }, 0);
+
+            // Monta mensagem dos produtos
+            let mensagemProdutos = carrinho.map((prod, i) =>
+                `${i + 1}. ${prod.nome} - Tamanho: ${prod.tamanho} - Quantidade: ${prod.quantidade} - R$ ${(prod.preco * prod.quantidade).toFixed(2)}`
+            ).join("\n");
+
             // Monta mensagem final para o Telegram
             let mensagem = `Pedido de ${primeiroNome}:\n` +
                 `Telefone: ${telefone}\n\n` +
                 `${mensagemProdutos}\n\n` +
-                `Subtotal: R$ ${totalProdutos.toFixed(2)}\n` +
+                `Subtotal: R$ ${produtosAtualizados.toFixed(2)}\n` +
                 `Frete: R$ ${frete.toFixed(2)}\n` +
                 `Total: R$ ${totalGeral.toFixed(2)}\n\n` +
                 `Endereço para entrega:\nRua: ${rua}\nBairro: ${bairro}\nNúmero: ${numero}\nComplemento: ${complemento}\n\n` +
@@ -1580,7 +1602,7 @@ function criarResumoCompra() {
             console.log("Nome:", primeiroNome);
             console.log("Telefone:", telefone);
             console.log("Produtos:", mensagemProdutos);
-            console.log("Subtotal:", totalProdutos);
+            console.log("Subtotal:", produtosAtualizados);
             console.log("Frete:", frete);
             console.log("Total:", totalGeral);
             console.log("Endereço:", {
@@ -1590,14 +1612,16 @@ function criarResumoCompra() {
                 complemento: complemento
             });
 
+            const totalAtualizado = produtosAtualizados + frete;
+
             function pagarConta() {
                 const dadosPedido = {
                     nome: primeiroNome,
                     telefone: telefone,
                     produtos: mensagemProdutos,
-                    subtotal: totalProdutos,
+                    subtotal: produtosAtualizados,
                     frete: frete,
-                    total: totalGeral,
+                    total: totalAtualizado,
                     endereco: {
                         rua: rua,
                         bairro: bairro,
@@ -1631,7 +1655,12 @@ function criarResumoCompra() {
 
             }
             // Função para enviar mensagem para Telegram
+            let mensagemEnviada = false;
             function enviarMensagemTelegram(chatId, texto) {
+                if (mensagemEnviada) {
+                    console.log("Mensagem já enviada. Não será enviada novamente.");
+                    return; // Se a mensagem já foi enviada, não faz nada
+                }
                 fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
@@ -1644,7 +1673,6 @@ function criarResumoCompra() {
                     .then(data => {
                         if (data.ok) {
                             console.log(`Mensagem enviada com sucesso para chatId ${chatId}`);
-                            alert("Pedido enviado com sucesso! Em breve entraremos em contato.");
                         } else {
                             console.error(`Erro ao enviar mensagem para chatId ${chatId}:`, data);
                             alert("Erro ao enviar o pedido, tente novamente mais tarde.");
@@ -1658,7 +1686,7 @@ function criarResumoCompra() {
             }
 
             // Envia para o grupo da loja
-            // enviarMensagemTelegram(chatIdGrupo, mensagem);
+            enviarMensagemTelegram(chatIdGrupo, mensagem);
             pagarConta();
         });
 
@@ -1670,9 +1698,23 @@ function criarResumoCompra() {
 function atualizarResumoCompra(carrinho) {
     const resumo = criarResumoCompra();
     const formatarValor = valor => valor.toFixed(2).replace(".", ",");
+    const meioPagamentoSelecionado = document.querySelector('input[name="meioPagamento"]:checked')?.value || 'pix';
 
+    // Calcula quantidade de produtos
     const quantidadeProdutos = carrinho.reduce((acc, prod) => acc + prod.quantidade, 0);
-    const totalProdutos = carrinho.reduce((acc, prod) => acc + parseFloat(prod.preco) * prod.quantidade, 0);
+
+    // Calcula total dos produtos com base no meio de pagamento
+    const totalProdutos = carrinho.reduce((acc, prod) => {
+        const preco = meioPagamentoSelecionado === "cartao" ? parseFloat(prod.preco_cartao) : parseFloat(prod.preco);
+        return acc + (preco * prod.quantidade);
+    }, 0);
+    document.querySelectorAll('input[name="meioPagamento"]').forEach((input) => {
+        input.addEventListener('change', () => {
+            const carrinho = JSON.parse(localStorage.getItem("carrinho")) || [];
+            atualizarResumoCompra(carrinho);
+        });
+    });
+
 
     // Pega o bairro para calcular frete
     const bairroInput = document.getElementById("bairro");
@@ -1718,6 +1760,9 @@ function mostrarsessaofrete() {
         document.body.style.overflow = "hidden";
     }
 }
+// Fim carrinho
+
+
 function mostrarAlertaCustomizado(texto) {
     const alerta = document.getElementById("alerta-customizado");
     const mensagem = document.getElementById("mensagem-alerta");
