@@ -1049,8 +1049,8 @@ const modaDiamante = [
 function toggleCategorias() {
     const categorias = document.getElementById('categorias');
     if (categorias.style.display === 'none' || categorias.style.display === '') {
-        categorias.style.display = 'block';
-    } else {
+        categorias.style.display = 'flex';
+    } else {    
         categorias.style.display = 'none';
     }
 }

@@ -25,14 +25,19 @@
     display: none;
   }
 
-  .banner.tela-inicial {
-    background-image: url('../src/banner-responsive.jpg');
+  .banner {
+    display: none;
+  }
+
+  .banner-responsive {
+    display: flex;
     background-size: cover;
     background-position: top;
     image-rendering: pixelated;
-    width: 400px;
+    width: 200px;
+    height: 200px;
     border-radius: 50rem;
-    margin-top: 10rem;
+    margin-top: 6rem;
   }
 
   header .container h2 {
@@ -42,18 +47,47 @@
 
   }
 
-  .botoes-laterais {
+  .bottons {
     display: flex;
     flex-direction: column;
+    text-align: center;
+
+  }
+
+  .botoes-laterais {
+    display: flex;
     margin-top: 5rem;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5rem;
+    opacity: .8;
+    width: 100%;
+    flex-direction: column;
+    position: absolute;
+  }
+
+  .row1 {
+    display: flex;
+  }
+
+  .row2 {
+    /* display: flex; */
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+
   }
 
   .redes-sociais {
-    position: absolute;
-    margin-top: 3rem;
+    display: none;
+  }
+  .redes-sociais-responsive {
     display: flex;
-    flex-direction: column;
-    font-size: .9rem;
+    width: 100%;
+    justify-content: center;
+  }
+  .redes-sociais-responsive i {
+    font-size: 2rem;
   }
 
   nav {
@@ -65,9 +99,11 @@
   }
 
   #categorias {
-    flex-direction: column;
     font-size: 1.5rem;
+    /* display: flex; */
+    flex-direction: row;
   }
+
 
   #categorias li {
     padding: .6rem 0;
@@ -89,38 +125,46 @@
   section .produtos {
     grid-template-columns: 2fr;
   }
+
   .seccao_especifica {
     height: 100%;
     padding: 0;
   }
+
   .detalhes-produto {
     flex-direction: column;
     height: 100%;
     margin-top: 5rem;
   }
+
   .detalhes {
     flex-direction: column;
   }
+
   .galeria img {
     margin-left: 1rem;
   }
-  .principal{
+
+  .principal {
     min-height: 150px;
     min-height: 150px;
   }
+
   .fechar-detalhes {
     top: 60px;
   }
+
   .titulo-detalhe {
     width: 50rem;
     display: flex;
     justify-content: space-around;
     align-items: start;
   }
+
   .informacoes p {
     font-size: 1.5rem;
   }
-    
+
 }
 
 

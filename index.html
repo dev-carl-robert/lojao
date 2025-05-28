@@ -43,14 +43,16 @@
   </nav>
 
   <div class="botoes-laterais">
-    <a href="login.html" id="login" class="bi bi-person">
-      <span>Login</span>
-    </a>
-    <button id="carrinho" class="bi bi-cart-plus-fill"><span> Carrinho</span></button>
-    
-    <button onclick="toggleCategorias()" id="btn-categorias"><i class="bi bi-list"></i>Categorias</button>
-    <div id="categorias">
-      <ul>
+    <div class="row1">
+      <a href="login.html" id="login" class="bi bi-person">
+        <span>Login</span>
+      </a>
+      <button id="carrinho" class="bi bi-cart-plus-fill"><span> Carrinho</span></button>
+
+      <button onclick="toggleCategorias()" id="btn-categorias"><i class="bi bi-list"></i>Categorias</button>
+    </div>
+    <div>
+      <ul class="row2" id="categorias">
         <li><a href="#">Inicio</a></li>
         <li><a href="#moda-infantil">Moda Infantil</a></li>
         <li><a href="#moda-calcinha">Calcinha</a></li>
@@ -67,8 +69,20 @@
     <a id="tik" href="https://www.tiktok.com/"><i class="bi bi-tiktok"></i></a>
     <a id="whats" href="https://www.whatsapp.com/"><i class="bi bi-whatsapp"></i></a>
   </div>
-  <div class="banner tela-inicial">
-    <!-- <img src="./src/banner.png" alt="Banner da loja" class="banner-img"> -->
+
+  <div class="banner-tela-inicial">
+    <img class="banner" src="./src/banner.png" alt="Banner da loja" ">
+    <div>  
+      <div class=" bottons">
+    <img class="banner-responsive" src="./src/banner-responsive.jpg" alt="">
+    <p style="font-size: 3rem;">Seja Bem Vindo</p>
+  </div>
+  <div class="bottons">
+    <img class="banner-responsive" src="./src/banner-responsive.jpg" alt="">
+    <p style="font-size: 3rem; ">Surpreenda-se</p>
+  </div>
+
+  </div>
   </div>
 
   <div class="inicio">
@@ -129,7 +143,11 @@
     </div>
   </section>
 
-
+  <div class="redes-sociais-responsive">
+    <a id="insta" href="https://www.instagram.com/"><i class="bi bi-instagram"></i></a>
+    <a id="tik" href="https://www.tiktok.com/"><i class="bi bi-tiktok"></i></a>
+    <a id="whats" href="https://www.whatsapp.com/"><i class="bi bi-whatsapp"></i></a>
+  </div>
   <div id="alerta-customizado" class="alerta-customizado">
     <p id="mensagem-alerta">Produto adicionado ao carrinho!</p>
   </div>
