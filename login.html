@@ -97,8 +97,38 @@
             border: 1px solid #e0258b;
             width: 20px;
         }
-        #nascimento{
+
+        #nascimento {
             color: #e0258b;
+        }
+
+        @media (max-width: 576px) {
+            .login {
+                width: 80%;
+                height: 80%;
+            }
+
+            input[type="text"],
+            input[type="email"],
+            input[type="password"],
+            input[type="date"],
+            input[type="tel"] {
+                width: 300px;
+                padding: 10px;
+                margin: 8px;
+                border: 1px solid #ccc;
+                border-radius: 5px;
+            }
+            button {
+            width: 200px;
+            padding: 10px;
+            background: #e0258b;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+                
+        }
         }
     </style>
 

@@ -1050,7 +1050,7 @@ function toggleCategorias() {
     const categorias = document.getElementById('categorias');
     if (categorias.style.display === 'none' || categorias.style.display === '') {
         categorias.style.display = 'flex';
-    } else {    
+    } else {
         categorias.style.display = 'none';
     }
 }
@@ -1100,7 +1100,11 @@ function exibirDetalhesProduto(prod, containerGeral) {
         "#moda-calcinha",
         "#moda-sutia",
         "#moda-cueca",
-        "#moda-diamante"
+        "#moda-diamante",
+        ".redes-sociais-responsive",
+        ".banner-responsive",
+        ".bottons",
+        ".inicio"
 
     ];
 
@@ -1183,17 +1187,30 @@ function configurarEventosDetalhes(prod, containerGeral) {
     seccaoDetalhes.querySelector(".fechar-detalhes").addEventListener("click", () => {
         seccaoDetalhes.style.display = "none";
         containerGeral.style.display = "grid";
-        document.querySelector("header").style.display = "block";
-        document.querySelector("nav").style.display = "block";
-        document.querySelector(".banner").style.display = "block";
-        document.querySelector(".redes-sociais").style.display = "flex";
-        document.querySelector(".botoes-laterais").style.display = "flex";
 
+        if (window.matchMedia("(max-width: 576px)").matches) {
+            // Para celulares
+            document.querySelector("header").style.display = "block";
+            document.querySelector(".banner-tela-inicial").style.display = "flex";
+            document.querySelector(".banner").style.display = "none";
+            document.querySelector(".redes-sociais").style.display = "none";
+            document.querySelector(".botoes-laterais").style.display = "none";
+            location.reload();
+            document.querySelectorAll("section").forEach(section => {
+                section.style.display = "none";
+            });
+        } else {
+            // Para telas maiores
+            document.querySelector("header").style.display = "block";
+            document.querySelector("nav").style.display = "block";
+            document.querySelector(".banner").style.display = "block";
+            document.querySelector(".redes-sociais").style.display = "flex";
+            document.querySelector(".botoes-laterais").style.display = "flex";
 
-        document.querySelectorAll("section").forEach(section => {
-            section.style.display = "grid";
-        });
-
+            document.querySelectorAll("section").forEach(section => {
+                section.style.display = "grid";
+            });
+        }
         resetarLayoutProdutos();
     });
 
@@ -1275,7 +1292,12 @@ document.getElementById("carrinho").addEventListener("click", () => {
         "#moda-calcinha",
         "#moda-sutia",
         "#moda-cueca",
-        "#moda-diamante"
+        "#moda-diamante",
+        ".banner-responsive",
+        ".bottons",
+        ".inicio",
+        ".redes-sociais-responsive"
+
     ];
     esconder.forEach(sel => {
         document.querySelectorAll(sel).forEach(el => el.style.display = "none");
@@ -1296,15 +1318,28 @@ function fecharCarrinho() {
         { selector: "#moda-cueca", display: "grid" },
         { selector: "#moda-diamante", display: "grid" },
     ];
-
-    resetar.forEach(item => {
-        document.querySelectorAll(item.selector).forEach(el => {
-            el.style.display = item.display; // Define o display específico
+    if (window.matchMedia("(max-width: 576px)").matches) {
+        // Para celulares
+        document.querySelector("header").style.display = "block";
+        document.querySelector(".banner-tela-inicial").style.display = "flex";
+        document.querySelector(".banner").style.display = "none";
+        document.querySelector(".redes-sociais").style.display = "none";
+        document.querySelector(".botoes-laterais").style.display = "none";
+        location.reload();
+        document.querySelectorAll("section").forEach(section => {
+            section.style.display = "none";
         });
-    });
+    } else {
 
-    // Ocultar a seção do carrinho
-    document.getElementById("sessao-carrinho").style.display = "none";
+        resetar.forEach(item => {
+            document.querySelectorAll(item.selector).forEach(el => {
+                el.style.display = item.display; // Define o display específico
+            });
+        });
+
+        // Ocultar a seção do carrinho
+        document.getElementById("sessao-carrinho").style.display = "none";
+    }
 }
 
 function carregarCarrinho() {
