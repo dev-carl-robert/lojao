@@ -1685,7 +1685,7 @@ function criarResumoCompra() {
                 // Logando os dados que serão enviados
                 console.log("Dados do Pedido para o Backend:", dadosPedido);
 
-                fetch('http://127.0.0.1:5000/pagar', {
+                fetch('https://api-lojao-artl7xuwf-roberts-projects-6f92ed1a.vercel.app', {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json"
