@@ -1685,7 +1685,7 @@ function criarResumoCompra() {
                 // Logando os dados que serão enviados
                 console.log("Dados do Pedido para o Backend:", dadosPedido);
 
-                fetch('https://api-lojao.onrender.com', {
+                fetch('https://api-lojao.onrender.com/pagar', {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json"
