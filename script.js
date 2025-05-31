@@ -1685,7 +1685,7 @@ function criarResumoCompra() {
                 // Logando os dados que serão enviados
                 console.log("Dados do Pedido para o Backend:", dadosPedido);
 
-                fetch('https://api-lojao-artl7xuwf-roberts-projects-6f92ed1a.vercel.app', {
+                fetch('https://api-lojao.onrender.com', {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json"
@@ -1694,7 +1694,7 @@ function criarResumoCompra() {
                 })
                     .then(res => {
                         console.log("Resposta do servidor:", res);
-                        return res.json();
+                        return res.json();  
                     })
                     .then(data => {
                         console.log("Dados retornados do servidor:", data);
