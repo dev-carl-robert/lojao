@@ -1284,6 +1284,12 @@ function resetarLayoutProdutos() {
 
 // Carrinho
 document.getElementById("carrinho").addEventListener("click", () => {
+     const usuario = JSON.parse(localStorage.getItem("usuarioLogado"));
+
+    if (!usuario) {
+        alert("Você precisa fazer login antes de acessar o carrinho.");
+        return;
+    }
     carregarCarrinho();
     console.log(JSON.parse(localStorage.getItem("carrinho")));
     document.getElementById("sessao-carrinho").style.display = "flex";
@@ -1750,8 +1756,9 @@ function criarResumoCompra() {
             // Envia para o grupo da loja
             pagarConta();
             enviarMensagemTelegram(chatIdGrupo, mensagem);
+            alert("Você será redirecionado \n aguarde alguns segundos")
+            document.getElementById("botao-continuar-compra").disabled = true;
         });
-
     }
     return resumo;
 
