@@ -1,6 +1,16 @@
 const modaInfantil = [
     {
         imagem: "./produtos/Infantil/infantil0.jpg",
+        nome: "teste",
+        preco: "01.00",
+        preco_cartao: "01.00",
+        descricao: "Algodão ",
+        identificador: "MI001",
+        tamanho: "unico",
+        categoria: "Infantil"
+    },
+    {
+        imagem: "./produtos/Infantil/infantil0.jpg",
         nome: "Conjunto Infantil",
         preco: "25.00",
         preco_cartao: "27.00",
@@ -1647,7 +1657,7 @@ function criarResumoCompra() {
                 `Frete: R$ ${frete.toFixed(2)}\n` +
                 `Total: R$ ${totalGeral.toFixed(2)}\n\n` +
                 `Endereço para entrega:\nRua: ${rua}\nBairro: ${bairro}\nNúmero: ${numero}\nComplemento: ${complemento}\n\n` +
-                `Obrigado!`;
+                `ESPERANDO CONFIRMAÇÃO DE PAGAMENTO`;
 
             // Adicionando logs para verificar os dados
             console.log("Dados do Pedido:");
