@@ -57,7 +57,6 @@
     <div class="info"><strong>Nome:</strong> <span id="nome"></span></div>
     <div class="info"><strong>Sobrenome:</strong> <span id="sobrenome"></span></div>
     <div class="info"><strong>Telefone:</strong> <span id="telefone"></span></div>
-    <div class="info"><strong>Data de Nascimento:</strong> <span id="nascimento"></span></div>
     <div class="info"><strong>Email:</strong> <span id="email"></span></div>
 
     <button onclick="logout()">Sair</button>
@@ -74,9 +73,6 @@
         document.getElementById('sobrenome').innerText = user.sobrenome;
         document.getElementById('telefone').innerText = user.telefone;
 
-        // ✅ Convertendo data para formato brasileiro
-        const dataBR = user.nascimento.split('-').reverse().join('/');
-        document.getElementById('nascimento').innerText = dataBR;
 
         document.getElementById('email').innerText = user.email;
     }

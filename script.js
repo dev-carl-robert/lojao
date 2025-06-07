@@ -1,16 +1,6 @@
 const modaInfantil = [
     {
         imagem: "./produtos/Infantil/infantil0.jpg",
-        nome: "teste",
-        preco: "01.00",
-        preco_cartao: "01.00",
-        descricao: "Algodão ",
-        identificador: "MI001",
-        tamanho: "unico",
-        categoria: "Infantil"
-    },
-    {
-        imagem: "./produtos/Infantil/infantil0.jpg",
         nome: "Conjunto Infantil",
         preco: "25.00",
         preco_cartao: "27.00",
@@ -1771,7 +1761,7 @@ function criarResumoCompra() {
             enviarMensagemTelegram(chatIdGrupo, mensagem);
             alert("Você será redirecionado \n aguarde alguns segundos")
         });
-    }
+    }{ once: true }
     return resumo;
 
 }
