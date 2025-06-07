@@ -718,8 +718,8 @@ section .produtos {
     background-color: #d0207a;
 }
 
-button:disabled {
-    background-color: gray;
-    cursor: not-allowed;
+#botao-continuar-compra:disabled {
+    background-color: #e0258b;
+    cursor: default;
     opacity: 0.6;
 }

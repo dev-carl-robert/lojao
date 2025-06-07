@@ -1284,7 +1284,7 @@ function resetarLayoutProdutos() {
 
 // Carrinho
 document.getElementById("carrinho").addEventListener("click", () => {
-     const usuario = JSON.parse(localStorage.getItem("usuarioLogado"));
+    const usuario = JSON.parse(localStorage.getItem("usuarioLogado"));
 
     if (!usuario) {
         alert("Você precisa fazer login antes de acessar o carrinho.");
@@ -1446,8 +1446,8 @@ function criarResumoCompra() {
         <h2 class="titulo-endereco">Endereço de Entrega</h2>
         
                 <div class="campo-endereco">
-                    <label for="cep">CEP:</label>
-                    <input type="text" id="cep" maxlength="9" placeholder="65000-000" class="input-endereco">
+                    <label for="cep"> CEP:<span style="color: red;">*</span></label>
+                    <input type="text" id="cep" maxlength="9" placeholder="65000-000" class="input-endereco" required>
                 </div>
 
                 <div class="campo-endereco">
@@ -1461,13 +1461,13 @@ function criarResumoCompra() {
                     </div>
                     
                 <div class="campo-endereco">
-                    <label for="numero">Número:</label>
-                    <input type="text" id="numero" class="input-endereco">
+                    <label for="numero"> Número:<span style="color: red;">*</span></label>
+                    <input type="text" id="numero" class="input-endereco" required>
                 </div>
 
                 <div class="campo-endereco">
-                    <label for="complemento">Complemento:</label>
-                    <input type="text" id="complemento" class="input-endereco">
+                    <label for="complemento"> Complemento:<span style="color: red;">*</span></label>
+                    <input type="text" id="complemento" class="input-endereco" required>
                 </div>
                 <h3 class="info">* O valor do frete será pago no ato da entrega</h3>
                 <button class="fechar-frete">confirmar</i></button>
@@ -1476,15 +1476,26 @@ function criarResumoCompra() {
         const botaoFechar = sessaoFrete.querySelector(".fechar-frete");
 
         botaoFechar.addEventListener("click", () => {
-            sessaoFrete.style.display = "none";
-            document.body.style.overflow = "";
+            const cep = document.getElementById("cep").value.trim();
+            const rua = document.getElementById("rua").value.trim();
+            const bairro = document.getElementById("bairro").value.trim();
+            const numero = document.getElementById("numero").value.trim();
 
-            // Mostrar novamente o conteúdo do carrinho e o resumo
-            const conteudoCarrinho = document.getElementById("conteudo-carrinho");
-            const resumo = document.getElementById("resumo-compra");
+            // Verifica se todos os campos obrigatórios estão preenchidos
+            if (cep && rua && bairro && numero) {
+                botaoContinuarCompra.disabled = false; // Habilita o botão
+                sessaoFrete.style.display = "none";
+                document.body.style.overflow = "";
 
-            if (conteudoCarrinho) conteudoCarrinho.style.display = "block";
-            if (resumo) resumo.style.display = "block";
+                // Mostrar novamente o conteúdo do carrinho e o resumo
+                const conteudoCarrinho = document.getElementById("conteudo-carrinho");
+                const resumo = document.getElementById("resumo-compra");
+
+                if (conteudoCarrinho) conteudoCarrinho.style.display = "block";
+                if (resumo) resumo.style.display = "block";
+            } else {
+                alert("Preencha todos os campos obrigatórios do endereço!");
+            }
         });
 
 
@@ -1589,9 +1600,11 @@ function criarResumoCompra() {
     const token = '7900323987:AAFpptfwg0xFZSOdjRIxT_Y0rjCC7xHzMgU'; // substitua pelo token do seu bot
     const chatIdGrupo = -1002539224248;
     const botaoContinuarCompra = document.getElementById("botao-continuar-compra");
+    document.getElementById("botao-continuar-compra").disabled = true;
 
     if (botaoContinuarCompra) {
         botaoContinuarCompra.addEventListener('click', () => {
+            botaoContinuarCompra.disabled = false; // Habilita o botão
             console.log('Botão continuar clicado');
 
             const carrinho = JSON.parse(localStorage.getItem("carrinho")) || [];
@@ -1710,7 +1723,7 @@ function criarResumoCompra() {
                 })
                     .then(res => {
                         console.log("Resposta do servidor:", res);
-                        return res.json();  
+                        return res.json();
                     })
                     .then(data => {
                         console.log("Dados retornados do servidor:", data);
@@ -1757,7 +1770,6 @@ function criarResumoCompra() {
             pagarConta();
             enviarMensagemTelegram(chatIdGrupo, mensagem);
             alert("Você será redirecionado \n aguarde alguns segundos")
-            document.getElementById("botao-continuar-compra").disabled = true;
         });
     }
     return resumo;
