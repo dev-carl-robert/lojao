@@ -1757,8 +1757,8 @@ function criarResumoCompra() {
             }
 
             // Envia para o grupo da loja
-            // pagarConta();
-            // enviarMensagemTelegram(chatIdGrupo, mensagem);
+            pagarConta();
+            enviarMensagemTelegram(chatIdGrupo, mensagem);
             alert("Você será redirecionado \n aguarde alguns segundos")
             document.getElementById("botao-continuar-compra").disabled = true;
         });
