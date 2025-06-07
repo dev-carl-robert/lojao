@@ -1593,7 +1593,7 @@ function criarResumoCompra() {
     document.getElementById("botao-continuar-compra").disabled = true;
 
     if (botaoContinuarCompra) {
-        botaoContinuarCompra.addEventListener('click', () => {
+        botaoContinuarCompra.addEventListener('click',  () => {
             botaoContinuarCompra.disabled = false; // Habilita o botão
             console.log('Botão continuar clicado');
 
@@ -1757,14 +1757,15 @@ function criarResumoCompra() {
             }
 
             // Envia para o grupo da loja
-            pagarConta();
-            enviarMensagemTelegram(chatIdGrupo, mensagem);
+            // pagarConta();
+            // enviarMensagemTelegram(chatIdGrupo, mensagem);
             alert("Você será redirecionado \n aguarde alguns segundos")
+            document.getElementById("botao-continuar-compra").disabled = true;
         });
-    }{ once: true }
+    }
     return resumo;
 
-}
+}{ once: true }
 
 function atualizarResumoCompra(carrinho) {
     const resumo = criarResumoCompra();

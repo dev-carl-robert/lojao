@@ -9,14 +9,12 @@ function toggleForm() {
     // Mostrar ou esconder campos conforme login ou cadastro
     document.getElementById('nome').style.display = isLogin ? 'none' : 'block';
     document.getElementById('sobrenome').style.display = isLogin ? 'none' : 'block';
-    document.getElementById('nascimento').style.display = isLogin ? 'none' : 'block';
     document.getElementById('telefone').style.display = isLogin ? 'none' : 'block';
 }
 
 function handleSubmit() {
     const nome = document.getElementById('nome').value.trim();
     const sobrenome = document.getElementById('sobrenome').value.trim();
-    const nascimento = document.getElementById('nascimento').value.trim();
     const telefone = document.getElementById('telefone').value.trim();
     const email = document.getElementById('email').value.trim();
     const senha = document.getElementById('senha').value.trim();
