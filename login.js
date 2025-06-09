@@ -22,12 +22,12 @@ function handleSubmit() {
     if (isLogin) {
         login(email, senha);
     } else {
-        cadastro(nome, sobrenome, nascimento, telefone, email, senha);
+        cadastro(nome, sobrenome, telefone, email, senha);
     }
 }
 
-function cadastro(nome, sobrenome, nascimento, telefone, email, senha) {
-    if (!nome || !sobrenome || !nascimento || !telefone || !email || !senha) {
+function cadastro(nome, sobrenome, telefone, email, senha) {
+    if (!nome || !sobrenome || !telefone || !email || !senha) {
         alert('Preencha todos os campos do cadastro.');
         return;
     }
@@ -40,7 +40,7 @@ function cadastro(nome, sobrenome, nascimento, telefone, email, senha) {
         return;
     }
 
-    usuarios.push({ nome, sobrenome, nascimento, telefone, email, senha });
+    usuarios.push({ nome, sobrenome, telefone, email, senha });
     localStorage.setItem('usuarios', JSON.stringify(usuarios));
 
     alert('Cadastro realizado com sucesso!');
