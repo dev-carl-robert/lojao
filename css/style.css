@@ -195,11 +195,7 @@ section {
     justify-content: center;
 }
 
-#moda-infantil,
-#moda-calcinha,
-#moda-sutia,
-#moda-cueca,
-#moda-diamante {
+.sessoes {
     margin-top: 20rem;
 }
 
