@@ -358,7 +358,154 @@ const modaLupo = [
         tamanho: "P/M/G/GG",
     }
 ];
-
+const modaGestante = [
+    {
+        imagem: "produtos/gestante/gestante0.jpg",
+        imagem1: "produtos/gestante/gestante0,1.jpg",
+        nome: "Baby Doll Amamentação",
+        preco: "60.00",
+        preco_cartao: "66.00",
+        descricao: "",
+        identificador: "mg001",
+        tamanho: "P/M/G/GG",
+    },
+    {
+        imagem: "produtos/gestante/gestante1.jpg",
+        imagem1: "produtos/gestante/gestante1,1.jpg",
+        imagem2: "produtos/gestante/gestante1,2.jpg",
+        nome: "Camisola Amamentação",
+        preco: "60.00",
+        preco_cartao: "66.00",
+        descricao: "",
+        identificador: "mg002",
+        tamanho: "P/M/G/GG",
+    },
+    {
+        imagem: "produtos/gestante/gestante2.jpg",
+        imagem1: "produtos/gestante/gestante2,1.jpg",
+        imagem2: "produtos/gestante/gestante2,2.jpg",
+        nome: "Sutiã Amamentação",
+        preco: "25.00",
+        preco_cartao: "28.00",
+        descricao: "",
+        identificador: "mg003",
+        tamanho: "P/M/G/GG",
+    },
+    {
+        imagem: "produtos/gestante/gestante3.jpg",
+        nome: "Calça Lupo Para Gestante",
+        preco: "117.00",
+        preco_cartao: "128.00",
+        descricao: "",
+        identificador: "mg004",
+        tamanho: "P/M/G/GG",
+    } 
+]
+const modaTrifil = [
+    {
+        imagem: "produtos/trifil/trifil0.jpg",
+        imagem1: "produtos/trifil/trifil0,1.jpg",
+        nome: "Short feminino TriFil",
+        preco: "40.00",
+        preco_cartao: "45.00",
+        descricao: "",
+        identificador: "mT001",
+        tamanho: "P/M/G/GG",
+    },
+    {
+        imagem: "produtos/trifil/trifil1.jpg",
+        imagem1: "produtos/trifil/trifil1,1.jpg",
+        imagem2: "produtos/trifil/trifil1,2.jpg",
+        imagem3: "produtos/trifil/trifil1,3.jpg",
+        nome: "Short feminino TriFil",
+        preco: "34.00",
+        preco_cartao: "38.00",
+        descricao: "",
+        identificador: "mT002",
+        tamanho: "P/M/G/GG",
+    },
+    {
+        imagem: "produtos/trifil/trifil2.jpg",
+        imagem1: "produtos/trifil/trifil2,1.jpg",
+        nome: "Short feminino TriFil",
+        preco: "50.00",
+        preco_cartao: "53.00",
+        descricao: "",
+        identificador: "mT003",
+        tamanho: "P/M/G/GG",
+    },
+    {
+        imagem: "produtos/trifil/trifil3.jpg",
+        imagem1: "produtos/trifil/trifil3,1.jpg",
+        nome: "Short feminino TriFil",
+        preco: "45.00",
+        preco_cartao: "50.00",
+        descricao: "",
+        identificador: "mT004",
+        tamanho: "P/M/G/GG",
+    },
+    {
+        imagem: "produtos/trifil/trifil4.jpg",
+        imagem1: "produtos/trifil/trifil4,1.jpg",
+        imagem2: "produtos/trifil/trifil4,2.jpg",
+        nome: "Top Faixa TriFil",
+        preco: "18.00",
+        preco_cartao: "20.00",
+        descricao: "",
+        identificador: "mT005",
+        tamanho: "P/M/G/GG",
+    },
+    {
+        imagem: "produtos/trifil/trifil5.jpg",
+        imagem1: "produtos/trifil/trifil5,1.jpg",
+        nome: "Top Basico TriFil",
+        preco: "24.00",
+        preco_cartao: "27.00",
+        descricao: "",
+        identificador: "mT006",
+        tamanho: "P/M/G/GG",
+    },
+    {
+        imagem: "produtos/trifil/trifil6.jpg",
+        imagem1: "produtos/trifil/trifil6,1.jpg",
+        nome: "Short Cinta TriFil",
+        preco: "38.00",
+        preco_cartao: "42.00",
+        descricao: "",
+        identificador: "mT007",
+        tamanho: "P/M/G/GG",
+    },
+    {
+        imagem: "produtos/trifil/trifil7.jpg",
+        imagem1: "produtos/trifil/trifil7,2.jpg",
+        nome: "Short modelador TriFil",
+        preco: "34.00",
+        preco_cartao: "36.00",
+        descricao: "",
+        identificador: "mT008",
+        tamanho: "P/M/G/GG",
+    },
+    {
+        imagem: "produtos/trifil/trifil8.jpg",
+        imagem1: "produtos/trifil/trifil8,1.jpg",
+        nome: "Calça Leg TriFil",
+        preco: "45.00",
+        preco_cartao: "50.00",
+        descricao: "",
+        identificador: "mT009",
+        tamanho: "P/M/G",
+    },
+    {
+        imagem: "produtos/trifil/trifil9.jpg",
+        imagem1: "produtos/trifil/trifil9,1.jpg",
+        nome: "Meia TriFil",
+        preco: "8.50",
+        preco_cartao: "9.00",
+        descricao: "Par",
+        identificador: "mT010",
+        tamanho: "unico",
+    },
+]
 function toggleCategorias() {
     const categorias = document.getElementById('categorias');
     if (categorias.style.display === 'none' || categorias.style.display === '') {
@@ -410,6 +557,8 @@ function exibirDetalhesProduto(prod, containerGeral) {
         ".redes-sociais",
         ".banner",
         "#moda-lupo",
+        "#moda-gestante",
+        "#moda-trifil",
         ".redes-sociais-responsive",
         ".banner-responsive",
         ".bottons",
@@ -604,6 +753,8 @@ document.getElementById("carrinho").addEventListener("click", () => {
         ".redes-sociais",
         ".banner",
         "#moda-lupo",
+        "#moda-gestante",
+        "#moda-trifil",
         ".banner-responsive",
         ".bottons",
         ".inicio",
@@ -624,6 +775,8 @@ function fecharCarrinho() {
         { selector: ".banner", display: "grid" },
         { selector: "#sessao-frete", display: "block" },
         { selector: "#moda-lupo", display: "grid" },
+        { selector: "#moda-gestante", display: "grid" },
+        { selector: "#moda-trifil", display: "grid" },
     ];
     if (window.matchMedia("(max-width: 576px)").matches) {
         // Para celulares
@@ -1161,6 +1314,9 @@ if (usuario) {
 
 window.addEventListener("DOMContentLoaded", () => {
     renderizarProdutos("moda-lupo", modaLupo);
+    renderizarProdutos("moda-gestante", modaGestante);
+    renderizarProdutos("moda-trifil", modaTrifil);
+
 
     resetarLayoutProdutos();
 })
