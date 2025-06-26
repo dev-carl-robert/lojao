@@ -130,9 +130,27 @@
 
   .seccao_especifica {
     height: 100%;
+    width: 100dvh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     padding: 0;
   }
-
+  .titulo-detalhe {
+    width: 80vw;
+    height: 10rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin-top: 2rem;
+  }
+  .titulo-detalhe h3{
+    display: flex;
+    width: 70%;
+    text-align: center;
+    flex-wrap: wrap;
+  }
   .detalhes-produto {
     flex-direction: column;
     height: 100%;
@@ -143,8 +161,15 @@
     flex-direction: column;
   }
 
+  .galeria {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+  }
   .galeria img {
     margin-left: 1rem;
+    max-height: 100px;
+    max-width: 100px;
   }
 
   .principal {
@@ -153,7 +178,8 @@
   }
 
   .fechar-detalhes {
-    top: 60px;
+    margin-left: -10rem;
+    font-size: 4rem;
   }
 
   .titulo-detalhe {
