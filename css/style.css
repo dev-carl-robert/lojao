@@ -348,10 +348,11 @@ section .produtos {
 }
 .galeria {
     display: flex;
+    flex-wrap: wrap;
     gap: 10px;
     justify-content: left;
     align-items: center;
-    width: 100%;
+    width: 40rem;
 }
 
 .galeria img {
