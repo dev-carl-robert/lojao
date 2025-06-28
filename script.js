@@ -2001,7 +2001,7 @@ const modakid = [
 const modaFantasia = [
     {
         imagem: "produtos/fantasia/fan0.jpg",
-        nome: "Fantasia Sexy",
+        nome: "Fantasia Sexy Enfermeira",
         preco: "26.50",
         preco_cartao: "29.00",
         descricao: "",
@@ -2010,7 +2010,7 @@ const modaFantasia = [
     },
     {
         imagem: "produtos/fantasia/fan0,1.jpg",
-        nome: "Fantasia Sexy",
+        nome: "Fantasia Sexy Pirata",
         preco: "26.50",
         preco_cartao: "29.00",
         descricao: "",
@@ -2019,7 +2019,7 @@ const modaFantasia = [
     },
     {
         imagem: "produtos/fantasia/fan0,2.jpg",
-        nome: "Fantasia Sexy",
+        nome: "Fantasia Sexy Lavo passo",
         preco: "26.50",
         preco_cartao: "29.00",
         descricao: "",
@@ -2028,7 +2028,7 @@ const modaFantasia = [
     },
     {
         imagem: "produtos/fantasia/fan0,3.jpg",
-        nome: "Fantasia Sexy",
+        nome: "Fantasia Sexy Professora",
         preco: "26.50",
         preco_cartao: "29.00",
         descricao: "",
@@ -2037,7 +2037,7 @@ const modaFantasia = [
     },
     {
         imagem: "produtos/fantasia/fan0,4.jpg",
-        nome: "Fantasia Sexy",
+        nome: "Fantasia Sexy Mulher Gato",
         preco: "26.50",
         preco_cartao: "29.00",
         descricao: "",
@@ -2046,7 +2046,7 @@ const modaFantasia = [
     },
     {
         imagem: "produtos/fantasia/fan0,5.jpg",
-        nome: "Fantasia Sexy",
+        nome: "Fantasia Sexy Sensual",
         preco: "26.50",
         preco_cartao: "29.00",
         descricao: "",
@@ -2055,7 +2055,7 @@ const modaFantasia = [
     },
     {
         imagem: "produtos/fantasia/fan0,6.jpg",
-        nome: "Fantasia Sexy",
+        nome: "Fantasia Sexy Felina",
         preco: "26.50",
         preco_cartao: "29.00",
         descricao: "",
@@ -2063,17 +2063,8 @@ const modaFantasia = [
         tamanho: "unico",
     },
     {
-        imagem: "produtos/fantasia/fan0,7.jpg",
-        nome: "Fantasia Sexy",
-        preco: "26.50",
-        preco_cartao: "29.00",
-        descricao: "",
-        identificador: "fan008",
-        tamanho: "unico",
-    },
-    {
         imagem: "produtos/fantasia/fan0,8.jpg",
-        nome: "Fantasia Sexy",
+        nome: "Fantasia Sexy Lingerie",
         preco: "26.50",
         preco_cartao: "29.00",
         descricao: "",
@@ -2082,7 +2073,7 @@ const modaFantasia = [
     },
     {
         imagem: "produtos/fantasia/fan0,9.jpg",
-        nome: "Fantasia Sexy",
+        nome: "Fantasia Sexy Amarela",
         preco: "26.50",
         preco_cartao: "29.00",
         descricao: "",
@@ -2091,7 +2082,7 @@ const modaFantasia = [
     },
     {
         imagem: "produtos/fantasia/fan0,10.jpg",
-        nome: "Fantasia Sexy",
+        nome: "Fantasia Sexy Policial",
         preco: "26.50",
         preco_cartao: "29.00",
         descricao: "",
@@ -2100,7 +2091,7 @@ const modaFantasia = [
     },
     {
         imagem: "produtos/fantasia/fan0,11.jpg",
-        nome: "Fantasia Sexy",
+        nome: "Fantasia Sexy FBI",
         preco: "26.50",
         preco_cartao: "29.00",
         descricao: "",
