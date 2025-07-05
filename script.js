@@ -357,7 +357,7 @@ const modaLupo = [
         identificador: "dima049",
         tamanho: "P/M/G/GG",
     },
-    
+
     {
         imagem: "produtos/lupo/lupo33.jpg",
         imagem1: "produtos/lupo/lupo33,1.jpg",
@@ -965,7 +965,7 @@ const modaFeminina = [
         identificador: "ale042",
         tamanho: "P/M/G/GG",
     },
-       {
+    {
         imagem: "produtos/aleatorios/feminino43.jpg",
         imagem1: "produtos/aleatorios/feminino43,1.jpg",
         nome: "Babydoll Americano",
@@ -975,7 +975,7 @@ const modaFeminina = [
         identificador: "ale043",
         tamanho: "P/M/G/GG",
     },
-     {
+    {
         imagem: "produtos/diamante/dima14.jpg",
         imagem1: "produtos/diamante/dima14,1.jpg",
         imagem2: "produtos/diamante/dima14,2.jpg",
@@ -1444,7 +1444,7 @@ const modaFeminina = [
         tamanho: "P/M/G/GG",
     },
 
-]   
+]
 const modaMasculina = [
     {
         imagem: "produtos/masculino/masc0.jpg",
@@ -1537,7 +1537,7 @@ const modaMasculina = [
         identificador: "mas009",
         tamanho: "P/M/G/GG",
     },
-     {
+    {
         imagem: "produtos/casa/casa19.jpg",
         imagem1: "produtos/casa/casa19,1.jpg",
         nome: "Bala Clava",
@@ -1557,7 +1557,7 @@ const modaMasculina = [
         identificador: "casa021",
         tamanho: "unico",
     },
-     {
+    {
         imagem: "produtos/casa/casa21.jpg",
         imagem1: "produtos/casa/casa21,1.jpg",
         nome: "Capa de Chuva",
@@ -3007,53 +3007,51 @@ function criarResumoCompra() {
                     })
                     .then(data => {
                         console.log("Dados retornados do servidor:", data);
-                        window.location.href = data.init_point;  // Redireciona para o checkout do Mercado Pago
+                        window.location.href = data.init_point; 
                     })
-                    .catch(error => {
-                        console.error("Erro ao enviar a requisição:", error);
-                    });
-
-
-            }
-            // Função para enviar mensagem para Telegram
-            let mensagemEnviada = false;
-
-            function enviarMensagemTelegram(chatId, texto) {
-                if (mensagemEnviada) {
-                    console.log("Mensagem já enviada. Não será enviada novamente.");
-                    return; // Se a mensagem já foi enviada, não faz nada
-                }
-
-                fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({
-                        chat_id: chatId,
-                        text: texto
-                    })
-                })
-                    .then(res => res.json())
-                    .then(data => {
-                        if (data.ok) {
-                            mensagemEnviada = true;
-                            console.log("Mensagem enviada com sucesso.");
-                        } else {
-                            console.error("Erro ao enviar mensagem:", data);
-                        }
-                    })
-                    .catch(err => {
-                        console.error("Erro na requisição:", err);
-                    });
-            }
-
-            // Envia para o grupo da loja
-            pagarConta();
-            enviarMensagemTelegram(chatIdGrupo, mensagem);
-            alert("Você será redirecionado \n aguarde alguns segundos")
-            document.getElementById("botao-continuar-compra").disabled = true;
-        });
+            .catch(error => {
+                console.error("Erro ao enviar a requisição:", error);
+            });
     }
-    return resumo;
+    // Função para enviar mensagem para Telegram
+    let mensagemEnviada = false;
+
+    function enviarMensagemTelegram(chatId, texto) {
+        if (mensagemEnviada) {
+            console.log("Mensagem já enviada. Não será enviada novamente.");
+            return; // Se a mensagem já foi enviada, não faz nada
+        }
+
+        fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                chat_id: chatId,
+                text: texto
+            })
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.ok) {
+                    mensagemEnviada = true;
+                    console.log("Mensagem enviada com sucesso.");
+                } else {
+                    console.error("Erro ao enviar mensagem:", data);
+                }
+            })
+            .catch(err => {
+                console.error("Erro na requisição:", err);
+            });
+    }
+
+    // Envia para o grupo da loja
+    pagarConta();
+    enviarMensagemTelegram(chatIdGrupo, mensagem);
+    alert("Você será redirecionado \n aguarde alguns segundos")
+    document.getElementById("botao-continuar-compra").disabled = true;
+});
+    }
+return resumo;
 
 } { once: true }
 
