@@ -3000,7 +3000,9 @@ function criarResumoCompra() {
                         bairro: bairro,
                         numero: numero,
                         complemento: complemento
-                    }
+                    },
+                    meioPagamentoSelecionado: meioPagamentoSelecionado,
+
                 };
 
                 console.log("Dados do Pedido para o Backend:", dadosPedido);
