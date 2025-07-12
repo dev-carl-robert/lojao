@@ -59,6 +59,7 @@
     <div class="info"><strong>Sobrenome:</strong> <span id="sobrenome"></span></div>
     <div class="info"><strong>Telefone:</strong> <span id="telefone"></span></div>
     <div class="info"><strong>Email:</strong> <span id="email"></span></div>
+    <div class="info"><strong>CPF/CNPJ:</strong> <span id="cpfCnpj"></span></div>
 
     <button onclick="logout()">Sair</button>
 </div>
@@ -73,6 +74,7 @@
         document.getElementById('nome').innerText = user.nome;
         document.getElementById('sobrenome').innerText = user.sobrenome;
         document.getElementById('telefone').innerText = user.telefone;
+        document.getElementById('cpfCnpj').innerText = user.cpfCnpj;
 
 
         document.getElementById('email').innerText = user.email;

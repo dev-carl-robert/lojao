@@ -2976,9 +2976,11 @@ function criarResumoCompra() {
             const totalAtualizado = produtosAtualizados;
 
             function pagarConta() {
+                const usuario = JSON.parse(localStorage.getItem('usuarioLogado'));
                 const dadosPedido = {
                     nome: primeiroNome,
                     telefone: telefone,
+                    cpfCnpj: usuario?.cpfCnpj || '00000000000',
                     produtos: mensagemProdutos,
                     subtotal: produtosAtualizados,
                     frete: frete,
@@ -2991,7 +2993,6 @@ function criarResumoCompra() {
                     }
                 };
 
-                // Logando os dados que serão enviados
                 console.log("Dados do Pedido para o Backend:", dadosPedido);
 
                 fetch('https://api-lojao.onrender.com/pagar', {
@@ -3003,55 +3004,66 @@ function criarResumoCompra() {
                 })
                     .then(res => {
                         console.log("Resposta do servidor:", res);
+                        if (!res.ok) {
+                            throw new Error(`HTTP error! status: ${res.status}`);
+                        }
                         return res.json();
                     })
                     .then(data => {
                         console.log("Dados retornados do servidor:", data);
-                        window.location.href = data.init_point; 
+                        // Aqui redireciona para o link de pagamento
+                        if (data.init_point) {
+                            window.location.href = data.init_point;
+                        } else if (data.invoiceUrl) {
+                            // Caso use a API Asaas e o campo seja invoiceUrl
+                            window.location.href = data.invoiceUrl;
+                        } else {
+                            console.error("Link de pagamento não encontrado na resposta");
+                        }
                     })
-            .catch(error => {
-                console.error("Erro ao enviar a requisição:", error);
-            });
-    }
-    // Função para enviar mensagem para Telegram
-    let mensagemEnviada = false;
+                    .catch(error => {
+                        console.error("Erro ao enviar a requisição:", error);
+                    });
+            }
+            // Função para enviar mensagem para Telegram
+            let mensagemEnviada = false;
 
-    function enviarMensagemTelegram(chatId, texto) {
-        if (mensagemEnviada) {
-            console.log("Mensagem já enviada. Não será enviada novamente.");
-            return; // Se a mensagem já foi enviada, não faz nada
-        }
-
-        fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-                chat_id: chatId,
-                text: texto
-            })
-        })
-            .then(res => res.json())
-            .then(data => {
-                if (data.ok) {
-                    mensagemEnviada = true;
-                    console.log("Mensagem enviada com sucesso.");
-                } else {
-                    console.error("Erro ao enviar mensagem:", data);
+            function enviarMensagemTelegram(chatId, texto) {
+                if (mensagemEnviada) {
+                    console.log("Mensagem já enviada. Não será enviada novamente.");
+                    return; // Se a mensagem já foi enviada, não faz nada
                 }
-            })
-            .catch(err => {
-                console.error("Erro na requisição:", err);
-            });
-    }
 
-    // Envia para o grupo da loja
-    pagarConta();
-    enviarMensagemTelegram(chatIdGrupo, mensagem);
-    alert("Você será redirecionado \n aguarde alguns segundos")
-    document.getElementById("botao-continuar-compra").disabled = true;
-});
+                fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        chat_id: chatId,
+                        text: texto
+                    })
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        if (data.ok) {
+                            mensagemEnviada = true;
+                            console.log("Mensagem enviada com sucesso.");
+                        } else {
+                            console.error("Erro ao enviar mensagem:", data);
+                        }
+                    })
+                    .catch(err => {
+                        console.error("Erro na requisição:", err);
+                    });
+            }
+
+            // Envia para o grupo da loja
+            pagarConta();
+            enviarMensagemTelegram(chatIdGrupo, mensagem);
+            alert("Você será redirecionado \n aguarde alguns segundos")
+            document.getElementById("botao-continuar-compra").disabled = true;
+        });
     }
-return resumo;
+    return resumo;
 
 } { once: true }
 

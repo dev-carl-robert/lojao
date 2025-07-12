@@ -10,6 +10,7 @@ function toggleForm() {
     document.getElementById('nome').style.display = isLogin ? 'none' : 'block';
     document.getElementById('sobrenome').style.display = isLogin ? 'none' : 'block';
     document.getElementById('telefone').style.display = isLogin ? 'none' : 'block';
+    document.getElementById('cpfCnpj').style.display = isLogin ? 'none' : 'block';
 }
 
 function handleSubmit() {
@@ -18,16 +19,17 @@ function handleSubmit() {
     const telefone = document.getElementById('telefone').value.trim();
     const email = document.getElementById('email').value.trim();
     const senha = document.getElementById('senha').value.trim();
+    const cpfCnpj = document.getElementById('cpfCnpj') ? document.getElementById('cpfCnpj').value.trim() : '';
 
     if (isLogin) {
         login(email, senha);
     } else {
-        cadastro(nome, sobrenome, telefone, email, senha);
+        cadastro(nome, sobrenome, telefone, email, senha, cpfCnpj);
     }
 }
 
-function cadastro(nome, sobrenome, telefone, email, senha) {
-    if (!nome || !sobrenome || !telefone || !email || !senha) {
+function cadastro(nome, sobrenome, telefone, email, senha, cpfCnpj) {
+    if (!nome || !sobrenome || !telefone || !email || !senha || !cpfCnpj) {
         alert('Preencha todos os campos do cadastro.');
         return;
     }
@@ -40,7 +42,7 @@ function cadastro(nome, sobrenome, telefone, email, senha) {
         return;
     }
 
-    usuarios.push({ nome, sobrenome, telefone, email, senha });
+    usuarios.push({ nome, sobrenome, telefone, email, senha, cpfCnpj });
     localStorage.setItem('usuarios', JSON.stringify(usuarios));
 
     alert('Cadastro realizado com sucesso!');
@@ -55,7 +57,7 @@ function login(email, senha) {
 
     const usuarios = JSON.parse(localStorage.getItem('usuarios') || '[]');
 
-    const user = usuarios.find(user => user.email === email && user.senha === senha);
+    const user = usuarios.find(user => user.email === email && user.senha === senha );
     if (user) {
         localStorage.setItem('usuarioLogado', JSON.stringify(user));
         alert(`Bem-vindo(a), ${user.nome.split(' ')[0]}!`);
