@@ -2981,7 +2981,8 @@ function criarResumoCompra() {
                 bairro: bairro,
                 numero: numero,
                 complemento: complemento
-            });
+            }),
+            console.log("Meio de Pagamento:", meioPagamentoSelecionado);
 
             const totalAtualizado = produtosAtualizados;
 
@@ -3071,7 +3072,6 @@ function criarResumoCompra() {
             // Envia para o grupo da loja
             pagarConta();
             enviarMensagemTelegram(chatIdGrupo, mensagem);
-            alert("Você será redirecionado \n aguarde alguns segundos")
             document.getElementById("botao-continuar-compra").disabled = true;
         });
     }
