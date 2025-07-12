@@ -3,8 +3,8 @@ const modaLupo = [
         imagem: "produtos/lupo/lupo0.jpg",
         imagem1: "produtos/lupo/lupo0,1.jpg",
         nome: "teste",
-        preco: "2.00",
-        preco_cartao: "150.00",
+        preco: "1.00",
+        preco_cartao: "1.50",
         descricao: "",
         identificador: "ml001",
         tamanho: "P/M/G",
@@ -2887,7 +2887,7 @@ function criarResumoCompra() {
         }
     })
 
-    const token = '7900323987:AAFpptfwg0xFZSOdjRIxT_Y0rjCC7xHzMgU'; // substitua pelo token do seu bot
+    const token = '7592244737:AAEd6dmGJAJcUhdvhrKkrFrxfWCJsFiW-_0'; // substitua pelo token do seu bot
     const chatIdGrupo = -1002539224248;
     const botaoContinuarCompra = document.getElementById("botao-continuar-compra");
     document.getElementById("botao-continuar-compra").disabled = true;
