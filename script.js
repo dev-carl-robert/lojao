@@ -2,6 +2,16 @@ const modaLupo = [
     {
         imagem: "produtos/lupo/lupo0.jpg",
         imagem1: "produtos/lupo/lupo0,1.jpg",
+        nome: "teste",
+        preco: "2.00",
+        preco_cartao: "150.00",
+        descricao: "",
+        identificador: "ml001",
+        tamanho: "P/M/G",
+    },
+    {
+        imagem: "produtos/lupo/lupo0.jpg",
+        imagem1: "produtos/lupo/lupo0,1.jpg",
         nome: "Leg Max Lupo",
         preco: "135.00",
         preco_cartao: "150.00",
